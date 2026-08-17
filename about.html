@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
+    <meta name="myshiftpilot-api-base" content="https://api.myshiftpilot.nl">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080E14">
+<title>Over MyShiftpilot — waarom we het bouwen en wie erachter zit</title>
+<meta name="description" content="Lees waarom we MyShiftpilot voor de horeca bouwen en maak kennis met het team achter de pilot voor roosters maken, wijzigen en delen.">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0F1720;--navy2:#121D2A;--navy3:#1A2735;--deep:#080E14;
+  --or:#E67A2E;--orh:#D56A1E;--org:rgba(230,122,46,.35);--ors:rgba(230,122,46,.12);
+  --bl:#3B82F6;--blg:rgba(59,130,246,.32);
+  --gr:#10B981;
+  --w:#fff;--wd:rgba(255,255,255,.65);--wf:rgba(255,255,255,.38);--wg:rgba(255,255,255,.13);
+  --ln:rgba(255,255,255,.07);--ls:rgba(255,255,255,.14);
+  --e:cubic-bezier(.25,.1,.25,1);--eo:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--w);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:80px 80px}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(900px 600px at 5% 0%,rgba(230,122,46,.09),transparent 65%),radial-gradient(700px 500px at 95% 100%,rgba(59,130,246,.07),transparent 65%)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+input,select,textarea{font-family:inherit;color:inherit}
+.brand-my{color:var(--or)}
+.skip-link{position:fixed;top:10px;left:50%;z-index:1000;padding:10px 16px;border-radius:7px;background:#fff;color:var(--deep);font-size:14px;font-weight:800;transform:translate(-50%,-160%);transition:transform .2s var(--e)}
+.skip-link:focus{transform:translate(-50%,0)}
+a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+/* Scroll progress */
+#scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--or),var(--bl));z-index:200;box-shadow:0 0 8px var(--org)}
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,14,20,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--ls);animation:hdr-in .7s var(--eo) .05s both}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or) 30%,var(--or) 70%,transparent);opacity:.6}
+@keyframes hdr-in{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.hdr-inner{max-width:none;margin:0;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.menu{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--ls);border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wd);transition:all .25s var(--e);flex-shrink:0}
+.menu:hover{border-color:var(--or);color:var(--or);background:var(--ors)}
+.menu-dot{width:3px;height:3px;border-radius:50%;background:currentColor}
+.menu-txt{margin-left:1px}
+.logo-img{height:34px;width:auto;display:block;transition:transform .3s}
+.brand-logo:hover .logo-img{transform:scale(1.04)}
+.login-btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 20px;border-radius:6px;background:var(--bl);color:#fff;font-size:13px;font-weight:700;letter-spacing:.02em;transition:all .25s var(--e);white-space:nowrap;flex-shrink:0}
+.login-btn:hover{background:var(--or);transform:translateY(-1px);box-shadow:0 8px 24px var(--org)}
+.nav-panel{position:absolute;top:calc(100% + 6px);left:32px;background:var(--navy2);border:1px solid var(--ls);border-radius:12px;min-width:240px;padding:6px;opacity:0;visibility:hidden;transform:translateY(-10px);transition:all .25s var(--e);box-shadow:0 28px 64px rgba(0,0,0,.6);z-index:10}
+.nav-panel.open{opacity:1;visibility:visible;transform:translateY(0)}
+.np-link{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:8px;font-size:14px;font-weight:600;transition:all .2s var(--e)}
+.np-link:hover{background:var(--ors);color:var(--or)}
+.np-link:focus-visible{background:var(--ors);color:var(--or);outline-color:var(--or);outline-offset:-2px}
+.np-num{font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--wf);min-width:20px}
+.np-link:hover .np-num{color:var(--or)}
+.nav-panel.open .np-link{animation:slide-in .3s var(--eo) both}
+.nav-panel.open .np-link:nth-child(1){animation-delay:.03s}.nav-panel.open .np-link:nth-child(2){animation-delay:.08s}
+.nav-panel.open .np-link:nth-child(3){animation-delay:.13s}.nav-panel.open .np-link:nth-child(4){animation-delay:.18s}
+.nav-panel.open .np-link:nth-child(5){animation-delay:.23s}.nav-panel.open .np-link:nth-child(6){animation-delay:.28s}
+.nav-panel.open .np-link:nth-child(7){animation-delay:.33s}.nav-panel.open .np-link:nth-child(8){animation-delay:.38s}
+.nav-panel.open .np-link:nth-child(9){animation-delay:.43s}
+@keyframes slide-in{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+/* CTA buttons */
+.cta{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:all .28s var(--e);position:relative;overflow:hidden}
+.cta.primary{background:var(--bl);color:#fff;box-shadow:0 8px 24px var(--blg);border:1px solid transparent}
+.cta.primary::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-18deg);transition:left .5s var(--eo)}
+.cta.primary:hover{background:var(--orh);transform:translateY(-1px);box-shadow:0 8px 24px var(--org)}
+.cta.primary:hover::after{left:140%}
+.cta.ghost{border:1px solid var(--ls);color:var(--w);background:transparent}
+.cta.ghost:hover{border-color:var(--or);color:var(--or);background:var(--ors);transform:translateY(-1px)}
+.cta-arrow{font-size:17px;transition:transform .28s var(--e)}
+.cta:hover .cta-arrow{transform:translateX(5px)}
+/* Page layout: schermbrede .section-banden met één contentkolom, net als pilot.html en faq.html. */
+/* Page hero */
+.pg-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 13px;border:1px solid var(--ls);border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.26em;color:var(--wd);text-transform:uppercase;margin-bottom:28px}
+.pg-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--or);box-shadow:0 0 10px var(--org);animation:pulse 2s infinite}
+.pg-h1{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(52px,8vw,110px);font-weight:900;line-height:.92;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:20px}
+.pg-h1 em{font-style:normal;color:var(--or)}
+.pg-lead{font-size:clamp(15px,1.4vw,18px);color:var(--wd);max-width:560px;line-height:1.65;margin-bottom:48px}
+/* Section label */
+.sec-label{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:10px;font-weight:900;letter-spacing:.36em;color:var(--or);text-transform:uppercase;margin-bottom:12px;display:inline-flex;align-items:center;gap:12px}
+.sec-label::before,.sec-label::after{content:'';width:28px;height:1px;background:var(--or);opacity:.5}
+.sec-h2{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(32px,4.5vw,52px);font-weight:900;line-height:1;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:14px}
+.sec-h2 em{font-style:normal;color:var(--or)}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--eo),transform .8s var(--eo);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:translateY(0)}
+/* Footer */
+.ftr{padding:72px 24px 36px;border-top:1px solid var(--ln);background:rgba(0,0,0,.3);position:relative;z-index:1}
+.ftr::before{content:'';position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,var(--or) 30%,var(--or) 70%,transparent);opacity:.4}
+.ftr-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--ln)}
+.ftr-logo-img{height:32px;width:auto;display:block;margin-bottom:12px}
+.ftr-brand p.ftr-tag{font-size:14px;color:rgba(255,255,255,.78);line-height:1.55;margin-bottom:16px}
+.ftr-socials{display:flex;gap:9px}
+.ftr-socials a{width:34px;height:34px;border-radius:8px;border:1px solid var(--ls);display:grid;place-items:center;color:rgba(255,255,255,.78);transition:all .28s var(--e)}
+.ftr-socials a:hover{border-color:var(--or);color:var(--or);transform:translateY(-2px)}
+.ftr-h{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:12px;font-weight:900;letter-spacing:.22em;color:var(--or);text-transform:uppercase;margin-bottom:14px}
+.ftr-col a{display:block;font-size:14px;color:rgba(255,255,255,.78);padding:5px 0;transition:color .2s var(--e)}
+.ftr-col a:hover{color:var(--or)}
+.ftr-bottom{max-width:1320px;margin:0 auto;padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.62);flex-wrap:wrap;gap:12px}
+.ftr-links{display:flex;align-items:center;gap:8px}
+.ftr-links a{color:var(--wf);transition:color .2s var(--e)}
+.ftr-links a:hover{color:var(--or)}
+/* Responsive base */
+@media(max-width:768px){.cta{padding:12px 18px;font-size:13px}}
+@media(max-width:480px){
+  .hdr-inner{padding:0 16px}.menu{padding:8px 10px;gap:5px;letter-spacing:.12em}
+  .login-btn{width:44px;padding:8px;font-size:0;letter-spacing:0}.login-btn::before{content:'→';font-size:16px;line-height:1}
+  .pg-h1{font-size:clamp(40px,13vw,60px);overflow-wrap:anywhere;hyphens:auto}.about-grid>*{min-width:0}
+  .ftr-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .ftr-grid>div:first-child{grid-column:span 2}
+  .nav-panel{left:16px;right:16px;min-width:0}
+}
+@media(max-width:360px){.ftr-grid{grid-template-columns:1fr}.menu-txt{display:none}.logo-img{height:28px}}
+
+.cta-banner{position:relative;overflow:hidden;padding:52px 48px;background:linear-gradient(135deg,var(--navy2),var(--navy3));border:1px solid var(--ls);border-radius:20px;margin-top:80px}
+.cb-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--org),transparent 70%);filter:blur(64px);right:-100px;top:-150px;pointer-events:none}
+.cb-body{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.cb-text h3{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;margin-bottom:10px}
+.cb-text h3 em{font-style:normal;color:var(--or)}
+.cb-text p{font-size:15px;color:var(--wd);max-width:480px;line-height:1.55}
+.cb-actions{display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap}
+@media(max-width:680px){.cta-banner{padding:32px 22px}.cb-body{flex-direction:column;align-items:flex-start}.cb-actions{flex-direction:column;width:100%}.cb-actions .cta{justify-content:center}}
+
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:72px}
+.pg-sub{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(17px,2vw,23px);font-weight:900;line-height:1.15;letter-spacing:-.01em;text-transform:uppercase;color:var(--wd);margin-bottom:20px}
+.pg-sub em{font-style:normal;color:var(--or)}
+.ah-stats{display:flex;flex-direction:column;gap:12px}
+.ah-stat{padding:18px 20px;background:var(--navy2);border:1px solid var(--ln);border-radius:14px;transition:all .35s var(--e);position:relative;overflow:hidden}
+.ah-stat::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--or),var(--bl));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--eo);z-index:2}
+.ah-stat:hover{border-color:rgba(230,122,46,.4);transform:translateX(4px)}.ah-stat:hover::after{transform:scaleX(1)}
+.ah-stat-lab{font-size:10px;font-weight:700;letter-spacing:.24em;color:var(--wf);text-transform:uppercase}
+.ah-stat-title{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:22px;font-weight:900;line-height:1.05;letter-spacing:0;text-transform:uppercase;margin-top:7px}
+.ah-stat-title em{font-style:normal;color:var(--or)}
+.ah-stat-txt{font-size:13px;color:var(--wd);line-height:1.55;margin-top:7px}
+/* Missie en visie staan naast elkaar in één band: los waren het twee strookjes van
+   nauwelijks een derde beeldscherm, tussen blokken van ruim een volle hoogte. */
+.purpose-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.mission{min-width:0}
+.mission-head h2{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(36px,4.5vw,60px);font-weight:900;line-height:1;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:0}
+.mission-head h2 em{font-style:normal;color:var(--or)}
+.mission-body{font-size:16px;line-height:1.72;color:var(--wd)}
+.mission-body p{margin-bottom:20px}
+.mission-body p strong{color:var(--w);font-weight:600}
+.tl-intro{font-size:15px;color:var(--wd);line-height:1.7;max-width:660px;margin-top:18px}
+.timeline{position:relative;padding-left:26px;margin-top:36px}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--or),var(--or) 35%,var(--ls) 80%,transparent)}
+.tl-row{position:relative;padding:14px 0 14px 26px;display:grid;grid-template-columns:100px 1fr;gap:24px;align-items:baseline}
+.tl-row::before{content:'';position:absolute;left:-5px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--or);box-shadow:0 0 14px var(--org);transition:box-shadow .3s var(--e)}
+.tl-row:hover::before{box-shadow:0 0 24px var(--org)}
+.tl-year{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--or)}
+.tl-text{font-size:15px;color:var(--wd);line-height:1.6}
+.tl-text b{color:var(--w);font-weight:600}
+.founders-lead{font-size:15px;color:var(--wd);line-height:1.7;max-width:660px;margin-top:18px}
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+/* Portret naast de naam in plaats van erboven: staand was deze band ruim 970px hoog,
+   bijna twee keer een gemiddelde band op de andere pilotpagina's. */
+.founder{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:center;background:linear-gradient(150deg,var(--navy2),var(--navy3));border:1px solid var(--ls);border-radius:22px;padding:26px;transition:all .4s var(--e);position:relative;overflow:hidden}
+.founder::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--or),var(--bl));opacity:0;transition:opacity .4s var(--e);z-index:2}
+.founder:hover{transform:translateY(-5px);border-color:rgba(230,122,46,.4);box-shadow:0 28px 64px rgba(0,0,0,.4)}.founder:hover::after{opacity:1}
+.fd-photo{position:relative;width:100%;aspect-ratio:4/5;border:1px solid var(--ln);border-radius:16px;background:radial-gradient(120% 90% at 50% 0%,rgba(230,122,46,.16),transparent 62%),var(--deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden}
+.fd-photo::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+.fd-photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.fd-body{min-width:0}
+.fd-name{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(24px,2.6vw,30px);font-weight:900;line-height:1.05;text-transform:uppercase;letter-spacing:-.01em;overflow-wrap:break-word}
+.fd-role{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--or);margin-top:7px}
+.fd-bio{font-size:14px;color:var(--wd);line-height:1.65;margin-top:15px}
+.fd-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.fd-linkedin,.fd-email{display:inline-flex;align-items:center;gap:9px;padding:9px 14px;border:1px solid var(--ls);border-radius:8px;background:rgba(255,255,255,.025);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--wd);transition:all .28s var(--e)}
+.fd-linkedin:hover,.fd-email:hover{border-color:var(--or);color:var(--or);background:var(--ors);transform:translateY(-1px)}
+.fd-email{letter-spacing:.04em;text-transform:none;overflow-wrap:anywhere}
+.fd-linkedin svg,.fd-email svg{width:15px;height:15px;flex-shrink:0}
+@media(max-width:900px){.about-grid,.purpose-grid{grid-template-columns:1fr;gap:40px}.founders{grid-template-columns:1fr;gap:20px}}
+/* Onder deze breedte blijft er naast een 200px portret te weinig regellengte over. */
+@media(max-width:560px){.founder{grid-template-columns:1fr;gap:18px}.fd-photo{max-width:240px;margin-inline:auto}}
+@media(max-width:480px){.timeline{padding-left:18px}.tl-row{grid-template-columns:1fr;gap:4px;padding:12px 0 12px 18px}.tl-row::before{top:16px}.founder{padding:20px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+</style>
+    <link rel="stylesheet" href="assets/marketing-cta.css?v=20260814s">
+
+<link rel="stylesheet" href="assets/pilot-victor.css?v=20260817r">
+  <link rel="stylesheet" href="assets/pilot-system.css?v=20260817j">
+</head>
+<body>
+<div id="scroll-progress"></div>
+<a class="skip-link" href="#main-content">Ga direct naar de inhoud</a>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <button class="menu" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel">
+      <span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-txt">Menu</span>
+    </button>
+    <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home">
+      <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img">
+    </a>
+    <a href="index.html#pilot-aanvraag" class="login-btn">Meld je bedrijf aan</a>
+  </div>
+  <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
+    <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
+    <a href="pilot.html" class="np-link"><span class="np-num">02</span><span>Pilot</span></a>
+    <a href="faq.html" class="np-link"><span class="np-num">03</span><span>FAQ</span></a>
+    <a href="about.html" class="np-link" aria-current="page"><span class="np-num">04</span><span>Over ons</span></a>
+    <a href="contact.html" class="np-link"><span class="np-num">05</span><span>Contact</span></a>
+    <a href="privacy.html" class="np-link"><span class="np-num">06</span><span>Privacy</span></a>
+    <a href="terms.html" class="np-link"><span class="np-num">07</span><span>Voorwaarden</span></a>
+  </nav>
+</header>
+
+
+<main class="about-page" id="main-content">
+  <section class="hero page-hero about-grid">
+    <div class="reveal">
+      <h1 class="pg-h1">Waarom we<br><em>MyShiftpilot bouwen</em></h1>
+      <p class="pg-lead"><span class="brand-my">My</span>Shiftpilot maakt personeelsroosters maken, wijzigen en delen eenvoudiger. Het product is nog in ontwikkeling en wordt getest in een beperkte pilot.</p>
+    </div>
+    <div class="ah-stats">
+      <div class="ah-stat reveal" style="--d:.1s">
+        <div class="ah-stat-lab">Focus</div>
+        <div class="ah-stat-title">In ontwikkeling voor de <em>horeca</em></div>
+        <p class="ah-stat-txt">Gericht op het dagelijkse roosterwerk in de horeca.</p>
+      </div>
+      <div class="ah-stat reveal" style="--d:.2s">
+        <div class="ah-stat-lab">Status</div>
+        <div class="ah-stat-title">Beperkte <em>pilot</em></div>
+        <p class="ah-stat-txt">Een klein aantal horecabedrijven test de eerste versie.</p>
+      </div>
+      <div class="ah-stat reveal" style="--d:.3s">
+        <div class="ah-stat-lab">Contact</div>
+        <div class="ah-stat-title">Direct met de <em>oprichters</em></div>
+        <p class="ah-stat-txt">Je spreekt de oprichters rechtstreeks.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="missie-visie" aria-labelledby="missie-title visie-title">
+    <div class="section-inner purpose-grid">
+      <div class="mission">
+        <div class="mission-head reveal">
+          <div class="sec-label">01 / Missie</div>
+          <h2 id="missie-title">Onze <em>missie</em></h2>
+        </div>
+        <div class="mission-body reveal" style="--d:.12s">
+          <p><span class="brand-my">My</span>Shiftpilot maakt personeelsplanning in de horeca <strong>rustiger en helderder</strong>: je team weet waar het aan toe is, jij houdt tijd over voor de zaak.</p>
+          <p>De eerste versie brengt drie momenten samen: <strong>roosters maken, wijzigen en delen</strong>.</p>
+        </div>
+      </div>
+      <div class="mission">
+        <div class="mission-head reveal" style="--d:.06s">
+          <div class="sec-label">02 / Visie</div>
+          <h2 id="visie-title">Onze <em>visie</em></h2>
+        </div>
+        <div class="mission-body reveal" style="--d:.18s">
+          <p>Een actueel rooster hoort niet te verdwijnen tussen <strong>Excel, WhatsApp en mondelinge wijzigingen</strong>. Daarom focust de pilot op de basis: <strong>roosters maken, wijzigen en delen</strong>.</p>
+          <p>De planner blijft leidend: <strong>jij kent je zaak en je team</strong>. Wij geven overzicht, we nemen je rol niet over.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark" id="hoe-we-bouwen" aria-labelledby="bouwen-title">
+    <div class="section-inner timeline-wrap">
+      <div class="reveal"><div class="sec-label">03 / Hoe we bouwen</div><h2 class="sec-h2" id="bouwen-title">Zo ontwikkelen we <em>MyShiftpilot</em></h2></div>
+      <p class="tl-intro reveal" style="--d:.06s"><span class="brand-my">My</span>Shiftpilot is nog in ontwikkeling. We bouwen mét horecabedrijven, niet vóór hen.</p>
+      <div class="timeline">
+        <div class="tl-row reveal"><div class="tl-year">Stap 01</div><div class="tl-text"><b>Klein beginnen.</b> We starten met een beperkt aantal horecabedrijven.</div></div>
+        <div class="tl-row reveal" style="--d:.05s"><div class="tl-year">Stap 02</div><div class="tl-text"><b>De praktijk begrijpen.</b> We kijken hoe roosteren in een horecazaak echt verloopt.</div></div>
+        <div class="tl-row reveal" style="--d:.1s"><div class="tl-year">Stap 03</div><div class="tl-text"><b>Feedback verwerken.</b> Praktijkervaring bepaalt wat beter moet.</div></div>
+        <div class="tl-row reveal" style="--d:.15s"><div class="tl-year">Stap 04</div><div class="tl-text"><b>Zorgvuldig uitbreiden.</b> Een aanvraag geeft niet automatisch toegang.</div></div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="team" aria-labelledby="team-title">
+    <div class="section-inner founders-wrap">
+      <div class="reveal"><div class="sec-label">04 / Team</div><h2 class="sec-h2" id="team-title">De mensen achter <em><span class="brand-my">My</span>Shiftpilot</em></h2></div>
+      <p class="founders-lead reveal" style="--d:.06s">Tijdens de pilot spreek je rechtstreeks met de mensen die jouw feedback verwerken.</p>
+      <div class="founders">
+        <article class="founder reveal" style="--d:.05s">
+          <div class="fd-photo">
+            <img class="fd-photo-img" src="assets/team-jort-van-heusden.jpg" alt="Jort van Heusden" loading="lazy" decoding="async">
+          </div>
+          <div class="fd-body">
+            <h3 class="fd-name">Jort van Heusden</h3>
+            <div class="fd-role">Co-founder</div>
+            <div class="fd-actions"><a class="fd-linkedin" href="https://www.linkedin.com/in/jort-van-heusden-9859a92a0/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn-profiel van Jort van Heusden"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.83v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.44c0-1.3-.02-2.97-1.81-2.97-1.81 0-2.09 1.42-2.09 2.88V21h-4V9Z"/></svg>LinkedIn</a><a class="fd-email" href="mailto:jort.vanheusden@myshiftpilot.nl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>jort.vanheusden@myshiftpilot.nl</a></div>
+          </div>
+        </article>
+        <article class="founder reveal" style="--d:.15s">
+          <div class="fd-photo">
+            <img class="fd-photo-img" src="assets/team-jarno-van-eeuwijk.jpg" alt="Jarno van Eeuwijk" loading="lazy" decoding="async">
+          </div>
+          <div class="fd-body">
+            <h3 class="fd-name">Jarno van Eeuwijk</h3>
+            <div class="fd-role">Co-founder</div>
+            <div class="fd-actions"><a class="fd-linkedin" href="https://www.linkedin.com/in/jarno-van-eeuwijk-70055b113/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn-profiel van Jarno van Eeuwijk"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.83v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.44c0-1.3-.02-2.97-1.81-2.97-1.81 0-2.09 1.42-2.09 2.88V21h-4V9Z"/></svg>LinkedIn</a><a class="fd-email" href="mailto:jaro.vaneeuwijk@myshiftpilot.nl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>jaro.vaneeuwijk@myshiftpilot.nl</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark" aria-labelledby="about-cta-title">
+    <div class="section-inner">
+      <div class="cta-banner">
+        <div class="cb-glow"></div>
+        <div class="cb-body">
+          <div class="cb-text">
+            <h3 id="about-cta-title">Wil je de pilot verkennen?</h3>
+            <p>Vertel waar je roosterproces energie kost. We kijken samen of de pilot past.</p>
+          </div>
+          <div class="cb-actions">
+            <a href="index.html#pilot-aanvraag" class="cta primary"><span>Meld je bedrijf aan</span><span class="cta-arrow">→</span></a>
+            <a href="pilot.html" class="cta ghost"><span>Bekijk het pilotproces</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="ftr">
+  <div class="ftr-grid">
+    <div class="ftr-brand">
+      <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="ftr-logo-img">
+      <p class="ftr-tag">Personeelsplanning voor de horeca.<br>Product in ontwikkeling · beperkte pilot.</p>
+      <div class="ftr-socials">
+        <a href="https://instagram.com/myshiftpilot" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+        <a href="https://linkedin.com/company/myshiftpilot" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.83v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.44c0-1.3-.02-2.97-1.81-2.97-1.81 0-2.09 1.42-2.09 2.88V21h-4V9Z"/></svg></a>
+      </div>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-h">Pilot</div>
+      <a href="pilot.html">Pilot</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-h">Bedrijf</div>
+      <a href="about.html">Over ons</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-h">Juridisch</div>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Voorwaarden</a>
+    </div>
+  </div>
+  <div class="ftr-bottom">
+    <div>© 2026 <span class="brand-my">My</span>Shiftpilot · vof · KVK 99920360</div>
+  </div>
+</footer>
+<script src="assets/pilot-shell.js?v=20260812a"></script>
+  <script src="assets/pilot-victor.js?v=20260817h"></script>
+</body>
+</html>

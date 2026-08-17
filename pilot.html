@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
+    <meta name="myshiftpilot-api-base" content="https://api.myshiftpilot.nl">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080e14">
+  <meta name="description" content="Lees wat deelname aan de beperkte pilot van MyShiftpilot inhoudt en hoe je jouw horecabedrijf aanmeldt.">
+  <title>Pilot van MyShiftpilot — roosters maken, wijzigen en delen</title>
+  <link rel="stylesheet" href="assets/pilot.css?v=20260812b">
+  <link rel="stylesheet" href="assets/marketing-cta.css?v=20260814s">
+  <link rel="stylesheet" href="assets/pilot-victor.css?v=20260817r">
+  <style>
+  /* De pilotintro gebruikt dezelfde volledige viewport als de pilot-index. */
+  .page-hero{min-height:100svh;padding:92px 0 44px}
+  .page-hero h1{font-size:clamp(52px,6vw,88px)}
+  .section{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:92px 20px 44px}
+  /* Pilot hero gebruikt dezelfde gelaagde hangar-look als de homepage. */
+  .pilot-page .pilot-hero{position:relative;width:100%;max-width:none;min-height:100svh;margin:0;padding:92px 24px 44px;display:flex;overflow:hidden;background:var(--deep);--pilot-radar-shift:-30%}
+  /* Geen lichtere rechterhelft meer: die las als een andere achtergrondkleur naast
+     de vlakke bodem van de andere pagina's. De hero draagt nu alleen nog het raster,
+     de orbs en de radar als accent. */
+  .pilot-hero .grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(230,122,46,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(230,122,46,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse at 40% 50%,#000 20%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 40% 50%,#000 20%,transparent 75%);animation:pilot-grid-drift 20s linear infinite}
+  /* Orbs en radar zijn gehalveerd: samen maakten ze de rechteronderhoek merkbaar
+     lichter dan de rest van de site, en dat las als een andere achtergrondkleur. */
+  .pilot-hero .orb{position:absolute;border-radius:50%;filter:blur(64px);pointer-events:none}.pilot-hero .orb-1{width:500px;height:500px;top:-160px;left:-160px;background:radial-gradient(circle,rgba(230,122,46,.2),transparent 70%);animation:pilot-float 14s ease-in-out infinite}.pilot-hero .orb-2{width:600px;height:600px;right:-180px;bottom:-180px;background:radial-gradient(circle,rgba(59,130,246,.11),transparent 70%);animation:pilot-float 18s ease-in-out infinite reverse}
+  /* De radar stond vol achter de kaart: je zag alleen een donkere vlek en de sweep
+     verdween eronder. Hij staat nu op de rechterrand van de kaart, zodat de bogen
+     erlangs schuiven, en vervaagt naar het midden zodat de kaart leesbaar blijft. */
+  .pilot-hero .radar{position:absolute;width:clamp(560px,52vw,780px);aspect-ratio:1;height:auto;right:clamp(-220px,-9vw,-90px);top:50%;transform:translateY(-50%);pointer-events:none;opacity:.3;mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 34%,#000 78%,transparent 100%);-webkit-mask-image:radial-gradient(circle at 50% 50%,transparent 6%,#000 34%,#000 78%,transparent 100%)}
+  .pilot-hero .radar-ring{position:absolute;inset:0;border:1px solid rgba(230,122,46,.14);border-radius:50%}.pilot-hero .radar-ring.r0{border-width:2px;border-color:rgba(230,122,46,.3)}.pilot-hero .radar-ring.r1{inset:12%}.pilot-hero .radar-ring.r2{inset:26%}.pilot-hero .radar-ring.r3{inset:40%}
+  /* Kruisdraden: maakt van de ringen een leesbaar radarscherm in plaats van cirkels. */
+  .pilot-hero .radar::before,.pilot-hero .radar::after{content:'';position:absolute;left:50%;top:50%;background:rgba(230,122,46,.12)}
+  .pilot-hero .radar::before{width:100%;height:1px;transform:translate(-50%,-50%)}
+  .pilot-hero .radar::after{width:1px;height:100%;transform:translate(-50%,-50%)}
+  .pilot-hero .radar-sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,transparent 300deg,rgba(230,122,46,.5) 355deg,transparent 360deg);animation:pilot-sweep 5.5s linear infinite}
+  .pilot-hero .bracket{position:absolute;width:44px;height:44px;border:2px solid var(--or);opacity:.55}.pilot-hero .bracket.tl{top:84px;left:18px;border-right:0;border-bottom:0}.pilot-hero .bracket.tr{top:84px;right:18px;border-left:0;border-bottom:0}.pilot-hero .bracket.bl{bottom:18px;left:18px;border-right:0;border-top:0}.pilot-hero .bracket.br{right:18px;bottom:18px;border-left:0;border-top:0}
+  .pilot-hero-inner{position:relative;z-index:1;width:min(1680px,calc(100vw - 48px));margin:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(400px,520px);gap:clamp(48px,4vw,72px);align-items:center}.pilot-hero-copy{min-width:0}.pilot-hero .hero-title{margin-bottom:20px;font-family:'Barlow Condensed','Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(48px,5.1vw,94px);font-weight:900;line-height:.92;letter-spacing:-.02em;text-transform:uppercase}.pilot-hero .hero-sub{max-width:540px;margin-top:0;margin-bottom:26px;color:var(--wd);font-size:clamp(15px,1.4vw,18px);line-height:1.65}.pilot-hero .accent{text-shadow:0 0 10px rgba(230,122,46,.55),0 0 28px rgba(230,122,46,.22)}
+  /* Hangar-paneel: zelfde taal als het roosterpaneel op de homepage — dekkende
+     achtergrond zodat de radar erachter blijft, accentlijn bovenaan, scanlijn,
+     hoekhaken en een specificatievoet. */
+  .pilot-hero .pilot-card{position:relative;overflow:hidden;padding:0;border-color:var(--ls);border-radius:16px;background:linear-gradient(180deg,var(--navy2),var(--navy3));box-shadow:0 36px 80px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.04);transition:transform .35s var(--e),border-color .35s var(--e),box-shadow .35s var(--e)}
+  .pilot-hero .pilot-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:4;background:linear-gradient(90deg,var(--or),var(--bl));pointer-events:none}
+  .pilot-hero .pilot-card:hover{transform:translateY(-6px);border-color:rgba(230,122,46,.4);box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 40px rgba(230,122,46,.1)}
+  /* Deze twee moeten .pilot-mouse-glow > :not(...) uit pilot-victor.css verslaan; die
+     regel zet position:relative op elk kaartkind en haalt de laag anders uit z'n plek. */
+  .pilot-hero .pilot-card .card-scan{position:absolute;inset:0;z-index:3;overflow:hidden;border-radius:inherit;pointer-events:none}
+  .pilot-hero .pilot-card .card-scan::after{content:'';position:absolute;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,rgba(230,122,46,.5),transparent);box-shadow:0 0 12px rgba(230,122,46,.4);animation:pilot-card-scan 3.8s linear infinite}
+  @keyframes pilot-card-scan{0%{top:-2px;opacity:0}6%{opacity:1}94%{opacity:1}100%{top:100%;opacity:0}}
+  .pilot-hero .pilot-card .card-bracket{position:absolute;z-index:4;width:14px;height:14px;border:1px solid rgba(230,122,46,.5);pointer-events:none}
+  .pilot-hero .pilot-card .card-bracket.tl{top:52px;left:10px;border-right:0;border-bottom:0}
+  .pilot-hero .pilot-card .card-bracket.tr{top:52px;right:10px;border-left:0;border-bottom:0}
+  .pilot-hero .pilot-card .card-bracket.bl{bottom:52px;left:10px;border-right:0;border-top:0}
+  .pilot-hero .pilot-card .card-bracket.br{right:10px;bottom:52px;border-left:0;border-top:0}
+  /* Kopbalk en voet lopen tot de kaartrand, zoals het paneel op de homepage. */
+  .pilot-hero .card-top{margin:0;padding:14px 22px;border-bottom:1px solid var(--ln);background:rgba(0,0,0,.28)}
+  .pilot-hero .card-body{padding:4px 22px}
+  /* De kaart toonde eerst een NU→MSP-route met losse vinkjes en een strook cijfers;
+     die drie lagen vertelden hetzelfde en lazen als een rommelige tabel. Nu één
+     genummerde lijst: wat je test en wat dat in de praktijk betekent. */
+  .scope-steps{display:grid;margin:0;padding:0;list-style:none}
+  .scope-steps li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:baseline;padding:clamp(18px,2.8svh,28px) 0;border-bottom:1px dashed var(--ln)}
+  .scope-steps li:last-child{border-bottom:0}
+  .ss-num{font-family:'Barlow Condensed','Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:13px;font-weight:800;letter-spacing:.2em;color:var(--or)}
+  .ss-title{display:block;font-family:'Barlow Condensed','Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:23px;font-weight:800;line-height:1.05;letter-spacing:-.01em;text-transform:uppercase}
+  .ss-desc{display:block;margin-top:5px;color:var(--wd);font-size:13px;line-height:1.55}
+  .card-foot{padding:13px 22px;border-top:1px solid var(--ln);background:rgba(255,255,255,.025);color:var(--faint);font-size:12px;line-height:1.5}
+  .pilot-hero-lede .hero-actions{margin-top:26px}
+  .pilot-hero-lede .hero-sub{margin-bottom:0}
+  .pilot-page .benefit,.pilot-page .process-card{position:relative;overflow:hidden;isolation:isolate}.pilot-page .benefit::after,.pilot-page .process-card::after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(260px circle at var(--pilot-glow-x,50%) var(--pilot-glow-y,0%),rgba(230,122,46,.17),transparent 70%);opacity:0;transition:opacity .3s var(--e)}.pilot-page .benefit:hover::after,.pilot-page .process-card:hover::after{opacity:1}
+  @keyframes pilot-grid-drift{from{background-position:0 0}to{background-position:48px 48px}}@keyframes pilot-float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}@keyframes pilot-sweep{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @media(max-width:900px){.pilot-page .pilot-hero{min-height:100svh;padding-top:116px}.pilot-hero-inner{grid-template-columns:1fr;gap:32px}.pilot-hero .pilot-card{max-width:620px}.pilot-hero .radar{top:62%;right:-140px}.pilot-hero .bracket{display:none}}
+  @media(max-width:700px){.pilot-page .pilot-hero{padding:104px 15px 44px}.pilot-hero-inner{width:100%}.pilot-hero .hero-title{font-size:clamp(44px,13vw,68px)}}
+  @media(prefers-reduced-motion:reduce){.pilot-hero .grid-bg,.pilot-hero .orb-1,.pilot-hero .orb-2,.pilot-hero .radar-sweep{animation:none}.pilot-hero .pilot-card:hover{transform:none}}
+  @media(max-width:700px){.section{padding:84px 15px 40px}}
+  </style>
+  <link rel="stylesheet" href="assets/pilot-system.css?v=20260817j">
+</head>
+<body class="pilot-page">
+  <div id="scroll-progress"></div>
+  <a class="skip-link" href="#main-content">Ga direct naar de inhoud</a>
+  <header class="hdr">
+    <div class="hdr-inner">
+      <button class="menu" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel"><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-txt">Menu</span></button>
+      <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home"><img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img"></a>
+      <a href="index.html#pilot-aanvraag" class="login-btn">Meld je bedrijf aan</a>
+    </div>
+    <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
+      <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
+      <a href="pilot.html" class="np-link" aria-current="page"><span class="np-num">02</span><span>Pilot</span></a>
+      <a href="faq.html" class="np-link"><span class="np-num">03</span><span>FAQ</span></a>
+      <a href="about.html" class="np-link"><span class="np-num">04</span><span>Over ons</span></a>
+      <a href="contact.html" class="np-link"><span class="np-num">05</span><span>Contact</span></a>
+      <a href="privacy.html" class="np-link"><span class="np-num">06</span><span>Privacy</span></a>
+      <a href="terms.html" class="np-link"><span class="np-num">07</span><span>Voorwaarden</span></a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero page-hero pilot-hero">
+      <div class="grid-bg"></div><div class="orb orb-1"></div><div class="orb orb-2"></div>
+      <div class="radar"><div class="radar-sweep"></div><div class="radar-ring r0"></div><div class="radar-ring r1"></div><div class="radar-ring r2"></div><div class="radar-ring r3"></div></div>
+      <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+      <div class="pilot-hero-inner">
+      <div class="pilot-hero-copy">
+        <h1 class="hero-title">Geef jouw roosterpraktijk<br><span class="accent">een stem</span></h1>
+        <div class="pilot-hero-lede">
+          <p class="hero-copy hero-sub">Als je bedrijf deelneemt, test je roosters maken, wijzigen en delen in je eigen zaak. Jouw ervaring stuurt de volgende versie.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="index.html#pilot-aanvraag">Meld je bedrijf aan</a>
+            <a class="button button-ghost" href="#pilotproces">Bekijk het pilotproces</a>
+          </div>
+        </div>
+      </div>
+      <aside class="pilot-card" aria-label="Huidige pilotscope">
+        <div class="card-scan" aria-hidden="true"></div>
+        <span class="card-bracket tl" aria-hidden="true"></span><span class="card-bracket tr" aria-hidden="true"></span>
+        <span class="card-bracket bl" aria-hidden="true"></span><span class="card-bracket br" aria-hidden="true"></span>
+        <div class="card-top"><span class="card-label">Wat je test</span><span class="card-status">In ontwikkeling</span></div>
+        <div class="card-body">
+          <ol class="scope-steps">
+            <li><span class="ss-num">01</span><div><span class="ss-title">Roosters maken</span><span class="ss-desc">Medewerkers en diensten in één overzicht.</span></div></li>
+            <li><span class="ss-num">02</span><div><span class="ss-title">Roosters wijzigen</span><span class="ss-desc">Diensten bijwerken als de bezetting verandert.</span></div></li>
+            <li><span class="ss-num">03</span><div><span class="ss-title">Roosters delen</span><span class="ss-desc">Je team ziet welk rooster geldt.</span></div></li>
+          </ol>
+        </div>
+        <div class="card-foot">De drie momenten die elke week tellen.</div>
+      </aside>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="inhoud-title">
+      <div class="section-inner">
+        <div class="section-head"><div><div class="section-tag">01 / Wat deelname inhoudt</div><h2 id="inhoud-title">Testen waar het telt: <span class="accent">in jouw zaak</span></h2></div><p class="section-lead">Een aanvraag geeft niet direct toegang tot het product. We bespreken eerst je roosterpraktijk.</p></div>
+        <div class="benefit-grid">
+          <article class="benefit"><div class="benefit-num">01 / Wat</div><h3>Een pilot die bij je past</h3><p>Je krijgt toegang tot roosters maken, wijzigen en delen.</p></article>
+          <article class="benefit"><div class="benefit-num">02 / Waarom</div><h3>Jouw praktijk maakt het verschil</h3><p>Je test in je echte werkweek en deelt wat schuurt.</p></article>
+          <article class="benefit"><div class="benefit-num">03 / Voor wie</div><h3>Voor teams die vooruit willen</h3><p>Voor horecabedrijven die wekelijks medewerkers inroosteren.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="pilotproces" aria-labelledby="proces-title">
+      <div class="section-inner">
+        <div class="section-head"><div><div class="section-tag">02 / Pilotproces</div><h2 id="proces-title">Van eerste gesprek naar <span class="accent">echte impact</span></h2></div><p class="section-lead">Een heldere route: kennismaken, testen, feedback geven.</p></div>
+        <div class="process-grid">
+          <article class="process-card"><strong>Stap 01</strong><h3>Aanvragen</h3><p>Vertel waar je nu tijd verliest.</p></article>
+          <article class="process-card"><strong>Stap 02</strong><h3>Kennismaken</h3><p>We bespreken je roosterpraktijk.</p></article>
+          <article class="process-card"><strong>Stap 03</strong><h3>Match bepalen</h3><p>Samen kijken of de pilot past.</p></article>
+          <article class="process-card"><strong>Stap 04</strong><h3>Pilot inrichten</h3><p>Vooraf heldere afspraken.</p></article>
+          <article class="process-card"><strong>Stap 05</strong><h3>Testen in de praktijk</h3><p>Je werkt met roosters maken, wijzigen en delen.</p></article>
+          <article class="process-card"><strong>Stap 06</strong><h3>Feedback bespreken</h3><p>Jouw ervaring bepaalt wat beter moet.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="afspraken-title">
+      <div class="section-inner">
+        <div class="cta-banner">
+          <div class="cb-glow"></div>
+          <div class="cb-body">
+            <div class="cb-text">
+              <h3 id="afspraken-title">Eerst een goede match, dan testen</h3>
+              <p>Kosten, testperiode en afspraken bespreken we vooraf. Een aanvraag activeert geen account, abonnement of betaling.</p>
+            </div>
+            <div class="cb-actions">
+              <a href="index.html#pilot-aanvraag" class="cta primary"><span>Meld je bedrijf aan</span><span class="cta-arrow">→</span></a>
+              <a href="contact.html" class="cta ghost"><span>Stel een vraag</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ftr">
+    <div class="ftr-grid">
+      <div class="ftr-brand"><img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="ftr-logo-img"><p class="ftr-tag">Personeelsplanning voor de horeca.<br>Product in ontwikkeling · beperkte pilot.</p><div class="ftr-socials"><a href="https://instagram.com/myshiftpilot" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a><a href="https://linkedin.com/company/myshiftpilot" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.83v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.44c0-1.3-.02-2.97-1.81-2.97-1.81 0-2.09 1.42-2.09 2.88V21h-4V9Z"/></svg></a></div></div>
+      <div class="ftr-col"><div class="ftr-h">Pilot</div><a href="pilot.html" aria-current="page">Pilot</a><a href="faq.html">FAQ</a></div>
+      <div class="ftr-col"><div class="ftr-h">Bedrijf</div><a href="about.html">Over ons</a><a href="contact.html">Contact</a></div>
+      <div class="ftr-col"><div class="ftr-h">Juridisch</div><a href="privacy.html">Privacy</a><a href="terms.html">Voorwaarden</a></div>
+    </div>
+    <div class="ftr-bottom"><div>© 2026 <span class="accent">My</span>Shiftpilot · vof · KVK 99920360</div></div>
+  </footer>
+  <script src="assets/pilot-shell.js?v=20260812a"></script>
+  <script src="assets/pilot-victor.js?v=20260817h"></script>
+</body>
+</html>

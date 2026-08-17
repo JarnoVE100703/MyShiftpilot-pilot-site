@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
+    <meta name="myshiftpilot-api-base" content="https://api.myshiftpilot.nl">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080E14">
+<title>Privacyverklaring — MyShiftpilot</title>
+<meta name="description" content="Lees hoe MyShiftpilot persoonsgegevens verwerkt en welke rechten je hebt.">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0F1720;--navy2:#121D2A;--navy3:#1A2735;--deep:#080E14;
+  --or:#E67A2E;--orh:#D56A1E;--org:rgba(230,122,46,.35);--ors:rgba(230,122,46,.12);
+  --bl:#3B82F6;--blg:rgba(59,130,246,.32);
+  --gr:#10B981;
+  --w:#fff;--wd:rgba(255,255,255,.65);--wf:rgba(255,255,255,.38);--wg:rgba(255,255,255,.13);
+  --ln:rgba(255,255,255,.07);--ls:rgba(255,255,255,.14);
+  --e:cubic-bezier(.25,.1,.25,1);--eo:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--w);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:80px 80px}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(900px 600px at 5% 0%,rgba(230,122,46,.09),transparent 65%),radial-gradient(700px 500px at 95% 100%,rgba(59,130,246,.07),transparent 65%)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+input,select,textarea{font-family:inherit;color:inherit}
+.brand-my{color:var(--or)}
+.skip-link{position:fixed;top:10px;left:50%;z-index:1000;padding:10px 16px;border-radius:7px;background:#fff;color:var(--deep);font-size:14px;font-weight:800;transform:translate(-50%,-160%);transition:transform .2s var(--e)}
+.skip-link:focus{transform:translate(-50%,0)}
+a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+/* Scroll progress */
+#scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--or),var(--bl));z-index:200;box-shadow:0 0 8px var(--org)}
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,14,20,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--ls);animation:hdr-in .7s var(--eo) .05s both}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or) 30%,var(--or) 70%,transparent);opacity:.6}
+@keyframes hdr-in{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.hdr-inner{max-width:none;margin:0;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.menu{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--ls);border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wd);transition:all .25s var(--e);flex-shrink:0}
+.menu:hover{border-color:var(--or);color:var(--or);background:var(--ors)}
+.menu-dot{width:3px;height:3px;border-radius:50%;background:currentColor}
+.menu-txt{margin-left:1px}
+.logo-img{height:34px;width:auto;display:block;transition:transform .3s}
+.brand-logo:hover .logo-img{transform:scale(1.04)}
+.login-btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 20px;border-radius:6px;background:var(--bl);color:#fff;font-size:13px;font-weight:700;letter-spacing:.02em;transition:all .25s var(--e);white-space:nowrap;flex-shrink:0}
+.login-btn:hover{background:var(--or);transform:translateY(-1px);box-shadow:0 8px 24px var(--org)}
+.nav-panel{position:absolute;top:calc(100% + 6px);left:32px;background:var(--navy2);border:1px solid var(--ls);border-radius:12px;min-width:240px;padding:6px;opacity:0;visibility:hidden;transform:translateY(-10px);transition:all .25s var(--e);box-shadow:0 28px 64px rgba(0,0,0,.6);z-index:10}
+.nav-panel.open{opacity:1;visibility:visible;transform:translateY(0)}
+.np-link{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:8px;font-size:14px;font-weight:600;transition:all .2s var(--e)}
+.np-link:hover,.np-link[aria-current="page"]{background:var(--ors);color:var(--or)}
+.np-link:focus-visible{background:var(--ors);color:var(--or);outline-color:var(--or);outline-offset:-2px}
+.np-num{font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--wf);min-width:20px}
+.np-link:hover .np-num,.np-link[aria-current="page"] .np-num{color:var(--or)}
+.nav-panel.open .np-link{animation:slide-in .3s var(--eo) both}
+.nav-panel.open .np-link:nth-child(1){animation-delay:.03s}.nav-panel.open .np-link:nth-child(2){animation-delay:.08s}
+.nav-panel.open .np-link:nth-child(3){animation-delay:.13s}.nav-panel.open .np-link:nth-child(4){animation-delay:.18s}
+.nav-panel.open .np-link:nth-child(5){animation-delay:.23s}.nav-panel.open .np-link:nth-child(6){animation-delay:.28s}
+.nav-panel.open .np-link:nth-child(7){animation-delay:.33s}.nav-panel.open .np-link:nth-child(8){animation-delay:.38s}
+.nav-panel.open .np-link:nth-child(9){animation-delay:.43s}
+@keyframes slide-in{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+/* CTA buttons */
+.cta{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:all .28s var(--e);position:relative;overflow:hidden}
+.cta.primary{background:var(--bl);color:#fff;box-shadow:0 8px 24px var(--blg);border:1px solid transparent}
+.cta.primary::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-18deg);transition:left .5s var(--eo)}
+.cta.primary:hover{background:var(--orh);transform:translateY(-1px);box-shadow:0 8px 24px var(--org)}
+.cta.primary:hover::after{left:140%}
+.cta.ghost{border:1px solid var(--ls);color:var(--w);background:transparent}
+.cta.ghost:hover{border-color:var(--or);color:var(--or);background:var(--ors);transform:translateY(-1px)}
+.cta-arrow{font-size:17px;transition:transform .28s var(--e)}
+.cta:hover .cta-arrow{transform:translateX(5px)}
+/* Page layout */
+.page{padding:100px 24px 80px;position:relative;z-index:1;max-width:1320px;margin:0 auto}
+/* Page hero */
+.pg-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 13px;border:1px solid var(--ls);border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.26em;color:var(--wd);text-transform:uppercase;margin-bottom:28px}
+.pg-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--or);box-shadow:0 0 10px var(--org);animation:pulse 2s infinite}
+.pg-h1{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(52px,8vw,110px);font-weight:900;line-height:.92;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:20px}
+.pg-h1 em{font-style:normal;color:var(--or)}
+.pg-lead{font-size:clamp(15px,1.4vw,18px);color:var(--wd);max-width:560px;line-height:1.65;margin-bottom:48px}
+/* Section label */
+.sec-label{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:10px;font-weight:900;letter-spacing:.36em;color:var(--or);text-transform:uppercase;margin-bottom:12px;display:inline-flex;align-items:center;gap:12px}
+.sec-label::before,.sec-label::after{content:'';width:28px;height:1px;background:var(--or);opacity:.5}
+.sec-h2{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(32px,4.5vw,52px);font-weight:900;line-height:1;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:14px}
+.sec-h2 em{font-style:normal;color:var(--or)}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--eo),transform .8s var(--eo);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:translateY(0)}
+/* Footer */
+.ftr{padding:72px 24px 36px;border-top:1px solid var(--ln);background:rgba(0,0,0,.3);position:relative;z-index:1}
+.ftr::before{content:'';position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,var(--or) 30%,var(--or) 70%,transparent);opacity:.4}
+.ftr-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--ln)}
+.ftr-logo-img{height:32px;width:auto;display:block;margin-bottom:12px}
+.ftr-brand p.ftr-tag{font-size:14px;color:rgba(255,255,255,.78);line-height:1.55;margin-bottom:16px}
+.ftr-socials{display:flex;gap:9px}
+.ftr-socials a{width:34px;height:34px;border-radius:8px;border:1px solid var(--ls);display:grid;place-items:center;color:rgba(255,255,255,.78);transition:all .28s var(--e)}
+.ftr-socials a:hover{border-color:var(--or);color:var(--or);transform:translateY(-2px)}
+.ftr-h{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:12px;font-weight:900;letter-spacing:.22em;color:var(--or);text-transform:uppercase;margin-bottom:14px}
+.ftr-col a{display:block;font-size:14px;color:rgba(255,255,255,.78);padding:5px 0;transition:color .2s var(--e)}
+.ftr-col a:hover{color:var(--or)}
+.ftr-bottom{max-width:1320px;margin:0 auto;padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.62);flex-wrap:wrap;gap:12px}
+.ftr-links{display:flex;align-items:center;gap:8px}
+.ftr-links a{color:var(--wf);transition:color .2s var(--e)}
+.ftr-links a:hover{color:var(--or)}
+/* Responsive base */
+@media(max-width:768px){.page{padding:88px 18px 60px}.cta{padding:12px 18px;font-size:13px}}
+@media(max-width:480px){
+  .hdr-inner{padding:0 16px}.menu{padding:8px 10px;gap:5px;letter-spacing:.12em}
+  .login-btn{width:44px;padding:8px;font-size:0;letter-spacing:0}.login-btn::before{content:'→';font-size:16px;line-height:1}
+  .page{padding:80px 16px 48px}.pg-h1{font-size:clamp(40px,13vw,60px);overflow-wrap:anywhere;hyphens:auto}
+  .ftr-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .ftr-grid>div:first-child{grid-column:span 2}
+  .nav-panel{left:16px;right:16px;min-width:0}
+}
+@media(max-width:360px){.ftr-grid{grid-template-columns:1fr}.menu-txt{display:none}.logo-img{height:28px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+
+.cta-banner{position:relative;overflow:hidden;padding:52px 48px;background:linear-gradient(135deg,var(--navy2),var(--navy3));border:1px solid var(--ls);border-radius:20px;margin-top:80px}
+.cb-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--org),transparent 70%);filter:blur(64px);right:-100px;top:-150px;pointer-events:none}
+.cb-body{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.cb-text h3{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;margin-bottom:10px}
+.cb-text h3 em{font-style:normal;color:var(--or)}
+.cb-text p{font-size:15px;color:var(--wd);max-width:480px;line-height:1.55}
+.cb-actions{display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap}
+@media(max-width:680px){.cta-banner{padding:32px 22px}.cb-body{flex-direction:column;align-items:flex-start}.cb-actions{flex-direction:column;width:100%}.cb-actions .cta{justify-content:center}}
+
+.legal{max-width:760px;margin:0 auto}
+.legal-intro{margin-bottom:64px;padding-bottom:48px;border-bottom:1px solid var(--ls)}
+.legal-updated{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--wf);text-transform:uppercase;margin-bottom:24px}
+.legal-updated::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr)}
+.legal h2{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(20px,3vw,28px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;margin:48px 0 16px;color:var(--w);display:flex;align-items:center;gap:12px}
+.legal h2::before{content:'';width:3px;height:1em;background:var(--or);display:block;flex-shrink:0}
+.legal p{font-size:15px;color:var(--wd);line-height:1.72;margin-bottom:14px}
+.legal p:last-child{margin-bottom:0}
+.legal a{color:var(--or);text-decoration:underline;text-decoration-color:rgba(230,122,46,.4)}
+.legal a:hover{text-decoration-color:var(--or)}
+.legal ul{margin:12px 0 16px 0;display:flex;flex-direction:column;gap:8px}
+.legal ul li{font-size:15px;color:var(--wd);line-height:1.6;display:flex;gap:10px;align-items:baseline}
+.legal ul li::before{content:'→';color:var(--or);font-weight:700;flex-shrink:0;font-size:12px}
+.legal-block{background:var(--navy2);border:1px solid var(--ln);border-left:3px solid var(--or);border-radius:12px;padding:20px 22px;margin:20px 0}
+.legal-block p{margin-bottom:0}
+</style>
+    <link rel="stylesheet" href="assets/marketing-cta.css?v=20260814s">
+    <link rel="stylesheet" href="assets/pilot-victor.css?v=20260817r">
+  <link rel="stylesheet" href="assets/pilot-system.css?v=20260817j">
+</head>
+<body>
+<div id="scroll-progress"></div>
+<a class="skip-link" href="#main-content">Ga direct naar de inhoud</a>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <button class="menu" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel">
+      <span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-txt">Menu</span>
+    </button>
+    <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home">
+      <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img">
+    </a>
+    <a href="index.html#pilot-aanvraag" class="login-btn">Meld je bedrijf aan</a>
+  </div>
+  <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
+    <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
+    <a href="pilot.html" class="np-link"><span class="np-num">02</span><span>Pilot</span></a>
+    <a href="faq.html" class="np-link"><span class="np-num">03</span><span>FAQ</span></a>
+    <a href="about.html" class="np-link"><span class="np-num">04</span><span>Over ons</span></a>
+    <a href="contact.html" class="np-link"><span class="np-num">05</span><span>Contact</span></a>
+    <a href="privacy.html" class="np-link" aria-current="page"><span class="np-num">06</span><span>Privacy</span></a>
+    <a href="terms.html" class="np-link"><span class="np-num">07</span><span>Voorwaarden</span></a>
+  </nav>
+</header>
+
+
+<main class="page legal-page" id="main-content">
+  <div class="legal">
+    <div class="legal-intro reveal">
+      <h1 class="pg-h1">Privacy<br><em>verklaring</em></h1>
+      <p class="pg-lead">Lees hoe MyShiftpilot persoonsgegevens verwerkt bij websitebezoek, aanmeldingen en het gebruik van de plannings- en AI-functionaliteit.</p>
+      <div class="legal-updated">Versie 1.0 · 11 augustus 2026</div>
+    </div>
+    <div class="legal reveal" style="--d:.1s">
+      <div class="legal-block"><p><strong>Kort samengevat:</strong> we verwerken persoonsgegevens alleen voor duidelijke doelen rond onze website, dienstverlening en beveiliging. We verkopen persoonsgegevens niet.</p></div>
+      <h2>Wie zijn wij?</h2>
+      <p>MyShiftpilot is een vennootschap onder firma (vof) die software ontwikkelt en exploiteert voor personeels- en dienstroosterplanning. MyShiftpilot is ingeschreven bij de Kamer van Koophandel onder nummer 99920360. Vestigingsadres: Jozef Israëlslaan 2, 3735 LN Bosch en Duin, Nederland. Privacyvragen kun je sturen naar <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>.</p>
+      <h2>Onze verschillende privacyrollen</h2>
+      <p>Voor onze eigen website, aanmeldingen, contactverzoeken, beveiliging en eigen klantadministratie bepaalt MyShiftpilot zelf waarom en hoe persoonsgegevens worden verwerkt. Voor deze verwerkingen is MyShiftpilot verwerkingsverantwoordelijke.</p>
+      <p>Wanneer een klantorganisatie MyShiftpilot gebruikt om gegevens van eigen medewerkers te verwerken voor personeels- en roosterplanning, verwerkt MyShiftpilot die gegevens doorgaans in opdracht van die klantorganisatie. In die situatie is de klantorganisatie verwerkingsverantwoordelijke en is MyShiftpilot verwerker, voor zover de feitelijke verwerking daarmee overeenkomt.</p>
+      <h2>Welke gegevens verzamelen wij?</h2>
+      <ul>
+        <li>Bij aanmelding voor de proefperiode en bij contactverzoeken: naam, e-mailadres, telefoonnummer, bedrijfsnaam, KvK- en btw-nummer wanneer gevraagd, vestigingsadres, teamgrootte, type organisatie, pakketvoorkeur, berichtinhoud en bron van de aanmelding.</li>
+        <li>Bij accounts: naam, e-mail, account-ID, organisatie, rol of rechten, instellingen en authenticatie- of sessiegegevens.</li>
+        <li>Bij planning: medewerkersnaam, contact- en arbeidsgegevens, rol of functie, beschikbaarheid, diensten, rooster, verlof, ruilaanvragen, skills of kwalificaties, uren, kosteninformatie en — alleen wanneer die functie is gebruikt — HR- of contractdocumenten.</li>
+        <li>Technische gegevens zoals IP-adres, user-agent, timestamps, audit- en securitylogs en technische requestinformatie.</li>
+        <li>Wanneer je VICTOR gebruikt, kunnen je vraag en relevante context uit MyShiftpilot worden verwerkt om een antwoord of suggestie te genereren.</li>
+      </ul>
+      <h2>Waarvoor gebruiken wij jouw gegevens?</h2>
+      <ul>
+        <li><strong>Aanmeldingen en contactverzoeken:</strong> om je proefperiode klaar te zetten, zakelijke verzoeken te behandelen en een abonnement voor te bereiden. Grondslag: uitvoering van de overeenkomst of het op jouw verzoek nemen van precontractuele maatregelen, en daarnaast ons gerechtvaardigd belang om verzoeken zorgvuldig te behandelen.</li>
+        <li><strong>Dienstverlening en accounts:</strong> om afgesproken dienstverlening te leveren en beheren. Grondslag: uitvoering van afspraken met een klant en/of ons gerechtvaardigd belang om gebruikers van die zakelijke klant toegang te bieden.</li>
+        <li><strong>Beveiliging:</strong> om misbruik te voorkomen, incidenten te onderzoeken en de integriteit van systemen te bewaken. Grondslag: ons gerechtvaardigd belang bij beveiliging.</li>
+        <li><strong>Wettelijke administratie:</strong> voor zover nodig om aan een wettelijke verplichting te voldoen.</li>
+      </ul>
+      <p>Wanneer een veld in een formulier als verplicht is gemarkeerd, hebben we die informatie nodig om het betreffende verzoek of de aanvraag te kunnen behandelen. Zonder die gegevens kunnen we het verzoek mogelijk niet verwerken.</p>
+      <h2>Waar komen gegevens vandaan?</h2>
+      <p>We ontvangen gegevens rechtstreeks van jou, van de klantorganisatie die een account of medewerker beheert, of uit een gekoppelde kalender wanneer die koppeling door een bevoegde gebruiker is geactiveerd. We kopen geen persoonsgegevens voor de website of aanmeldingen in.</p>
+      <h2>Hoe lang bewaren wij jouw gegevens?</h2>
+      <p>We bewaren gegevens uit aanmeldingen en contactverzoeken, accounts, beveiligingslogs en klantdata niet langer dan nodig voor het doel waarvoor ze zijn verzameld. Een wettelijke bewaarplicht, beveiligingsnoodzaak of noodzaak voor een rechtsvordering kan een langere bewaring rechtvaardigen. Klant- en medewerkersdata die wij als verwerker verwerken, behandelen we volgens de afspraken met de klantorganisatie.</p>
+      <h2>Delen wij jouw gegevens?</h2>
+      <p>Ontvangers kunnen categorieën zijn zoals infrastructuur of hosting, opslag of database, zakelijke communicatie, beveiliging of logging, professionele adviseurs en autoriteiten wanneer dat wettelijk verplicht is. Een externe AI-provider of kalenderprovider ontvangt alleen gegevens wanneer die integratie is geactiveerd. Wij verkopen persoonsgegevens niet. Als persoonsgegevens buiten de Europese Economische Ruimte worden verwerkt, beoordelen we welke juridische waarborg voor die doorgifte vereist is en leggen we de benodigde afspraken vast.</p>
+      <h2>Jouw rechten (AVG/GDPR)</h2>
+      <ul>
+        <li><span class="brand-my">Inzage:</span> je kunt opvragen welke gegevens wij van je hebben</li>
+        <li><span class="brand-my">Correctie:</span> je kunt onjuiste gegevens laten aanpassen</li>
+        <li><span class="brand-my">Verwijdering:</span> je kunt vragen jouw gegevens te wissen</li>
+        <li><span class="brand-my">Bezwaar:</span> je kunt bezwaar maken tegen bepaalde verwerkingen</li>
+        <li><span class="brand-my">Overdraagbaarheid:</span> je kunt een export van jouw gegevens opvragen</li>
+      </ul>
+      <p>Je kunt ook beperking van verwerking vragen, toestemming intrekken wanneer die de grondslag is, en bezwaar maken. Stuur een verzoek naar <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>. We behandelen privacyverzoeken binnen de termijnen die de AVG daarvoor voorschrijft. Bij gegevens die een klantorganisatie via MyShiftpilot verwerkt, kan die klantorganisatie verwerkingsverantwoordelijke zijn; wij ondersteunen die klant waar nodig.</p>
+      <h2>Geautomatiseerde besluitvorming</h2>
+      <p>VICTOR is bedoeld om informatie, samenvattingen en suggesties te geven. Het activeert geen autonome acties in MyShiftpilot en neemt geen besluit over een medewerker. De klantorganisatie en bevoegde gebruiker blijven verantwoordelijk voor ieder rooster- of werkgeversbesluit.</p>
+      <h2>Cookies</h2>
+      <p>Voor technische werking kunnen noodzakelijke cookies of browseropslag worden gebruikt, bijvoorbeeld voor sessies, authenticatie of technische configuratie. Persoonsgegevens uit mislukte contact- of aanmeldformulieren worden niet als fallback in localStorage opgeslagen. Niet-noodzakelijke tracking wordt niet vóór de vereiste toestemming geactiveerd.</p>
+      <h2>AI en beveiliging</h2>
+      <p>MyShiftpilot en VICTOR zijn ontworpen als ondersteuning bij planning en informatievoorziening. AI-uitkomsten moeten waar nodig door een gebruiker worden gecontroleerd. Een externe AI-koppeling is alleen aan de orde wanneer deze technisch is geactiveerd; voer geen bijzondere persoonsgegevens of onnodige medewerkerscontext in een AI-vraag in. MyShiftpilot neemt technische en organisatorische maatregelen die zijn afgestemd op de aard van de verwerking en de risico's.</p>
+      <h2>Vragen of klachten?</h2>
+      <p>Neem contact op via <a href="contact.html">ons contactformulier</a> of <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>. Je kunt ook een klacht indienen bij de <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">Autoriteit Persoonsgegevens</a>. We kunnen deze verklaring wijzigen wanneer onze verwerking verandert; dan werken we versie en datum bij.</p>
+    </div>
+    <div class="cta-banner reveal">
+  <div class="cb-glow"></div>
+  <div class="cb-body">
+    <div class="cb-text">
+      <h3>Heb je een privacyvraag?</h3>
+      <p>Neem contact met ons op over de verwerking van gegevens. De afspraken voor een eventuele deelname aan de beperkte pilot staan in onze <a href="terms.html">algemene voorwaarden</a>.</p>
+    </div>
+    <div class="cb-actions">
+      <a href="contact.html" class="cta primary"><span>Neem contact op</span><span class="cta-arrow">→</span></a>
+      <a href="terms.html" class="cta ghost"><span>Lees de voorwaarden</span></a>
+    </div>
+  </div>
+</div>
+  </div>
+</main>
+<footer class="ftr">
+  <div class="ftr-grid">
+    <div class="ftr-brand">
+      <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="ftr-logo-img">
+      <p class="ftr-tag">Personeelsplanning voor de horeca.<br>Product in ontwikkeling · beperkte pilot.</p>
+      <div class="ftr-socials">
+        <a href="https://instagram.com/myshiftpilot" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+        <a href="https://linkedin.com/company/myshiftpilot" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.83v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.44c0-1.3-.02-2.97-1.81-2.97-1.81 0-2.09 1.42-2.09 2.88V21h-4V9Z"/></svg></a>
+      </div>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-h">Pilot</div>
+      <a href="pilot.html">Pilot</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-h">Bedrijf</div>
+      <a href="about.html">Over ons</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-h">Juridisch</div>
+      <a href="privacy.html" aria-current="page">Privacy</a>
+      <a href="terms.html">Voorwaarden</a>
+    </div>
+  </div>
+  <div class="ftr-bottom">
+    <div>© 2026 <span class="brand-my">My</span>Shiftpilot · vof · KVK 99920360</div>
+  </div>
+</footer>
+<script src="assets/pilot-shell.js?v=20260817a"></script>
+<script src="assets/pilot-victor.js?v=20260817h"></script>
+</body>
+</html>

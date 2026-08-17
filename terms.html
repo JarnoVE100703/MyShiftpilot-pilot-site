@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' http://127.0.0.1:3001 http://localhost:3001 https://api.pdok.nl; form-action 'self'">
+    <meta name="myshiftpilot-api-base" content="http://localhost:3001">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080E14">
+<title>Voorwaarden — MyShiftpilot</title>
+<meta name="description" content="Algemene voorwaarden van MyShiftpilot.">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0F1720;--navy2:#121D2A;--navy3:#1A2735;--deep:#080E14;
+  --or:#E67A2E;--orh:#D56A1E;--org:rgba(230,122,46,.35);--ors:rgba(230,122,46,.12);
+  --bl:#3B82F6;--blg:rgba(59,130,246,.32);
+  --gr:#10B981;
+  --w:#fff;--wd:rgba(255,255,255,.65);--wf:rgba(255,255,255,.38);--wg:rgba(255,255,255,.13);
+  --ln:rgba(255,255,255,.07);--ls:rgba(255,255,255,.14);
+  --e:cubic-bezier(.25,.1,.25,1);--eo:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--navy);color:var(--w);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:80px 80px}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(900px 600px at 5% 0%,rgba(230,122,46,.09),transparent 65%),radial-gradient(700px 500px at 95% 100%,rgba(59,130,246,.07),transparent 65%)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+input,select,textarea{font-family:inherit;color:inherit}
+.brand-my{color:var(--or)}
+.skip-link{position:fixed;top:10px;left:50%;z-index:1000;padding:10px 16px;border-radius:7px;background:#fff;color:var(--deep);font-size:14px;font-weight:800;transform:translate(-50%,-160%);transition:transform .2s var(--e)}
+.skip-link:focus{transform:translate(-50%,0)}
+a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+/* Scroll progress */
+#scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--or),var(--bl));z-index:200;box-shadow:0 0 8px var(--org)}
+/* Header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,14,20,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--ls);animation:hdr-in .7s var(--eo) .05s both}
+.hdr::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--or) 30%,var(--or) 70%,transparent);opacity:.6}
+@keyframes hdr-in{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.hdr-inner{max-width:none;margin:0;padding:0 32px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.menu{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;border:1px solid var(--ls);border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--wd);transition:all .25s var(--e);flex-shrink:0}
+.menu:hover{border-color:var(--or);color:var(--or);background:var(--ors)}
+.menu-dot{width:3px;height:3px;border-radius:50%;background:currentColor}
+.menu-txt{margin-left:1px}
+.logo-img{height:34px;width:auto;display:block;transition:transform .3s}
+.brand-logo:hover .logo-img{transform:scale(1.04)}
+.login-btn{display:inline-flex;align-items:center;justify-content:center;padding:9px 20px;border-radius:6px;background:var(--bl);color:#fff;font-size:13px;font-weight:700;letter-spacing:.02em;transition:all .25s var(--e);white-space:nowrap;flex-shrink:0}
+.login-btn:hover{background:var(--or);transform:translateY(-1px);box-shadow:0 8px 24px var(--org)}
+.nav-panel{position:absolute;top:calc(100% + 6px);left:32px;background:var(--navy2);border:1px solid var(--ls);border-radius:12px;min-width:240px;padding:6px;opacity:0;visibility:hidden;transform:translateY(-10px);transition:all .25s var(--e);box-shadow:0 28px 64px rgba(0,0,0,.6);z-index:10}
+.nav-panel.open{opacity:1;visibility:visible;transform:translateY(0)}
+.np-link{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:8px;font-size:14px;font-weight:600;transition:all .2s var(--e)}
+.np-link:hover,.np-link[aria-current="page"]{background:var(--ors);color:var(--or)}
+.np-link:focus-visible{background:var(--ors);color:var(--or);outline-color:var(--or);outline-offset:-2px}
+.np-num{font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--wf);min-width:20px}
+.np-link:hover .np-num,.np-link[aria-current="page"] .np-num{color:var(--or)}
+.nav-panel.open .np-link{animation:slide-in .3s var(--eo) both}
+.nav-panel.open .np-link:nth-child(1){animation-delay:.03s}.nav-panel.open .np-link:nth-child(2){animation-delay:.08s}
+.nav-panel.open .np-link:nth-child(3){animation-delay:.13s}.nav-panel.open .np-link:nth-child(4){animation-delay:.18s}
+.nav-panel.open .np-link:nth-child(5){animation-delay:.23s}.nav-panel.open .np-link:nth-child(6){animation-delay:.28s}
+.nav-panel.open .np-link:nth-child(7){animation-delay:.33s}.nav-panel.open .np-link:nth-child(8){animation-delay:.38s}
+.nav-panel.open .np-link:nth-child(9){animation-delay:.43s}
+@keyframes slide-in{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:translateX(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+/* CTA buttons */
+.cta{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:8px;font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:all .28s var(--e);position:relative;overflow:hidden}
+.cta.primary{background:var(--bl);color:#fff;box-shadow:0 8px 24px var(--blg);border:1px solid transparent}
+.cta.primary::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-18deg);transition:left .5s var(--eo)}
+.cta.primary:hover{background:var(--orh);transform:translateY(-1px);box-shadow:0 8px 24px var(--org)}
+.cta.primary:hover::after{left:140%}
+.cta.ghost{border:1px solid var(--ls);color:var(--w);background:transparent}
+.cta.ghost:hover{border-color:var(--or);color:var(--or);background:var(--ors);transform:translateY(-1px)}
+.cta-arrow{font-size:17px;transition:transform .28s var(--e)}
+.cta:hover .cta-arrow{transform:translateX(5px)}
+/* Page layout */
+.page{padding:100px 24px 80px;position:relative;z-index:1;max-width:1320px;margin:0 auto}
+/* Page hero */
+.pg-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 13px;border:1px solid var(--ls);border-radius:99px;font-size:10px;font-weight:700;letter-spacing:.26em;color:var(--wd);text-transform:uppercase;margin-bottom:28px}
+.pg-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--or);box-shadow:0 0 10px var(--org);animation:pulse 2s infinite}
+.pg-h1{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(52px,8vw,110px);font-weight:900;line-height:.92;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:20px}
+.pg-h1 em{font-style:normal;color:var(--or)}
+.pg-lead{font-size:clamp(15px,1.4vw,18px);color:var(--wd);max-width:560px;line-height:1.65;margin-bottom:48px}
+/* Section label */
+.sec-label{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:10px;font-weight:900;letter-spacing:.36em;color:var(--or);text-transform:uppercase;margin-bottom:12px;display:inline-flex;align-items:center;gap:12px}
+.sec-label::before,.sec-label::after{content:'';width:28px;height:1px;background:var(--or);opacity:.5}
+.sec-h2{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(32px,4.5vw,52px);font-weight:900;line-height:1;letter-spacing:-.02em;text-transform:uppercase;margin-bottom:14px}
+.sec-h2 em{font-style:normal;color:var(--or)}
+/* Reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--eo),transform .8s var(--eo);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:translateY(0)}
+/* Footer */
+.ftr{padding:72px 24px 36px;border-top:1px solid var(--ln);background:rgba(0,0,0,.3);position:relative;z-index:1}
+.ftr::before{content:'';position:absolute;top:0;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,var(--or) 30%,var(--or) 70%,transparent);opacity:.4}
+.ftr-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--ln)}
+.ftr-logo-img{height:32px;width:auto;display:block;margin-bottom:12px}
+.ftr-brand p.ftr-tag{font-size:14px;color:rgba(255,255,255,.78);line-height:1.55;margin-bottom:16px}
+.ftr-socials{display:flex;gap:9px}
+.ftr-socials a{width:34px;height:34px;border-radius:8px;border:1px solid var(--ls);display:grid;place-items:center;color:rgba(255,255,255,.78);transition:all .28s var(--e)}
+.ftr-socials a:hover{border-color:var(--or);color:var(--or);transform:translateY(-2px)}
+.ftr-h{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:12px;font-weight:900;letter-spacing:.22em;color:var(--or);text-transform:uppercase;margin-bottom:14px}
+.ftr-col a{display:block;font-size:14px;color:rgba(255,255,255,.78);padding:5px 0;transition:color .2s var(--e)}
+.ftr-col a:hover{color:var(--or)}
+.ftr-bottom{max-width:1320px;margin:0 auto;padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.62);flex-wrap:wrap;gap:12px}
+.ftr-links{display:flex;align-items:center;gap:8px}
+.ftr-links a{color:var(--wf);transition:color .2s var(--e)}
+.ftr-links a:hover{color:var(--or)}
+/* Responsive base */
+@media(max-width:768px){.page{padding:88px 18px 60px}.cta{padding:12px 18px;font-size:13px}}
+@media(max-width:480px){
+  .hdr-inner{padding:0 16px}.menu{padding:8px 10px;gap:5px;letter-spacing:.12em}
+  .login-btn{width:44px;padding:8px;font-size:0;letter-spacing:0}.login-btn::before{content:'→';font-size:16px;line-height:1}
+  .page{padding:80px 16px 48px}.pg-h1{font-size:clamp(40px,13vw,60px);overflow-wrap:anywhere;hyphens:auto}
+  .ftr-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .ftr-grid>div:first-child{grid-column:span 2}
+  .nav-panel{left:16px;right:16px;min-width:0}
+}
+@media(max-width:360px){.ftr-grid{grid-template-columns:1fr}.menu-txt{display:none}.logo-img{height:28px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1!important;transform:none!important}}
+
+.cta-banner{position:relative;overflow:hidden;padding:52px 48px;background:linear-gradient(135deg,var(--navy2),var(--navy3));border:1px solid var(--ls);border-radius:20px;margin-top:80px}
+.cb-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,var(--org),transparent 70%);filter:blur(64px);right:-100px;top:-150px;pointer-events:none}
+.cb-body{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.cb-text h3{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(26px,3.5vw,42px);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:1.05;margin-bottom:10px}
+.cb-text h3 em{font-style:normal;color:var(--or)}
+.cb-text p{font-size:15px;color:var(--wd);max-width:480px;line-height:1.55}
+.cb-actions{display:flex;gap:12px;flex-shrink:0;flex-wrap:wrap}
+@media(max-width:680px){.cta-banner{padding:32px 22px}.cb-body{flex-direction:column;align-items:flex-start}.cb-actions{flex-direction:column;width:100%}.cb-actions .cta{justify-content:center}}
+
+.legal{max-width:760px;margin:0 auto}
+.legal-intro{margin-bottom:64px;padding-bottom:48px;border-bottom:1px solid var(--ls)}
+.legal-updated{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--wf);text-transform:uppercase;margin-bottom:24px}
+.legal-updated::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gr);box-shadow:0 0 8px var(--gr)}
+.legal h2{font-family:'Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:clamp(20px,3vw,28px);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;margin:48px 0 16px;color:var(--w);display:flex;align-items:center;gap:12px}
+.legal h2::before{content:'';width:3px;height:1em;background:var(--or);display:block;flex-shrink:0}
+.legal p{font-size:15px;color:var(--wd);line-height:1.72;margin-bottom:14px}
+.legal p:last-child{margin-bottom:0}
+.legal a{color:var(--or);text-decoration:underline;text-decoration-color:rgba(230,122,46,.4)}
+.legal a:hover{text-decoration-color:var(--or)}
+.legal ul{margin:12px 0 16px 0;display:flex;flex-direction:column;gap:8px}
+.legal ul li{font-size:15px;color:var(--wd);line-height:1.6;display:flex;gap:10px;align-items:baseline}
+.legal ul li::before{content:'→';color:var(--or);font-weight:700;flex-shrink:0;font-size:12px}
+.legal-block{background:var(--navy2);border:1px solid var(--ln);border-left:3px solid var(--or);border-radius:12px;padding:20px 22px;margin:20px 0}
+.legal-block p{margin-bottom:0}
+</style>
+    <link rel="stylesheet" href="assets/marketing-cta.css?v=20260814s">
+    <link rel="stylesheet" href="assets/pilot-victor.css?v=20260817r">
+  <link rel="stylesheet" href="assets/pilot-system.css?v=20260817j">
+</head>
+<body>
+<div id="scroll-progress"></div>
+<a class="skip-link" href="#main-content">Ga direct naar de inhoud</a>
+
+<header class="hdr">
+  <div class="hdr-inner">
+    <button class="menu" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel">
+      <span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-txt">Menu</span>
+    </button>
+    <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home">
+      <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img">
+    </a>
+    <a href="index.html#pilot-aanvraag" class="login-btn">Meld je bedrijf aan</a>
+  </div>
+  <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
+    <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
+    <a href="pilot.html" class="np-link"><span class="np-num">02</span><span>Pilot</span></a>
+    <a href="faq.html" class="np-link"><span class="np-num">03</span><span>FAQ</span></a>
+    <a href="about.html" class="np-link"><span class="np-num">04</span><span>Over ons</span></a>
+    <a href="contact.html" class="np-link"><span class="np-num">05</span><span>Contact</span></a>
+    <a href="privacy.html" class="np-link"><span class="np-num">06</span><span>Privacy</span></a>
+    <a href="terms.html" class="np-link" aria-current="page"><span class="np-num">07</span><span>Voorwaarden</span></a>
+  </nav>
+</header>
+
+
+<main class="page legal-page" id="main-content">
+  <div class="legal">
+    <div class="legal-intro">
+      <h1 class="pg-h1">Algemene<br><em>voorwaarden</em></h1>
+      <p class="pg-lead">Voorwaarden voor zakelijk gebruik van MyShiftpilot.</p>
+      <div class="legal-updated">Versie 1.0 · 11 augustus 2026</div>
+    </div>
+    <div class="legal">
+      <div class="legal-block"><p><strong>Kort samengevat:</strong> MyShiftpilot is een zakelijke dienst. Je start met een kosteloze proefperiode van 14 dagen die automatisch eindigt en niet vanzelf overgaat in een abonnement. Een betaald abonnement gaat pas in nadat de klant een pakket bevestigt.</p></div>
+      <h2>Artikel 1 — MyShiftpilot</h2><p>MyShiftpilot is een vennootschap onder firma (vof), ingeschreven bij de Kamer van Koophandel onder nummer 99920360 en gevestigd aan Jozef Israëlslaan 2, 3735 LN Bosch en Duin, Nederland. MyShiftpilot ontwikkelt en exploiteert software voor personeels- en dienstroosterplanning.</p>
+      <h2>Artikel 2 — Definities</h2><p>MyShiftpilot is de genoemde vof; klant is de organisatie die de dienst afneemt; gebruiker is een persoon met toegang; proefperiode is de kosteloze periode van 14 dagen; abonnement is de betaalde overeenkomst voor een gekozen pakket; dienst is de geactiveerde software; account is persoonlijke toegang. Schriftelijk omvat ook elektronische communicatie die duurzaam kan worden vastgelegd.</p>
+      <h2>Artikel 3 — Zakelijke doelgroep</h2><p>De dienst is bedoeld voor ondernemingen en organisaties en niet voor het rechtstreeks aangaan van consumentenovereenkomsten. Wie namens een organisatie handelt, moet bevoegd zijn of toestemming hebben.</p>
+      <h2>Artikel 4 — Aanmelding</h2><p>Aanmelden voor de proefperiode is kosteloos en verplicht tot niets. MyShiftpilot kan een aanmelding weigeren op grond van geschiktheid, beveiliging of misbruikrisico, en kan één proefperiode per organisatie toekennen. De aanmelder verstrekt daarbij alleen juiste en noodzakelijke zakelijke gegevens.</p>
+      <h2>Artikel 5 — Totstandkoming</h2><p>De proefperiode start zodra MyShiftpilot de toegang activeert. Een betaald abonnement ontstaat uitsluitend wanneer een bevoegde vertegenwoordiger van de klant een pakket bevestigt; tot dat moment bestaat geen betalingsverplichting. Een specifieke offerte, opdrachtbevestiging of SLA gaat bij strijd vóór deze voorwaarden.</p>
+      <h2>Artikel 6 — Doorontwikkeling</h2><p>Functionaliteit kan worden doorontwikkeld en aangepast. Alleen geactiveerde of schriftelijk afgesproken functionaliteit behoort tot de concrete dienstverlening; marketing- en pakketpagina's garanderen geen beschikbaarheid van iedere functie in elk pakket.</p>
+      <h2>Artikel 7 — Verantwoordelijkheid klant</h2><p>De klant is verantwoordelijk voor rechtmatig gebruik, juiste invoer, gebruikersbeheer, arbeidsrechtelijke en eigen cao-verplichtingen, de uiteindelijke roosterbeslissingen en het informeren van werknemers waar nodig. De klant controleert vóór publicatie of een rooster passend is voor de eigen organisatie, bezetting, arbeidsafspraken en individuele omstandigheden. MyShiftpilot levert ondersteuning; het neemt geen werkgevers- of managementbeslissingen over.</p>
+      <h2>Artikel 8 — Accounts en beveiliging</h2><p>Accounts zijn persoonlijk en mogen niet worden gedeeld. De klant en gebruiker melden verdachte toegang en mogen beveiliging niet omzeilen.</p>
+      <h2>Artikel 9 — VICTOR</h2><p>VICTOR is een AI-assistent die informatie, samenvattingen en suggesties kan genereren. AI-uitkomsten kunnen onvolledig of onjuist zijn en belangrijke uitkomsten moeten worden gecontroleerd. VICTOR neemt de verantwoordelijkheid van werkgever, planner of manager niet over.</p>
+      <h2>Artikel 10 — Tarieven en betaling</h2><p>De proefperiode is kosteloos en leidt niet tot een automatische afschrijving. Betaling start pas na bevestiging van een pakket. Zakelijke tarieven zijn exclusief btw; bij jaarlijkse facturatie geldt het op de pakkettenpagina genoemde tarief. Factuurmoment, betalingstermijn en opzegvoorwaarden worden bij het aangaan van het abonnement schriftelijk bevestigd. Bij uitblijven van tijdige betaling na een geldige factuur mag MyShiftpilot, na redelijke aankondiging, toegang proportioneel beperken.</p>
+      <h2>Artikel 11 — Beschikbaarheid</h2><p>MyShiftpilot spant zich in de dienst zorgvuldig beschikbaar te houden. Alleen een afzonderlijk schriftelijk overeengekomen SLA gaat vóór.</p>
+      <h2>Artikel 12 — Intellectueel eigendom</h2><p>Rechten op het product berusten bij MyShiftpilot of haar licentiegevers. Klantdata blijft van de klant of betrokken rechthebbende; gebruik door MyShiftpilot is beperkt tot dienstverlening en rechtmatige afspraken.</p>
+      <h2>Artikel 13 — Feedback</h2><p>Feedback mag voor productverbetering worden gebruikt. Klantnaam, logo, testimonial of vertrouwelijke informatie worden niet zonder toestemming als marketing gepubliceerd.</p>
+      <h2>Artikel 14 — Privacy en klantdata</h2><p>De <a href="privacy.html">privacyverklaring</a> legt uit hoe MyShiftpilot met persoonsgegevens omgaat. De klant zorgt dat medewerkers en andere gebruikers alleen gegevens invoeren die nodig zijn voor de afgesproken roosterworkflow en dat zij daarover passend zijn geïnformeerd.</p>
+      <h2>Artikel 15 — Vertrouwelijkheid</h2><p>Partijen behandelen niet-openbare bedrijfs-, product- en klantinformatie vertrouwelijk. Deze verplichting geldt niet voor informatie die al openbaar of rechtmatig bekend was, zelfstandig is ontwikkeld of op grond van de wet moet worden verstrekt. De ontvangende partij beperkt toegang tot personen die de informatie voor de uitvoering nodig hebben.</p>
+      <h2>Artikel 16 — Externe diensten</h2><p>Een koppeling met een externe dienst, zoals een kalender- of AI-provider, is alleen beschikbaar wanneer die voor de klant is geactiveerd en de vereiste afspraken zijn gemaakt. MyShiftpilot is niet verantwoordelijk voor wijzigingen, uitval of voorwaarden van een externe aanbieder, maar onderzoekt een redelijke oplossing wanneer een koppeling de afgesproken pilot wezenlijk raakt.</p>
+      <h2>Artikel 17 — Opschorting</h2><p>MyShiftpilot mag toegang tijdelijk beperken wanneer dat redelijk nodig is voor onderhoud, beveiliging, misbruikpreventie, een wettelijke verplichting of een ernstige schending van deze voorwaarden. Waar praktisch mogelijk informeren we de klant vooraf of zo snel mogelijk daarna over de reden en verwachte duur.</p>
+      <h2>Artikel 18 — Duur en beëindiging</h2><p>De proefperiode duurt 14 dagen en eindigt automatisch. Voor een betaald abonnement worden duur en beëindigingswijze schriftelijk afgesproken. Iedere partij kan beëindigen volgens die afspraak. Bij een ernstige tekortkoming mag de andere partij beëindigen nadat een redelijke hersteltermijn is gegeven, tenzij de tekortkoming onmiddellijke actie rechtvaardigt.</p>
+      <h2>Artikel 19 — Gevolgen van einde</h2><p>Na beëindiging stopt toegang tot de dienst. Partijen maken vooraf praktische afspraken over het ophalen of overdragen van klantdata, met inachtneming van toepasselijke wettelijke bewaarplichten. Bepalingen die naar hun aard moeten voortduren, zoals vertrouwelijkheid, intellectueel eigendom en aansprakelijkheid, blijven van kracht.</p>
+      <h2>Artikel 20 — Aansprakelijkheid en overmacht</h2><p>Iedere partij is aansprakelijk voor directe schade die het gevolg is van een toerekenbare tekortkoming, voor zover die aansprakelijkheid volgens toepasselijk recht bestaat. Voor zover wettelijk toegestaan is MyShiftpilot niet aansprakelijk voor indirecte schade, zoals gevolgschade, gederfde winst of gemiste besparingen. Geen partij is gehouden een verplichting na te komen als zij dat redelijkerwijs niet kan door overmacht.</p>
+      <h2>Artikel 21 — Wijzigingen en recht</h2><p>MyShiftpilot kan deze voorwaarden wijzigen wanneer dat nodig is door een wijziging van de dienst, wetgeving of beveiliging. Een wezenlijke wijziging wordt passend vooraf gemeld en werkt niet terug. Nederlands recht is van toepassing; geschillen worden voorgelegd aan de volgens de wet bevoegde Nederlandse rechter, tenzij partijen schriftelijk anders overeenkomen.</p>
+      <h2>Artikel 22 — Contact</h2><p>Vragen over deze voorwaarden kun je sturen naar <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>. MyShiftpilot is een vennootschap onder firma (vof), gevestigd aan Jozef Israëlslaan 2, 3735 LN Bosch en Duin, Nederland, en ingeschreven bij de Kamer van Koophandel onder nummer 99920360.</p>
+    </div>
+    <div class="cta-banner">
+  <div class="cb-glow"></div>
+  <div class="cb-body">
+    <div class="cb-text">
+      <h3>Wil je <span class="brand-my">My</span>Shiftpilot verkennen?</h3>
+      <p>Meld je bedrijf aan voor de beperkte pilot. We bespreken eerst of deelname past en leggen eventuele afspraken vooraf vast.</p>
+    </div>
+    <div class="cb-actions">
+      <a href="index.html#pilot-aanvraag" class="cta primary"><span>Meld je bedrijf aan</span><span class="cta-arrow">→</span></a>
+      <a href="contact.html" class="cta ghost"><span>Stel een vraag</span></a>
+    </div>
+  </div>
+</div>
+  </div>
+</main>
+<footer class="ftr">
+  <div class="ftr-grid">
+    <div class="ftr-brand">
+      <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="ftr-logo-img">
+      <p class="ftr-tag">Personeelsplanning voor de horeca.<br>Product in ontwikkeling · beperkte pilot.</p>
+      <div class="ftr-socials">
+        <a href="https://instagram.com/myshiftpilot" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+        <a href="https://linkedin.com/company/myshiftpilot" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.83v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.44c0-1.3-.02-2.97-1.81-2.97-1.81 0-2.09 1.42-2.09 2.88V21h-4V9Z"/></svg></a>
+      </div>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-h">Pilot</div>
+      <a href="pilot.html">Pilot</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-h">Bedrijf</div>
+      <a href="about.html">Over ons</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="ftr-col">
+      <div class="ftr-h">Juridisch</div>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html" aria-current="page">Voorwaarden</a>
+    </div>
+  </div>
+  <div class="ftr-bottom">
+    <div>© 2026 <span class="brand-my">My</span>Shiftpilot · vof · KVK 99920360</div>
+  </div>
+</footer>
+<script src="assets/pilot-shell.js?v=20260817a"></script>
+<script src="assets/pilot-victor.js?v=20260817h"></script>
+</body>
+</html>

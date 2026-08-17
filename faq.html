@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
+    <meta name="myshiftpilot-api-base" content="https://api.myshiftpilot.nl">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080e14">
+  <meta name="description" content="Antwoorden op veelgestelde vragen over de kosteloze pilot van MyShiftpilot voor horecabedrijven.">
+  <title>Veelgestelde vragen over de pilot — MyShiftpilot</title>
+  <link rel="stylesheet" href="assets/pilot.css?v=20260812b">
+  <link rel="stylesheet" href="assets/marketing-cta.css?v=20260814s">
+  <link rel="stylesheet" href="assets/pilot-victor.css?v=20260817r">
+  <style>
+    .faq-tools{display:grid;gap:14px;margin:36px 0 18px}.faq-search{display:flex;align-items:center;gap:10px;max-width:620px;padding:0 15px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025)}.faq-search svg{flex:0 0 auto;color:var(--orange)}.faq-search input{width:100%;min-height:52px;border:0;background:transparent;color:var(--white);font:inherit;font-size:15px;outline:0}.faq-search input::placeholder{color:var(--faint)}.faq-filter{display:flex;flex-wrap:wrap;gap:8px}.faq-filter button{min-height:34px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);font:inherit;font-size:12px;font-weight:700;cursor:pointer}.faq-filter button:hover,.faq-filter button[aria-pressed="true"]{border-color:rgba(230,122,46,.65);background:var(--orange-soft);color:var(--white)}.faq-result{min-height:1.5em;color:var(--faint);font-size:13px}.faq-empty{margin-top:16px;padding:22px;border:1px dashed var(--line);border-radius:14px;color:var(--muted);line-height:1.6}.faq-empty a{color:var(--orange);text-decoration:underline;text-underline-offset:3px}@media(max-width:700px){.faq-tools{margin-top:28px}.faq-search input{font-size:16px}}
+  </style>
+  <link rel="stylesheet" href="assets/pilot-system.css?v=20260817j">
+</head>
+<body>
+  <div id="scroll-progress"></div>
+  <a class="skip-link" href="#main-content">Ga direct naar de inhoud</a>
+  <header class="hdr">
+    <div class="hdr-inner">
+      <button class="menu" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel"><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-txt">Menu</span></button>
+      <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home"><img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img"></a>
+      <a href="index.html#pilot-aanvraag" class="login-btn">Meld je bedrijf aan</a>
+    </div>
+    <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
+      <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
+      <a href="pilot.html" class="np-link"><span class="np-num">02</span><span>Pilot</span></a>
+      <a href="faq.html" class="np-link" aria-current="page"><span class="np-num">03</span><span>FAQ</span></a>
+      <a href="about.html" class="np-link"><span class="np-num">04</span><span>Over ons</span></a>
+      <a href="contact.html" class="np-link"><span class="np-num">05</span><span>Contact</span></a>
+      <a href="privacy.html" class="np-link"><span class="np-num">06</span><span>Privacy</span></a>
+      <a href="terms.html" class="np-link"><span class="np-num">07</span><span>Voorwaarden</span></a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero page-hero faq-hero">
+      <div>
+        <h1>Alles wat je wilt weten voordat je <span class="accent">meebouwt</span></h1>
+        <p class="hero-copy">MyShiftpilot is nog in ontwikkeling. We zoeken horecagelegenheden die met ons willen verkennen of een kosteloze pilot past.</p>
+        <div class="hero-actions"><a class="button button-primary" href="index.html#pilot-aanvraag">Meld je bedrijf aan</a><a class="button button-ghost" href="pilot.html">Bekijk het pilotproces</a></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <div class="section-inner faq-inner">
+        <div class="section-tag">01 / Veelgestelde vragen</div>
+        <h2 id="faq-title">Duidelijkheid over <span class="accent">jouw volgende stap</span></h2>
+        <p class="faq-intro">Geen kleine lettertjes. Aanmelden en deelnemen aan de pilot kost niets.</p>
+        <div class="faq-tools" aria-label="FAQ doorzoeken">
+          <label class="faq-search" for="faq-search"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6"></circle><path d="m16 16 4 4"></path></svg><input id="faq-search" type="search" autocomplete="off" placeholder="Zoek bijvoorbeeld op kosten, feedback of deelname"></label>
+          <div class="faq-filter" role="group" aria-label="Filter vragen op onderwerp">
+            <button type="button" data-faq-filter="all" aria-pressed="true">Alle vragen</button>
+            <button type="button" data-faq-filter="deelname" aria-pressed="false">Deelname</button>
+            <button type="button" data-faq-filter="gebruik" aria-pressed="false">Gebruik &amp; feedback</button>
+            <button type="button" data-faq-filter="afspraken" aria-pressed="false">Afspraken</button>
+          </div>
+          <p class="faq-result" id="faq-result" aria-live="polite">10 vragen en antwoorden</p>
+        </div>
+        <div class="faq-list" id="faq-list">
+          <section class="faq-group" data-faq-group>
+            <h3 class="faq-group-head"><span class="faq-group-name">Deelname</span><span class="faq-group-count" data-faq-group-count>5 vragen</span></h3>
+            <div class="faq-group-rows">
+              <details data-faq-category="deelname"><summary>Is MyShiftpilot al beschikbaar?</summary><p>Nog niet. MyShiftpilot is nog in ontwikkeling en we zoeken horecagelegenheden die de eerste versie in hun eigen praktijk willen testen. De pilot draait alleen om roosters maken, wijzigen en delen.</p></details>
+              <details data-faq-category="deelname"><summary>Kan iedere horecagelegenheid zich aanmelden?</summary><p>Ja. Iedere horecagelegenheid kan zich aanmelden, ongeacht de grootte of hoe je nu plant. Na je aanvraag bekijken we samen of de pilotscope, het moment en de duur bij jouw zaak passen.</p></details>
+              <details data-faq-category="deelname"><summary>Wat gebeurt er direct na mijn aanvraag?</summary><p>Je krijgt niet automatisch toegang. We nemen eerst persoonlijk contact op voor een korte kennismaking, waarin we je huidige manier van roosteren, wat je wilt testen en een mogelijke pilot bespreken.</p></details>
+              <details data-faq-category="deelname afspraken"><summary>Wat krijg ik niet met een pilotaanvraag?</summary><p>Een aanvraag is geen account, abonnement of betaalverplichting. Er wordt dus niets automatisch geactiveerd; pas als we samen een duidelijke pilotafspraak maken, richten we de pilot in.</p></details>
+              <details data-faq-category="deelname"><summary>Waar kan ik terecht als ik eerst wil overleggen?</summary><p>Mail naar <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a> of gebruik het contactformulier. We beantwoorden je vraag persoonlijk en een eerste gesprek is volledig vrijblijvend en kost niets.</p></details>
+            </div>
+          </section>
+          <section class="faq-group" data-faq-group>
+            <h3 class="faq-group-head"><span class="faq-group-name">Gebruik &amp; feedback</span><span class="faq-group-count" data-faq-group-count>3 vragen</span></h3>
+            <div class="faq-group-rows">
+              <details data-faq-category="gebruik"><summary>Wat kan ik tijdens de pilot precies testen?</summary><p>Je test uitsluitend personeelsroosters maken, wijzigen en delen. Dat doe je in je eigen praktijk, zodat we zien welke stappen prettig werken; functies buiten deze pilotscope beloven we nog niet.</p></details>
+              <details data-faq-category="gebruik afspraken"><summary>Wat verwachten jullie tijdens een pilot?</summary><p>We vragen je de drie roosterfuncties echt te gebruiken en eerlijk te delen wat beter kan. De tijdsinvestering, duur en concrete afspraken stemmen we vooraf samen af; er is geen vaste verplichting achteraf.</p></details>
+              <details data-faq-category="gebruik"><summary>Wat gebeurt er met mijn feedback?</summary><p>Je feedback helpt bepalen wat we hierna bouwen en welke roosterstappen eerst beter moeten. We kunnen niet iedere wens meteen maken, maar we nemen alle signalen mee en zijn duidelijk over de vervolgstappen.</p></details>
+            </div>
+          </section>
+          <section class="faq-group" data-faq-group>
+            <h3 class="faq-group-head"><span class="faq-group-name">Afspraken</span><span class="faq-group-count" data-faq-group-count>2 vragen</span></h3>
+            <div class="faq-group-rows">
+              <details data-faq-category="afspraken"><summary>Wat kost de pilot en hoe lang duurt die?</summary><p>De pilot kost niets. Voor we beginnen, spreken we samen af wat je test, hoe lang de pilot duurt en wat voor beide kanten werkt. Uit een aanvraag of deelname ontstaat nooit automatisch een abonnement, factuur of betaalverplichting.</p></details>
+              <details data-faq-category="afspraken"><summary>Wat gebeurt er na de pilot?</summary><p>Aan het einde bespreken we samen wat goed werkte, wat beter kan en of een vervolg logisch is. Jij beslist zelf of je daarover verder wilt praten; de pilot verandert nooit automatisch in doorlopend gebruik of kosten.</p></details>
+            </div>
+          </section>
+        </div>
+        <p class="faq-empty" id="faq-empty" hidden>Geen antwoord gevonden. <a href="contact.html">Stel ons je vraag</a> of mail naar <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>.</p>
+      </div>
+    </section>
+
+    <section class="section section-dark" aria-labelledby="faq-cta-title">
+      <div class="section-inner">
+        <div class="cta-banner">
+          <div class="cb-glow"></div>
+          <div class="cb-body">
+            <div class="cb-text">
+              <h3 id="faq-cta-title">Jouw roosterpraktijk kan het verschil maken</h3>
+              <p>Vertel hoe je nu plant. We nemen contact op voor een kennismaking.</p>
+            </div>
+            <div class="cb-actions">
+              <a href="index.html#pilot-aanvraag" class="cta primary"><span>Meld je bedrijf aan</span><span class="cta-arrow">→</span></a>
+              <a href="contact.html" class="cta ghost"><span>Stel een vraag</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="ftr">
+    <div class="ftr-grid">
+      <div class="ftr-brand"><img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="ftr-logo-img"><p class="ftr-tag">Personeelsplanning voor de horeca.<br>Product in ontwikkeling · beperkte pilot.</p><div class="ftr-socials"><a href="https://instagram.com/myshiftpilot" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a><a href="https://linkedin.com/company/myshiftpilot" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.83v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.44c0-1.3-.02-2.97-1.81-2.97-1.81 0-2.09 1.42-2.09 2.88V21h-4V9Z"/></svg></a></div></div>
+      <div class="ftr-col"><div class="ftr-h">Pilot</div><a href="pilot.html">Pilot</a><a href="faq.html" aria-current="page">FAQ</a></div>
+      <div class="ftr-col"><div class="ftr-h">Bedrijf</div><a href="about.html">Over ons</a><a href="contact.html">Contact</a></div>
+      <div class="ftr-col"><div class="ftr-h">Juridisch</div><a href="privacy.html">Privacy</a><a href="terms.html">Voorwaarden</a></div>
+    </div>
+    <div class="ftr-bottom"><div>© 2026 <span class="accent">My</span>Shiftpilot · vof · KVK 99920360</div></div>
+  </footer>
+  <script src="assets/pilot-shell.js?v=20260812a"></script>
+  <script src="assets/pilot-faq.js?v=20260817h"></script>
+  <script src="assets/pilot-victor.js?v=20260817h"></script>
+</body>
+</html>

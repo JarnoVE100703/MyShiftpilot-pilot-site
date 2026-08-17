@@ -1,0 +1,219 @@
+(function () {
+  'use strict';
+
+  const scriptUrl = document.currentScript && document.currentScript.src;
+  const victorImageUrl = scriptUrl
+    ? new URL('victor.png', scriptUrl).href
+    : 'assets/victor.png';
+  const pageFile = (window.location.pathname || '').split('/').pop() || 'index.html';
+  const storageKey = `myshiftpilot_victor_pilot_chat_v1:${pageFile}`;
+  const PILOT_TOPICS = [
+    { id: 'availability', label: 'Is MyShiftpilot al beschikbaar?', answer: 'Nog niet. MyShiftpilot is nog in ontwikkeling en we zoeken horecagelegenheden die de eerste versie in hun eigen praktijk willen testen. De pilot draait alleen om roosters maken, wijzigen en delen.', linkUrl: 'faq.html', linkLabel: 'Bekijk de FAQ' },
+    { id: 'apply', label: 'Kan iedere horecagelegenheid zich aanmelden?', answer: 'Ja. Iedere horecagelegenheid kan zich aanmelden, ongeacht de grootte of hoe je nu plant. Na je aanvraag bekijken we samen of de pilotscope, het moment en de duur bij jouw zaak passen.', linkUrl: 'index.html#pilot-aanvraag', linkLabel: 'Meld je bedrijf aan' },
+    { id: 'participation', label: 'Wat gebeurt er direct na mijn aanvraag?', answer: 'Je krijgt niet automatisch toegang. We nemen eerst persoonlijk contact op voor een korte kennismaking, waarin we je huidige manier van roosteren, wat je wilt testen en een mogelijke pilot bespreken.', linkUrl: 'pilot.html', linkLabel: 'Bekijk het pilotproces' },
+    { id: 'no-automatic-access', label: 'Wat krijg ik niet met een pilotaanvraag?', answer: 'Een aanvraag is geen account, abonnement of betaalverplichting. Er wordt dus niets automatisch geactiveerd; pas als we samen een duidelijke pilotafspraak maken, richten we de pilot in.', linkUrl: 'pilot.html', linkLabel: 'Bekijk het pilotproces' },
+    { id: 'talk-first', label: 'Waar kan ik terecht als ik eerst wil overleggen?', answer: 'Mail naar info@myshiftpilot.nl of gebruik het contactformulier. We beantwoorden je vraag persoonlijk en een eerste gesprek is volledig vrijblijvend en kost niets.', linkUrl: 'contact.html', linkLabel: 'Stel een vraag' },
+    { id: 'scope', label: 'Wat kan ik tijdens de pilot precies testen?', answer: 'Je test uitsluitend personeelsroosters maken, wijzigen en delen. Dat doe je in je eigen praktijk, zodat we zien welke stappen prettig werken; functies buiten deze pilotscope beloven we nog niet.', linkUrl: 'faq.html', linkLabel: 'Bekijk de FAQ' },
+    { id: 'expectations', label: 'Wat verwachten jullie tijdens een pilot?', answer: 'We vragen je de drie roosterfuncties echt te gebruiken en eerlijk te delen wat beter kan. De tijdsinvestering, duur en concrete afspraken stemmen we vooraf samen af; er is geen vaste verplichting achteraf.', linkUrl: 'faq.html', linkLabel: 'Lees de afspraken in de FAQ' },
+    { id: 'feedback', label: 'Wat gebeurt er met mijn feedback?', answer: 'Je feedback helpt bepalen wat we hierna bouwen en welke roosterstappen eerst beter moeten. We kunnen niet iedere wens meteen maken, maar we nemen alle signalen mee en zijn duidelijk over de vervolgstappen.', linkUrl: 'faq.html', linkLabel: 'Lees de FAQ' },
+    { id: 'cost', label: 'Wat kost de pilot en hoe lang duurt die?', answer: 'De pilot kost niets. Voor we beginnen, spreken we samen af wat je test, hoe lang de pilot duurt en wat voor beide kanten werkt. Uit een aanvraag of deelname ontstaat nooit automatisch een abonnement, factuur of betaalverplichting.', linkUrl: 'faq.html', linkLabel: 'Lees de afspraken in de FAQ' },
+    { id: 'after-pilot', label: 'Wat gebeurt er na de pilot?', answer: 'Aan het einde bespreken we samen wat goed werkte, wat beter kan en of een vervolg logisch is. Jij beslist zelf of je daarover verder wilt praten; de pilot verandert nooit automatisch in doorlopend gebruik of kosten.', linkUrl: 'pilot.html', linkLabel: 'Bekijk het pilotproces' },
+  ];
+  // De FAQ-regressietest gebruikt deze publieke, onveranderlijke weergave om te bewaken
+  // dat Victor woordelijk dezelfde pilotantwoorden houdt.
+  window.MyShiftpilotPilotTopics = Object.freeze(PILOT_TOPICS.map(({ label, answer }) => Object.freeze({ label, answer })));
+
+  // Hogere score = waarschijnlijkere vervolgvraag binnen de pilotflow.
+  const FOLLOW_UP_SCORES = {
+    availability: { apply: 100, scope: 80, participation: 60 },
+    apply: { participation: 100, cost: 75, scope: 50 },
+    participation: { scope: 100, expectations: 75, cost: 55 },
+    'no-automatic-access': { participation: 100, cost: 80, apply: 55 },
+    'talk-first': { apply: 100, participation: 80, scope: 45 },
+    scope: { expectations: 100, feedback: 80, apply: 50 },
+    expectations: { feedback: 100, scope: 75, cost: 45 },
+    feedback: { scope: 100, 'after-pilot': 75, expectations: 55 },
+    cost: { apply: 100, participation: 75, 'after-pilot': 50 },
+    'after-pilot': { feedback: 100, cost: 75, apply: 50 },
+  };
+
+  const MOUSE_GLOW_SELECTOR = [
+    '.pilot-card',
+    '.benefit',
+    '.process-card',
+    '.fit-card',
+    '.faq-expectations article',
+    '.faq-list details',
+    '.contact-form-card',
+    '.form-shell',
+    '.cta-banner',
+    '.f-card',
+    '.fcard',
+    '.step',
+    '.problem-inner',
+    '.about-brief-inner',
+    '.home-faq-inner',
+    '.home-faq-list details',
+    '.founder',
+    '.legal-block',
+    // De kleine blokjes binnen een sectie volgden de cursor nog niet; daardoor voelde
+    // alleen de helft van de kaarten op een pagina levend aan.
+    '.problem-list li',
+    '.about-person',
+    '.ah-stat',
+    '.tl-row',
+    '.scope-steps li',
+    '.contact-info-card',
+    '.pilot-facts li',
+    '.pilot-assurances li',
+  ].join(',');
+
+  function bindMouseGlow(element) {
+    if (!element || element.dataset.pilotMouseGlowBound === 'true') return;
+    element.dataset.pilotMouseGlowBound = 'true';
+    element.classList.add('pilot-mouse-glow');
+
+    const layer = document.createElement('span');
+    layer.className = 'pilot-mouse-glow__layer';
+    if (element instanceof HTMLDetailsElement && element.firstElementChild) {
+      element.insertBefore(layer, element.firstElementChild.nextElementSibling);
+    } else {
+      element.insertBefore(layer, element.firstChild);
+    }
+
+    // Kleine blokken zitten in een blok dat zelf ook gloeit. Zonder deze check lichten
+    // beide tegelijk op en verdrinkt het kleine blokje in de gloed van zijn paneel.
+    const ownsPointer = (event) => (
+      typeof event.target.closest !== 'function' || event.target.closest('.pilot-mouse-glow') === element
+    );
+
+    const update = (event) => {
+      if (!ownsPointer(event)) {
+        element.classList.remove('pilot-mouse-glow-active');
+        return;
+      }
+      const bounds = element.getBoundingClientRect();
+      element.style.setProperty('--pilot-mouse-x', `${event.clientX - bounds.left}px`);
+      element.style.setProperty('--pilot-mouse-y', `${event.clientY - bounds.top}px`);
+      element.classList.add('pilot-mouse-glow-active');
+    };
+
+    element.addEventListener('pointerenter', () => element.classList.add('pilot-mouse-glow-active'));
+    element.addEventListener('pointermove', update);
+    element.addEventListener('pointerleave', () => element.classList.remove('pilot-mouse-glow-active'));
+  }
+
+  function bindMouseGlows() {
+    document.querySelectorAll(MOUSE_GLOW_SELECTOR).forEach(bindMouseGlow);
+  }
+
+  function escapeHtml(value) {
+    return String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function readState() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(storageKey) || 'null');
+      return parsed && Array.isArray(parsed.messages) ? { messages: parsed.messages.filter(Boolean) } : { messages: [] };
+    } catch { return { messages: [] }; }
+  }
+  function saveState(state) { try { localStorage.setItem(storageKey, JSON.stringify({ messages: state.messages || [] })); } catch {} }
+  function clearState() { try { localStorage.removeItem(storageKey); } catch {} }
+
+  function getRankedFollowUpIds(topicId) {
+    const scores = FOLLOW_UP_SCORES[topicId] || {};
+    return Object.entries(scores)
+      .filter(([id]) => PILOT_TOPICS.some((topic) => topic.id === id))
+      .sort(([firstId, firstScore], [secondId, secondScore]) => secondScore - firstScore || firstId.localeCompare(secondId))
+      .slice(0, 2)
+      .map(([id]) => id);
+  }
+
+  const host = document.createElement('div');
+  host.className = 'victor-site-widget';
+  host.setAttribute('data-open', 'false');
+  host.setAttribute('data-public-site', 'true');
+  host.setAttribute('data-pilot-site', 'true');
+  host.innerHTML = `
+    <button type="button" class="victor-site-widget__launcher" aria-expanded="false" aria-label="Open Victor, MyShiftpilot-gids" title="VICTOR, jouw gids voor MyShiftpilot">
+      <span class="victor-site-widget__launcher-avatar"><img src="${escapeHtml(victorImageUrl)}" alt="" aria-hidden="true"></span><span class="victor-site-widget__launcher-online" aria-hidden="true"></span>
+    </button>
+    <section class="victor-site-widget__panel" aria-label="Victor, MyShiftpilot-gids">
+      <div class="victor-site-widget__header"><span class="victor-site-widget__header-avatar"><img src="${escapeHtml(victorImageUrl)}" alt="" aria-hidden="true"></span><div class="victor-site-widget__header-copy"><div class="victor-site-widget__title">VICTOR</div><div class="victor-site-widget__header-subtitle">Jouw gids voor MyShiftpilot</div></div><button type="button" class="victor-site-widget__icon-button" aria-label="Sluit Victor">×</button></div>
+      <div class="victor-site-widget__messages" aria-live="polite" aria-atomic="false"></div>
+      <div class="victor-site-widget__quick" data-visible="true"><p class="victor-site-widget__quick-label">Kies een vraag over deze pilot</p><div class="victor-site-widget__quick-list"></div></div>
+      <div class="victor-site-widget__composer"><div class="victor-site-widget__composer-meta"><button type="button" class="victor-site-widget__reset">Andere vraag</button></div></div>
+    </section>`;
+  document.body.appendChild(host);
+
+  const openButton = host.querySelector('.victor-site-widget__launcher');
+  const closeButton = host.querySelector('.victor-site-widget__icon-button');
+  const messagesNode = host.querySelector('.victor-site-widget__messages');
+  const quickNode = host.querySelector('.victor-site-widget__quick');
+  const questionList = host.querySelector('.victor-site-widget__quick-list');
+  const resetButton = host.querySelector('.victor-site-widget__reset');
+  let state = readState();
+  let asking = false;
+
+  function setOpen(isOpen) {
+    host.setAttribute('data-open', isOpen ? 'true' : 'false');
+    openButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  }
+  function renderQuickActions() {
+    const hasConversation = state.messages.length > 0;
+    quickNode.setAttribute('data-visible', hasConversation ? 'false' : 'true');
+    quickNode.hidden = hasConversation;
+    questionList.innerHTML = PILOT_TOPICS.map((topic) => `<button type="button" class="victor-site-widget__question" data-pilot-topic="${escapeHtml(topic.id)}"${asking ? ' disabled' : ''}>${escapeHtml(topic.label)}</button>`).join('');
+    resetButton.disabled = asking;
+  }
+  function renderMessage(message) {
+    const isAssistant = message.role === 'assistant';
+    const actionLink = isAssistant && message.linkUrl ? `<a class="victor-site-widget__contact-link" href="${escapeHtml(message.linkUrl)}">${escapeHtml(message.linkLabel)}</a>` : '';
+    const followUps = isAssistant && Array.isArray(message.followUpIds)
+      ? message.followUpIds.map((id) => PILOT_TOPICS.find((topic) => topic.id === id)).filter(Boolean)
+        .map((topic) => `<button type="button" class="victor-site-widget__follow-up" data-pilot-topic="${escapeHtml(topic.id)}"${asking ? ' disabled' : ''}>${escapeHtml(topic.label)}</button>`).join('')
+      : '';
+    const actions = actionLink ? `<div class="victor-site-widget__message-actions">${actionLink}</div>` : '';
+    const followUpMarkup = followUps ? `<div class="victor-site-widget__follow-ups"><p class="victor-site-widget__follow-ups-label">Vraag door</p><div class="victor-site-widget__follow-ups-list">${followUps}</div></div>` : '';
+    return `<div class="victor-site-widget__message victor-site-widget__message--${isAssistant ? 'assistant' : 'user'}"><div class="victor-site-widget__message-copy">${escapeHtml(message.content)}</div>${actions}${followUpMarkup}</div>`;
+  }
+  function renderMessages() {
+    const starter = state.messages.length ? '' : '<div class="victor-site-widget__empty"><div class="victor-site-widget__message victor-site-widget__message--assistant"><div class="victor-site-widget__message-copy">Hoi, ik ben VICTOR. MyShiftpilot is nog in ontwikkeling, maar de eerste functies voor roosters maken, wijzigen en delen kun je via deze beperkte pilot al in de praktijk testen. Kies hieronder een onderwerp.</div></div></div>';
+    const typing = `<div class="victor-site-widget__typing" data-visible="${asking ? 'true' : 'false'}">Victor zoekt het antwoord op deze site…</div>`;
+    messagesNode.innerHTML = `${starter}${state.messages.map(renderMessage).join('')}${typing}`;
+    messagesNode.scrollTop = messagesNode.scrollHeight;
+    renderQuickActions();
+  }
+  function askTopic(topic) {
+    if (!topic || asking) return;
+    asking = true;
+    state.messages = state.messages.concat({ role: 'user', content: topic.label });
+    saveState(state);
+    renderMessages();
+    window.setTimeout(() => {
+      state.messages = state.messages.concat({ role: 'assistant', content: topic.answer, linkUrl: topic.linkUrl, linkLabel: topic.linkLabel, followUpIds: getRankedFollowUpIds(topic.id) });
+      saveState(state);
+      asking = false;
+      renderMessages();
+    }, 280);
+  }
+  openButton.addEventListener('click', () => setOpen(host.getAttribute('data-open') !== 'true'));
+  closeButton.addEventListener('click', () => setOpen(false));
+  resetButton.addEventListener('click', () => {
+    if (asking) return;
+    state = { messages: [] };
+    clearState();
+    renderMessages();
+  });
+  quickNode.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-pilot-topic]');
+    askTopic(PILOT_TOPICS.find((item) => item.id === button?.getAttribute('data-pilot-topic')));
+  });
+  messagesNode.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-pilot-topic]');
+    askTopic(PILOT_TOPICS.find((item) => item.id === button?.getAttribute('data-pilot-topic')));
+  });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && host.getAttribute('data-open') === 'true') setOpen(false); });
+  document.addEventListener('pointerdown', (event) => { if (host.getAttribute('data-open') === 'true' && !host.contains(event.target)) setOpen(false); });
+  bindMouseGlows();
+  renderMessages();
+})();

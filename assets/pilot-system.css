@@ -1,0 +1,824 @@
+/* MyShiftpilot pilotsite — gedeelde designlaag.
+   Wordt als laatste stylesheet geladen zodat elke pagina dezelfde tokens, typografie,
+   contentbreedte, sectieritme en kaartstijl gebruikt. Pagina-eigen CSS blijft bestaan
+   voor unieke onderdelen (hero-panel, boarding pass, tijdlijn, FAQ-filter). */
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('fonts/BarlowCondensed-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('fonts/BarlowCondensed-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/SourceSansPro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/SourceSansPro-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Source Sans Pro';
+  src: url('fonts/SourceSansPro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --msp-deep: #080e14;
+  --msp-navy: #0f1720;
+  --msp-panel: #121d2a;
+  --msp-panel-2: #1a2735;
+  --msp-orange: #e67a2e;
+  --msp-orange-hover: #d56a1e;
+  --msp-orange-soft: rgba(230, 122, 46, .12);
+  --msp-orange-glow: rgba(230, 122, 46, .35);
+  --msp-blue: #3b82f6;
+  --msp-green: #10b981;
+  --msp-text: #fff;
+  --msp-muted: rgba(255, 255, 255, .68);
+  --msp-faint: rgba(255, 255, 255, .42);
+  /* Handboek: één displayfont, één bodyfont en vaste donkere card-tokens. */
+  --msp-body: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --msp-display: 'Barlow Condensed', 'Arial Narrow', 'Impact', ui-sans-serif, system-ui, sans-serif;
+  --msp-border: #243244;
+  --msp-line: var(--msp-border);
+  --msp-line-strong: #334155;
+  --msp-card: var(--msp-panel);
+  --msp-radius-sm: 8px;
+  --msp-radius: 16px;
+  --msp-shadow-1: 0 6px 20px rgba(0, 0, 0, .45);
+  --msp-shadow-2: 0 10px 34px rgba(0, 0, 0, .55);
+  --msp-gutter: 24px;
+  --msp-max: 1220px;
+  /* De primaire pilotblokken vullen het volledige zichtbare scherm. */
+  --msp-block-trim: 0px;
+  --msp-page-transition-duration: 320ms;
+  --msp-page-transition-ease: cubic-bezier(.16, 1, .3, 1);
+  /* Eén contentkolom voor alle pagina's: zelfde linkermarge op elke pagina en breedte. */
+  --msp-shell: min(var(--msp-max), 100% - var(--msp-gutter) * 2);
+
+  /* De bestaande paginatokens wijzen naar dezelfde waarden. */
+  --or: var(--msp-orange); --orh: var(--msp-orange-hover); --ors: var(--msp-orange-soft); --org: var(--msp-orange-glow);
+  --orange: var(--msp-orange); --orange-soft: var(--msp-orange-soft);
+  --bl: var(--msp-blue); --blue: var(--msp-blue); --gr: var(--msp-green); --green: var(--msp-green);
+  --w: var(--msp-text); --white: var(--msp-text);
+  --wd: var(--msp-muted); --muted: var(--msp-muted);
+  --wf: var(--msp-faint); --faint: var(--msp-faint);
+  --ln: var(--msp-line); --line: var(--msp-line); --ls: var(--msp-line-strong);
+  --deep: var(--msp-deep); --navy: var(--msp-navy); --navy2: var(--msp-panel); --navy3: var(--msp-panel-2);
+  --panel: var(--msp-panel); --panel2: var(--msp-panel-2);
+}
+
+@media (max-width: 480px) {
+  :root { --msp-gutter: 16px; }
+}
+
+/* ── Scrollgedrag ───────────────────────────────────────────── */
+/* Eén bron van waarheid voor alle 7 pagina's. Stond uiteen op 72px (privacy, terms,
+   about), 0 (pilot, contact), 92px (faq via pilot.css) en niets (index), waardoor een
+   ankersprong per pagina op een andere hoogte landde. 84px = de 68px vaste header +
+   16px lucht. `scroll-behavior` wordt in de reduced-motion-blok onderaan teruggezet. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+/* Elke pilotpagina krijgt dezelfde rustige binnenkomst bij een HTML-wissel.
+   De overgang zit op de paginacontainer, niet op scrollbare secties. */
+@keyframes msp-page-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+body > main,
+body > footer {
+  animation: msp-page-enter var(--msp-page-transition-duration) var(--msp-page-transition-ease) both;
+}
+body > footer { animation-delay: 40ms; }
+
+/* ── Achtergrond ────────────────────────────────────────────── */
+body::before {
+  background-image: linear-gradient(rgba(255, 255, 255, .022) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .022) 1px, transparent 1px);
+  background-size: 76px 76px;
+}
+body::after {
+  background: radial-gradient(860px 600px at 6% 2%, rgba(230, 122, 46, .1), transparent 66%),
+              radial-gradient(760px 540px at 94% 96%, rgba(59, 130, 246, .08), transparent 68%);
+}
+
+/* Bodytekst blijft rustig en leesbaar; display is uitsluitend voor koppen en labels. */
+body, input, select, textarea, button { font-family: var(--msp-body); }
+
+/* ── Contentkolom ───────────────────────────────────────────── */
+.hero, .page-hero, .section, .problem-section, .features, .how, .dark-feature,
+.about-brief, .home-faq, .demo, .page, .ftr { padding-inline: 0; }
+
+.hero-inner, .page-hero, .section-inner, .sec-head, .section-head, .f-grid, .runway,
+.dark-feature-inner, .problem-inner, .about-brief-inner, .home-faq-inner, .faq-inner,
+.page, .ftr-grid, .ftr-bottom {
+  width: var(--msp-shell);
+  max-width: var(--msp-max);
+  margin-inline: auto;
+}
+.page-hero { display: grid; }
+/* Juridische leeskolom: smalle regellengte, gecentreerd op de pagina, gecentreerde tekst. */
+.legal { max-width: 820px; margin-inline: auto; text-align: center; }
+.legal .pg-lead, .legal p, .legal ul { margin-inline: auto; }
+.legal h2 { justify-content: center; }
+.legal ul { gap: 14px; }
+/* Een pijlmarkering links van gecentreerde, doorlopende regels leest rommelig. */
+/* Block i.p.v. flex: anders belandt een <strong>-label in een eigen kolom links. */
+.legal ul li { display: block; text-align: center; }
+.legal ul li::before { content: none; }
+/* Accentrand naar boven: een linkerbalk trekt gecentreerde tekst uit balans. */
+.legal-block { text-align: center; border-left: 1px solid var(--msp-line); border-top: 3px solid var(--msp-orange); }
+/* Het afsluitende CTA-blok is gecentreerd in marketing-cta.css; hier geen uitzondering meer. */
+.ticket { width: min(1080px, 100% - var(--msp-gutter) * 2); max-width: none; margin-inline: auto; }
+
+/* ── Verticaal blokritme: elk hoofdblok vult één viewport ───── */
+.page-hero, .section, .problem-section, .features, .how, .dark-feature,
+.about-brief, .home-faq, .demo { padding-block: 92px 44px; }
+
+/* Eén achtergrond voor de hele pilotsite. Per blok van tint wisselen leverde bij elke
+   blokgrens een zichtbare strook van de andere kleur op — en omdat een blok net onder
+   schermhoogte staat, zag je die strook continu. De bodem is nu overal `--msp-deep`;
+   de blokken zelf zijn doorzichtig zodat de vaste gloedlaag er gelijkmatig doorheen
+   valt, en een blokgrens is een haarlijn in plaats van een kleurverschil. */
+body { background: var(--msp-deep); }
+/* Geen enkel blok draagt nog een eigen achtergrond — ook de hero's en `.dark-feature`
+   niet. Een dekkend blok zou de vaste gloedlaag tegenhouden en dan zie je bij de grens
+   opnieuw verschil, ook al is de kleur eronder gelijk. */
+.hero,
+.page-hero,
+.pilot-page .pilot-hero,
+.section,
+.section-dark,
+.problem-section,
+.features,
+.how,
+.dark-feature,
+.about-brief,
+.home-faq,
+.demo,
+.ticker-zone {
+  border-block: 0;
+  background: transparent;
+}
+
+/* ── Typografie ─────────────────────────────────────────────── */
+h1, h2, h3, .hero-title, .pg-h1, .sec-title, .sec-h2, .mission-head h2, .cb-text h3,
+.f-title, .step-title, .df-item-title, .ah-stat-title, .fd-name, .benefit h3,
+.process-card h3, .faq-expectations h3 { font-family: var(--msp-display); font-weight: 900; text-transform: uppercase; }
+
+h1, .hero-title, .pg-h1, .page-hero h1, .faq-hero h1 {
+  font-size: clamp(38px, 5.2vw, 86px);
+  line-height: .92;
+  letter-spacing: -.025em;
+}
+/* De hoofdkop sluit op elke pilotpagina af met dezelfde knipperende tekstcursor.
+   De homepage heeft al een expliciete .cursor in de laatste titelregel. */
+@keyframes msp-title-caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.page-hero h1::after,
+.legal-page .pg-h1::after {
+  content: '';
+  display: inline-block;
+  width: .11em;
+  height: .78em;
+  margin-left: .1em;
+  background: var(--msp-orange);
+  vertical-align: -.02em;
+  animation: msp-title-caret-blink 1s steps(1, end) infinite;
+}
+.hero-title .cursor {
+  display: inline-block;
+  width: .11em;
+  height: .78em;
+  margin-left: .1em;
+  background: var(--msp-orange);
+  vertical-align: -.02em;
+  animation: msp-title-caret-blink 1s steps(1, end) infinite;
+}
+h2, .sec-title, .sec-h2, .mission-head h2, .pilot-callout h2 {
+  font-size: clamp(32px, 4.4vw, 58px);
+  line-height: .96;
+  letter-spacing: -.02em;
+}
+.problem-section .sec-title .word {
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+.hero-sub, .hero-copy, .pg-lead { max-width: 540px; }
+.sec-lead, .section-lead, .faq-intro, .tl-intro, .founders-lead { max-width: 580px; }
+.hero-sub, .hero-copy, .pg-lead, .sec-lead, .section-lead, .faq-intro, .tl-intro, .founders-lead {
+  color: var(--msp-muted);
+  font-size: clamp(15px, 1.35vw, 17px);
+  line-height: 1.65;
+}
+
+/* ── Sectiekop: overal nummer + label, titel, lead — links ──── */
+.sec-head, .section-head, .mission-head {
+  display: block;
+  margin-bottom: 44px;
+  padding: 0;
+  text-align: left;
+}
+.section-head > div, .sec-head > div:not([class]) { margin: 0; }
+.sec-num, .section-tag, .sec-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 14px;
+  color: var(--msp-orange);
+  font-family: var(--msp-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+}
+.sec-num::before, .section-tag::before, .sec-label::before {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  opacity: .55;
+}
+.sec-num::after, .sec-label::after { content: none; }
+.sec-head .sec-lead, .section-head .section-lead { margin: 14px 0 0; }
+
+/* Homepage en pilotpagina: alle sectiekoppen gecentreerd. Het label krijgt daar een
+   streepje aan beide kanten zodat het symmetrisch boven de titel staat. */
+.problem-section .sec-head,
+.features > .sec-head,
+.how > .sec-head,
+.about-brief .sec-head,
+.home-faq .sec-head,
+.demo > .sec-head,
+.pilot-page .section-head { text-align: center; }
+
+.problem-section .sec-lead,
+.features > .sec-head .sec-lead,
+.how > .sec-head .sec-lead,
+.about-brief .sec-lead,
+.home-faq .sec-lead,
+.demo > .sec-head .sec-lead,
+.pilot-page .section-lead { margin-inline: auto; }
+
+.problem-section .sec-num::after,
+.features > .sec-head .sec-num::after,
+.how > .sec-head .sec-num::after,
+.about-brief .sec-label::after,
+.about-brief .sec-num::after,
+.home-faq .sec-num::after,
+.demo > .sec-head .sec-num::after,
+.pilot-page .section-tag::after {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  opacity: .55;
+}
+
+/* Eyebrow-pill boven elke paginatitel. */
+.eyebrow, .pg-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  justify-self: start;
+  margin-bottom: 24px;
+  padding: 7px 13px;
+  border: 1px solid var(--msp-line-strong);
+  border-radius: 999px;
+  color: var(--msp-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+.eyebrow::before, .pg-eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--msp-orange);
+  box-shadow: 0 0 12px var(--msp-orange-glow);
+}
+
+/* De cursorglow zet position:relative op elk kaartblok. De zwevende herokaarten moeten
+   absoluut gepositioneerd blijven, anders vallen ze in de flow en knijpen ze het
+   roosterpaneel smaller. */
+.fcard.pilot-mouse-glow { position: absolute; }
+
+/* Onder 1241px staat het paneel boven de tekst; de zwevende melding heeft daar geen
+   vrije ruimte en plakte tegen de schermrand. */
+@media (max-width: 1240px) {
+  .fcard { display: none; }
+}
+
+.hero .eyebrow { margin-bottom: 20px; }
+
+/* Chips: dezelfde vorm in de hero van de homepage, pilot.html en contact.html. */
+.pilot-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  list-style: none;
+}
+.pilot-facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid var(--msp-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .025);
+  color: var(--msp-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pilot-facts li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--msp-orange);
+  box-shadow: 0 0 10px var(--msp-orange-glow);
+}
+
+/* FAQ-hero zonder zijkaart: één gecentreerde kolom, in lijn met het paneel eronder. */
+.faq-hero { grid-template-columns: minmax(0, 1fr); text-align: center; }
+.faq-hero h1 { max-width: 900px; margin-inline: auto; }
+.faq-hero .hero-copy { margin-inline: auto; }
+.faq-hero .hero-actions { justify-content: center; }
+/* Geen afbreekstreepjes meer nodig nu de kop de volle kolom heeft. */
+@media (max-width: 700px) {
+  .faq-hero h1 { overflow-wrap: normal; hyphens: manual; }
+}
+
+/* ── FAQ-blok: index.html en faq.html gebruiken hetzelfde paneel ─────────────
+   Eén gecentreerde kop, één kolom met accordeonrijen en een + / − markering. */
+.home-faq-inner, .faq-inner {
+  /* Smallere kolom dan de sectiebreedte: anders worden de accordeonrijen brede,
+     lage strookjes die niet in verhouding staan tot hun inhoud. */
+  max-width: 900px;
+  padding: clamp(28px, 4vw, 52px);
+  border: 1px solid var(--msp-line);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(18, 29, 42, .92), rgba(8, 14, 20, .72));
+  box-shadow: 0 28px 72px rgba(0, 0, 0, .2);
+  text-align: center;
+}
+.faq-inner .faq-intro { margin-inline: auto; }
+.faq-inner .section-tag::after {
+  content: '';
+  width: 26px;
+  height: 1px;
+  background: currentColor;
+  opacity: .55;
+}
+
+/* Zoeken en filteren blijven, maar gecentreerd en compact onder de kop. */
+.faq-tools {
+  gap: 12px;
+  justify-items: center;
+  max-width: 640px;
+  margin: 30px auto 4px;
+}
+.faq-search { width: 100%; max-width: 520px; }
+.faq-search input { min-height: 46px; font-size: 14px; }
+.faq-filter { justify-content: center; }
+.faq-result, .faq-empty { text-align: center; }
+.faq-empty { max-width: 620px; margin-inline: auto; }
+
+/* ── FAQ-pagina: vragen gegroepeerd per onderwerp ───────────
+   Tien identieke rijen onder elkaar lieten niet zien wélke onderwerpen er zijn. De
+   vragen staan nu per onderwerp bij elkaar, met een kop en een teller, en op brede
+   schermen twee naast elkaar zodat je de hele FAQ in één oogopslag overziet. */
+/* Geen paneelkader meer om de FAQ: de groepskoppen geven nu de structuur, en een groot
+   lichter vlak over de volle kolom vloekte met de doorlopende achtergrond. */
+.faq-inner {
+  max-width: var(--msp-max);
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.faq-group { margin: 0; }
+.faq-group[hidden] { display: none; }
+.faq-group-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--msp-line);
+  text-align: left;
+}
+.faq-group-name {
+  color: var(--msp-orange);
+  font-family: var(--msp-display);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.faq-group-count {
+  color: var(--msp-faint);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.faq-group-rows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+  text-align: left;
+}
+@media (max-width: 860px) {
+  .faq-group-rows { grid-template-columns: minmax(0, 1fr); }
+}
+.faq-list { gap: clamp(26px, 3.4svh, 40px); }
+
+.home-faq-list, .faq-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 26px;
+  text-align: left;
+}
+.home-faq-list details, .faq-list details {
+  min-height: 0;
+  padding: 0;
+  border: 1px solid var(--msp-line);
+  border-radius: 12px;
+  background: var(--msp-panel);
+  overflow: hidden;
+}
+.faq-list details:first-child { grid-column: auto; }
+.home-faq-list summary, .faq-list summary {
+  position: relative;
+  display: block;
+  padding: 21px 56px 21px 22px;
+  color: var(--msp-text);
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.35;
+  cursor: pointer;
+  list-style: none;
+}
+.home-faq-list summary::-webkit-details-marker, .faq-list summary::-webkit-details-marker { display: none; }
+.home-faq-list summary::after, .faq-list summary::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  transform: translateY(-50%);
+  color: var(--msp-orange);
+  font-size: 24px;
+  font-weight: 400;
+  transition: none;
+}
+.home-faq-list details[open] summary::after, .faq-list details[open] summary::after {
+  content: '−';
+  transform: translateY(-50%);
+}
+.home-faq-list details p, .faq-list details p {
+  max-width: 760px;
+  padding: 0 22px 21px;
+  color: var(--msp-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* ── Kaarten ────────────────────────────────────────────────── */
+.f-card, .step, .benefit, .process-card, .faq-expectations article, .faq-list details,
+.home-faq-list details, .ah-stat, .founder, .about-person, .problem-list li, .mission-quote {
+  border: 1px solid var(--msp-line);
+  border-radius: var(--msp-radius);
+  background: var(--msp-card);
+}
+.pilot-card, .contact-form-card, .problem-inner, .about-brief-inner, .home-faq-inner {
+  border: 1px solid var(--msp-line);
+  border-radius: 20px;
+}
+.f-card:hover, .step:hover, .benefit:hover, .process-card:hover, .faq-expectations article:hover,
+.ah-stat:hover, .founder:hover, .about-person:hover {
+  border-color: rgba(230, 122, 46, .38);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 56px rgba(0, 0, 0, .35);
+}
+/* Label, titel en tekst lopen van boven af door, net als de f-cards op de homepage.
+   Een naar onderen geduwde titel liet bij deze korte teksten een gat van ~85px achter. */
+.benefit, .process-card, .faq-expectations article {
+  display: flex;
+  flex-direction: column;
+  min-height: 168px;
+  padding: 28px;
+}
+.benefit h3, .process-card h3, .faq-expectations h3 { margin-top: 0; padding-top: 18px; }
+
+.f-title, .step-title, .benefit h3, .process-card h3, .faq-expectations h3, .ah-stat-title, .df-item-title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+}
+.f-desc, .step-desc, .benefit p, .process-card p, .faq-expectations p, .ah-stat-txt,
+.df-item-desc, .tl-text, .fd-bio {
+  margin-top: 10px;
+  color: var(--msp-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Kleine labels binnen kaarten. */
+.f-num, .step-tag, .benefit-num, .process-card strong, .faq-expectations span,
+.ah-stat-lab, .df-item-tag, .card-label, .tl-year, .fd-role, .ftr-h {
+  color: var(--msp-orange);
+  font-family: var(--msp-display);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+
+/* ── Knoppen ────────────────────────────────────────────────── */
+.cta, .button, .df-cta {
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.ftr::before { left: 0; right: 0; }
+
+/* ── Subpagina's volgen dezelfde hero-as als de homepage ───── */
+/* Content op één vaste kolom. De hero is een schermhoog blok (zie het blokritme
+   onderaan), dus staat de inhoud verticaal gecentreerd; met start-uitlijning bleef er
+   op de kortere hero's van faq en over-ons ruim 400px leeg onder de knoppen. */
+.page-hero {
+  min-height: 100svh;
+  padding-block: 84px 44px;
+  align-items: center;
+  align-content: center;
+}
+.pilot-page .pilot-hero {
+  min-height: 100svh;
+  padding: 84px 0 44px;
+}
+.pilot-page .pilot-hero-inner {
+  width: var(--msp-shell);
+  max-width: var(--msp-max);
+  /* margin-block:auto centreert de hero-inhoud in het schermhoge blok; met `0 auto`
+     bleef er onderaan een gat van ruim 120px staan. */
+  margin: auto;
+}
+
+/* De juridische pagina's gebruiken dezelfde linkermarge als de hero. */
+.legal-page { padding: 0 0 80px; }
+/* Over-ons draagt zijn eigen secties als schermbrede banden, dus geen paginapadding.
+   z-index tilt de inhoud boven de vaste raster- en gloedlagen van body::before/::after. */
+.about-page {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+/* De hero van over-ons volgt .page-hero volledig: schermhoogte en verticale
+   uitlijning komen daarvandaan, alleen de kolomverhouding staat in about.html. */
+.legal-page .legal {
+  max-width: 820px;
+  margin-inline: auto;
+}
+/* Alleen de buitenste kolom krijgt de topmarge. De tekstkolom is óók een .legal en
+   telde die padding een tweede keer mee, midden tussen intro en eerste alinea. */
+.legal-page > .legal { padding-top: 88px; }
+.legal-page .legal-intro {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+}
+.legal-page .legal-intro .pg-lead { margin-bottom: 22px; }
+.legal-page .legal-intro .legal-updated { margin-bottom: 0; }
+
+@media (max-width: 900px) {
+  .page-hero,
+  .pilot-page .pilot-hero { min-height: 100svh; }
+  .pilot-page .pilot-hero { padding-top: 84px; }
+}
+
+@media (max-width: 480px) {
+  .eyebrow, .pg-eyebrow { font-size: 9.5px; letter-spacing: .16em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .f-card:hover, .step:hover, .benefit:hover, .process-card:hover,
+  .faq-expectations article:hover, .ah-stat:hover, .founder:hover, .about-person:hover { transform: none; }
+  .page-hero h1::after, .legal-page .pg-h1::after, .hero-title .cursor { animation: none; }
+}
+
+/* ── Blokritme: één blok per scherm ────────────────────────── */
+/* Index, pilot, faq en over-ons scrollen blok voor blok: elk hoofdblok vult minimaal
+   één viewport en centreert zijn inhoud. `.demo` is de uitzondering — het aanmeldblok
+   moet na de ankersprong naar #pilot-aanvraag vanaf de bovenkant volledig in beeld
+   staan, dus dat blok groeit met het formulier mee. */
+.hero,
+.page-hero,
+.pilot-page .pilot-hero,
+.section,
+.problem-section,
+.features,
+.how,
+.dark-feature,
+.about-brief,
+.home-faq {
+  min-height: 100svh;
+}
+.section,
+.problem-section,
+.features,
+.how,
+.dark-feature,
+.about-brief,
+.home-faq {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero,
+.page-hero,
+.pilot-page .pilot-hero { padding-block: 84px 64px; }
+.section,
+.problem-section,
+.features,
+.how,
+.dark-feature,
+.about-brief,
+.home-faq { padding-block: 92px 72px; }
+/* Blokken vangen de scroll op in plaats van er ongemerkt langs te glijden. `proximity`
+   en niet `mandatory`: blokken die hoger zijn dan het scherm (de FAQ-lijst, mobiel)
+   moeten gewoon doorscrollbaar blijven. De negatieve scroll-margin heft de globale
+   scroll-padding-top op, zodat een blok met zijn bovenrand tegen de viewport landt. */
+html { scroll-snap-type: y proximity; }
+.hero,
+.page-hero,
+.pilot-page .pilot-hero,
+.section,
+.problem-section,
+.features,
+.how,
+.dark-feature,
+.about-brief,
+.home-faq,
+.demo {
+  scroll-snap-align: start;
+  scroll-margin-top: -84px;
+}
+/* Het aanmeldblok is óók een schermvullend blok, maar landt met zijn bovenrand tegen de
+   viewport in plaats van 84px lager: de negatieve scroll-margin heft de globale
+   scroll-padding-top op, zodat het formulier na de sprong gecentreerd in beeld staat. */
+.demo {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 84px 64px;
+}
+
+/* ── Blokvulling: de inhoud gebruikt de schermhoogte ───────── */
+/* Zonder dit staat er in een schermhoog blok een korte kaartenrij met veel lucht
+   eronder. Koppen, kaarthoogtes en rijafstanden schalen daarom mee met de
+   viewporthoogte, met vaste onder- en bovengrenzen voor telefoon en groot scherm. */
+.sec-head,
+.section-head,
+.mission-head { margin-bottom: clamp(36px, 8svh, 88px); }
+
+/* Kaarten groeien mee met het scherm, maar met mate: bij een veel hogere kaart komt
+   de inhoud in een leeg vlak te hangen. De 3×2 procesrij van de pilotpagina blijft
+   lager, anders loopt dat blok over twee schermen. */
+.f-card,
+.step,
+.benefit,
+.faq-expectations article { min-height: clamp(210px, 32svh, 340px); }
+.process-card { min-height: clamp(170px, 21svh, 250px); }
+.f-card,
+.step,
+.benefit,
+.process-card,
+.faq-expectations article {
+  display: flex;
+  flex-direction: column;
+}
+.f-card,
+.step,
+.benefit,
+.process-card,
+.faq-expectations article { padding-block: clamp(24px, 3.6svh, 40px); }
+/* Het pictogram groeit mee, anders blijft een hogere kaart onderaan hol. */
+.f-glyph {
+  width: clamp(44px, 6.4svh, 64px);
+  height: clamp(44px, 6.4svh, 64px);
+  margin-block: clamp(16px, 2.4svh, 26px) clamp(18px, 2.6svh, 28px);
+}
+
+.problem-list { gap: clamp(10px, 1.8svh, 20px); }
+.problem-list li { padding-block: clamp(16px, 2.6svh, 28px); }
+.about-people { gap: clamp(10px, 1.8svh, 20px); }
+.about-person { padding: clamp(12px, 1.8svh, 20px); }
+.home-faq-list,
+.faq-list { gap: clamp(10px, 1.4svh, 16px); }
+.home-faq-list summary,
+.faq-list summary { padding-block: clamp(18px, 2.6svh, 28px); }
+/* De paneelblokken hebben weinig regels maar wel een kader; laat het kader meegroeien
+   met het scherm en de inhoud erin gecentreerd staan, in plaats van een klein eiland
+   midden in een schermhoog blok. */
+.problem-inner,
+.about-brief-inner,
+.home-faq-inner {
+  min-height: min(620px, 60svh);
+  padding: clamp(28px, 5.6svh, 64px);
+  align-content: center;
+}
+.faq-inner { padding: clamp(28px, 5.6svh, 64px); }
+.f-grid,
+.steps,
+.benefit-grid,
+.process-grid { gap: clamp(14px, 1.8svh, 22px); }
+
+/* Het afsluitende CTA-blok is bewust een rustpunt: geen schermhoog blok, maar samen
+   met de footer het laatste scherm. Anders staat een klein bannertje in een leeg veld. */
+.section:has(> .section-inner > .cta-banner) {
+  min-height: 0;
+  padding-block: 84px 72px;
+}
+
+/* De pilotpagina gebruikt op brede schermen dezelfde hero-opbouw als de homepage:
+   één tekstkolom (kop, lede, actie, strook) naast het paneel. De vorige variant zette
+   de kop over de volle breedte en centreerde de lede tegen de veel hogere kaart; dat
+   sloeg een gat van ruim 200px tussen kop en lede. */
+@media (min-width: 1241px) {
+  .pilot-page .pilot-hero { padding: 84px 24px 72px; }
+  .pilot-page .pilot-hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(440px, 520px);
+    gap: clamp(48px, 4vw, 72px);
+    align-items: center;
+  }
+  .pilot-hero .hero-title { max-width: 15ch; }
+  .pilot-hero .pilot-hero-lede .hero-sub { max-width: 520px; }
+  .pilot-hero .pilot-card { width: 100%; }
+}
+
+/* De pilotpagina draagt geen ticker meer; die staat alleen nog op de homepage. */
+.pilot-page .pilot-hero { flex-direction: column; }
+
+/* De slotgloed van elk CTA-blok komt uit het midden van het blok, zodat de nadruk
+   niet naar één hoek wegleunt op pagina's met verschillende breedtes. */
+.cta-banner .cb-glow {
+  left: 50%;
+  right: auto;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Deze laag staat ná de pagina-CSS, dus het smooth-scrollen moet hier terug naar auto. */
+  html { scroll-behavior: auto; scroll-snap-type: none; }
+  body > main, body > footer { animation: none; }
+}
+
+/* De homepage heeft een breder hero-canvas dan de informatieve subpagina's.
+   Daardoor blijven de titel en het roosterpaneel op ruime desktops uit elkaars zone. */
+@media (min-width: 1241px) {
+  .hero:not(.pilot-hero) .hero-inner {
+    width: min(1600px, calc(100vw - 48px));
+    max-width: none;
+  }
+}
