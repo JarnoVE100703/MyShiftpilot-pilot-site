@@ -66,6 +66,7 @@
     '.contact-info-card',
     '.pilot-facts li',
     '.pilot-assurances li',
+    '.hero-pilot-note',
   ].join(',');
 
   function bindMouseGlow(element) {
