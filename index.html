@@ -2,12 +2,68 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-vQK4TBlIiwWmI4G4rD84yVUTGEj2ado/eQeEAlhP55A='; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-8dCUVip9WNWYv1AmAYcErTei0MZnoc/52XGE5ax0/io=' 'sha256-vQK4TBlIiwWmI4G4rD84yVUTGEj2ado/eQeEAlhP55A='; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
     <meta name="myshiftpilot-api-base" content="https://api.myshiftpilot.nl">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080E14">
 <title>MyShiftpilot — Personeelsroosters voor de horeca</title>
 <meta name="description" content="MyShiftpilot helpt horecabedrijven om personeelsroosters te maken, wijzigen en delen. Het product is in ontwikkeling. We zoeken een beperkt aantal horecabedrijven voor de pilot.">
+  <link rel="canonical" href="https://myshiftpilot.nl/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MyShiftpilot">
+  <meta property="og:locale" content="nl_NL">
+  <meta property="og:url" content="https://myshiftpilot.nl/">
+  <meta property="og:title" content="MyShiftpilot — Personeelsroosters voor de horeca">
+  <meta property="og:description" content="MyShiftpilot helpt horecabedrijven om personeelsroosters te maken, wijzigen en delen. Het product is in ontwikkeling. We zoeken een beperkt aantal horecabedrijven voor de pilot.">
+  <meta property="og:image" content="https://myshiftpilot.nl/assets/logoMyShiftpilot_v5.png">
+  <meta property="og:image:alt" content="MyShiftpilot">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MyShiftpilot — Personeelsroosters voor de horeca">
+  <meta name="twitter:description" content="MyShiftpilot helpt horecabedrijven om personeelsroosters te maken, wijzigen en delen. Het product is in ontwikkeling. We zoeken een beperkt aantal horecabedrijven voor de pilot.">
+  <meta name="twitter:image" content="https://myshiftpilot.nl/assets/logoMyShiftpilot_v5.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://myshiftpilot.nl/#organisatie",
+      "name": "MyShiftpilot",
+      "alternateName": ["My Shiftpilot", "Shiftpilot", "Shift Pilot"],
+      "url": "https://myshiftpilot.nl/",
+      "logo": "https://myshiftpilot.nl/assets/logoMyShiftpilot_v5.png",
+      "email": "info@myshiftpilot.nl",
+      "description": "MyShiftpilot is software waarmee horecabedrijven personeelsroosters maken, wijzigen en delen. Het product is in ontwikkeling en wordt getest in een beperkte pilot.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jozef Israëlslaan 2",
+        "postalCode": "3735 LN",
+        "addressLocality": "Bosch en Duin",
+        "addressCountry": "NL"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "KVK",
+        "value": "99920360"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/myshiftpilot",
+        "https://www.instagram.com/myshiftpilot"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://myshiftpilot.nl/#website",
+      "name": "MyShiftpilot",
+      "alternateName": ["My Shiftpilot", "Shiftpilot"],
+      "url": "https://myshiftpilot.nl/",
+      "inLanguage": "nl-NL",
+      "publisher": { "@id": "https://myshiftpilot.nl/#organisatie" }
+    }
+  ]
+}
+</script>
 <style>
 /* ============================================================
    MYSHIFTPILOT HANGAR — Responsive Motorsport Edition
@@ -93,8 +149,7 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit;border:0;background:none;color:inherit;cursor:pointer}
 img{max-width:100%;display:block}
 input,select,textarea{font-family:inherit;color:inherit}
-.brand-my,.hl-orange,.f-title em,.df-headline span,.step-tag{text-shadow:0 0 10px rgba(230,122,46,.55),0 0 28px rgba(230,122,46,.22)}
-.brand-my{color:var(--or)}
+.brand-my,.hl-orange,.f-title em,.df-headline span,.step-tag,.ph-tag,.sec-num,.df-item-tag,.df-main-tag,.stub-tag,.tf-tag,.tso-flight,.ftr-h{color:var(--or);text-shadow:0 0 10px rgba(230,122,46,.55),0 0 28px rgba(230,122,46,.22)}
 .skip-link{position:fixed;top:10px;left:50%;z-index:1000;padding:10px 16px;border-radius:7px;background:#fff;color:var(--deep);font-size:14px;font-weight:800;transform:translate(-50%,-160%);transition:transform .2s var(--e)}
 .skip-link:focus{transform:translate(-50%,0)}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #fff;outline-offset:3px}
@@ -244,7 +299,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       "title title"
       "copy preview"
       "actions preview"
-      "stats preview";
+      "pilot-note preview";
     gap:0 clamp(48px,4vw,72px);
     align-items:start;
   }
@@ -253,8 +308,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .hero-title{grid-area:title;text-align:left;margin-bottom:20px}
   .hero-sub{grid-area:copy;margin-left:0}
   .hero-actions{grid-area:actions;margin-left:0}
-  .hero-stats{grid-area:stats;margin-left:0;max-width:820px}
-  .hero-title,.hero-sub,.hero-actions,.hero-stats{transform:translateY(24px)}
+  .hero-pilot-note{grid-area:pilot-note;margin-left:0}
+  .hero-title,.hero-sub,.hero-actions,.hero-pilot-note{transform:translateY(24px)}
   /* Kolom hugt het paneel, zodat de zwevende kaarten op de hoeken blijven hangen
      in plaats van over de roosterrijen te vallen. */
   .hero-right{grid-area:preview;align-self:start;min-height:0;width:100%;max-width:520px;justify-self:end;transform:translateY(-8px)}
@@ -281,6 +336,10 @@ body.msp-marketing .hero-title{
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 .hero-sub{font-size:clamp(15px,1.4vw,18px);color:var(--wd);max-width:480px;line-height:1.65;margin-bottom:22px}
 .hero-actions{display:flex;gap:12px;margin-bottom:26px;flex-wrap:wrap}
+.hero-pilot-note{display:flex;align-items:center;gap:14px;max-width:500px;padding:15px 18px;border:1px solid var(--ls);border-left:2px solid var(--or);border-radius:10px;background:linear-gradient(90deg,rgba(230,122,46,.09),rgba(18,29,42,.34));box-shadow:0 12px 30px rgba(0,0,0,.16)}
+.hero-pilot-note strong{display:block;font-family:'Barlow Condensed','Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:17px;letter-spacing:.06em;text-transform:uppercase;color:var(--w)}
+.hero-pilot-note span{display:block;margin-top:2px;color:var(--wd);font-size:13px;line-height:1.45}
+.hero-pilot-note-mark{display:grid;flex:0 0 34px;width:34px;height:34px;place-items:center;border-radius:50%;background:var(--or);color:var(--deep);font-size:19px;font-weight:900}
 
 .cta{
   display:inline-flex;align-items:center;gap:10px;
@@ -296,11 +355,6 @@ body.msp-marketing .hero-title{
 .cta.ghost:hover{border-color:var(--or);color:var(--or);background:var(--ors);transform:translateY(-1px)}
 .cta-arrow{font-size:17px;transition:transform .28s var(--e)}
 .cta:hover .cta-arrow{transform:translateX(5px)}
-
-/* Pilotscope-strip: één label + drie chips op één regel, gelijk aan de chips in de
-   hero van pilot.html. De oude vier tegels herhaalden hun label en braken over twee regels. */
-.hero-stats{display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding-top:18px;border-top:1px solid var(--ls)}
-.hero-stats-label{font-family:'Barlow Condensed','Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:10px;font-weight:800;letter-spacing:.3em;text-transform:uppercase;color:var(--wf)}
 
 /* Hero right — cockpit panel */
 /* min-height volgt het paneel zelf (~368px); hoger maakte de hero langer dan één scherm,
@@ -458,12 +512,6 @@ section{position:relative;z-index:1}
 .df-sub{font-size:15px;color:var(--wd);line-height:1.6;max-width:300px;margin:0 auto 28px}
 .df-cta{display:inline-flex;align-items:center;gap:9px;padding:13px 26px;border-radius:6px;background:var(--bl);color:#fff;font-family:'Barlow Condensed','Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:15px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 8px 24px var(--blg);transition:all .28s var(--e)}
 .df-cta:hover{background:var(--orh);transform:translateY(-1px);box-shadow:0 8px 24px var(--org)}
-
-.pilot-victor-wrap{position:relative;width:122px;height:122px;margin:0 auto 14px}
-.pilot-victor-wrap::before{content:'';position:absolute;inset:-24px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.24),rgba(59,130,246,.06) 58%,transparent 70%);animation:pilot-victor-pulse 3.6s ease-in-out infinite;pointer-events:none}
-.pilot-victor-avatar{position:relative;width:122px;height:122px;border-radius:50%;object-fit:cover;object-position:center 8%;box-shadow:0 0 0 2px rgba(59,130,246,.35),0 12px 36px rgba(59,130,246,.28)}
-.pilot-status-mark{margin-bottom:24px;font-family:'Barlow Condensed','Arial Narrow','Impact',ui-sans-serif,system-ui,sans-serif;font-size:11px;font-weight:900;line-height:1.15;letter-spacing:.16em;text-transform:uppercase;color:var(--w)}
-@keyframes pilot-victor-pulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.85;transform:scale(1.1)}}
 
 /* ── HOW IT WORKS ─────────────────────────── */
 .how{padding:92px 24px 44px;position:relative}
@@ -800,7 +848,7 @@ section{position:relative;z-index:1}
     <a href="about.html" class="np-link"><span class="np-num">04</span><span>Over ons</span></a>
     <a href="contact.html" class="np-link"><span class="np-num">05</span><span>Contact</span></a>
     <a href="privacy.html" class="np-link"><span class="np-num">06</span><span>Privacy</span></a>
-    <a href="terms.html" class="np-link"><span class="np-num">07</span><span>Voorwaarden</span></a>
+    <a href="terms.html" class="np-link"><span class="np-num">07</span><span>Pilotvoorwaarden</span></a>
   </nav>
 </header>
 
@@ -827,23 +875,19 @@ section{position:relative;z-index:1}
       <h1 class="hero-title delay-2">
         <span class="hero-title-line">Personeelsroosters</span><br>
         <span class="hero-title-line">voor de horeca,</span><br>
-        <span class="hero-title-line hl-orange">op één overzichtelijke</span><br>
-        <span class="hero-title-line hl-orange">plek<span class="cursor"></span></span>
+        <span class="hero-title-line hl-orange">maken, wijzigen en delen</span><br>
+        <span class="hero-title-line hl-orange">op één plek<span class="cursor"></span></span>
       </h1>
       <p class="hero-sub delay-3">
-        Maak, wijzig en deel je rooster op één plek. Het product is nog in ontwikkeling; we zoeken horecabedrijven die de eerste versie testen.
+        Breng je rooster en wijzigingen samen op één plek. MyShiftpilot is in ontwikkeling en we zoeken een beperkte groep horecabedrijven die de eerste versie in hun eigen praktijk wil testen.
       </p>
       <div class="hero-actions delay-4">
         <a href="#pilot-aanvraag" class="cta primary"><span>Meld je bedrijf aan</span><span class="cta-arrow">→</span></a>
-        <a href="#mogelijkheden" class="cta ghost"><span>Bekijk de huidige pilotscope</span></a>
+        <a href="#mogelijkheden" class="cta ghost"><span>Bekijk wat je kunt testen</span></a>
       </div>
-      <div class="hero-stats delay-5">
-        <span class="hero-stats-label">Huidige pilotscope</span>
-        <ul class="pilot-facts" aria-label="Huidige pilotscope">
-          <li>Roosters maken</li>
-          <li>Roosters wijzigen</li>
-          <li>Roosters delen</li>
-        </ul>
+      <div class="hero-pilot-note delay-5" aria-label="De pilot is gratis">
+        <span class="hero-pilot-note-mark" aria-hidden="true">✓</span>
+        <div><strong>De pilot is volledig gratis</strong><span>Geen kosten, geen betaalgegevens en geen automatische verlenging.</span></div>
       </div>
     </div>
 
@@ -857,7 +901,7 @@ section{position:relative;z-index:1}
           </div>
           <div class="ph-right">
             <span class="ph-pip"></span>
-            <span class="ph-status">PROTOTYPE</span>
+            <span class="ph-status">PILOTVERSIE</span>
           </div>
         </div>
         <div class="panel-body">
@@ -895,15 +939,15 @@ section{position:relative;z-index:1}
 <section class="problem-section" aria-labelledby="problem-title">
   <div class="problem-inner">
     <div class="sec-head reveal">
-      <div class="sec-num">01 / HERKENBAAR</div>
-      <h2 class="sec-title" id="problem-title">Van roosterstress naar <span class="brand-my">rust op de vloer</span></h2>
-      <p class="sec-lead">Losse berichten en last-minute wijzigingen kosten elke week tijd.</p>
+      <div class="sec-num">01 / HERKENBARE ROOSTERDRUKTE</div>
+      <h2 class="sec-title" id="problem-title">Eén duidelijk rooster <span class="brand-my">voor iedereen</span></h2>
+      <p class="sec-lead">Roosters veranderen voortdurend. Juist dan wil je niet hoeven zoeken naar de laatste versie.</p>
     </div>
     <ul class="problem-list reveal" aria-label="Herkenbare problemen bij personeelsplanning">
-      <li>Het rooster rondkrijgen kost te veel tijd.</li>
-      <li>Wijzigingen verdwijnen in WhatsApp en telefoontjes.</li>
-      <li>Je team twijfelt welk rooster leidend is.</li>
-      <li>Eén wijziging trekt aan je hele planning.</li>
+      <li>Het kost tijd om het rooster iedere week rond te krijgen.</li>
+      <li>Wijzigingen raken verspreid over berichten, telefoontjes en losse afspraken.</li>
+      <li>Medewerkers weten niet altijd welk rooster het meest actueel is.</li>
+      <li>Na iedere wijziging wil je snel weer één duidelijke planning hebben.</li>
     </ul>
   </div>
 </section>
@@ -911,28 +955,28 @@ section{position:relative;z-index:1}
 <!-- =============== FEATURES =============== -->
 <section class="features section-dark" id="mogelijkheden">
   <div class="sec-head reveal">
-    <div class="sec-num">02 / HUIDIGE PILOTSCOPE</div>
-    <h2 class="sec-title">Je rooster verdient <span class="brand-my">één duidelijke plek</span></h2>
-    <p class="sec-lead">Drie momenten die elke week terugkomen: maken, wijzigen, delen.</p>
+    <div class="sec-num">02 / DIT KUN JE TESTEN</div>
+    <h2 class="sec-title">De basis van je rooster <span class="brand-my">op één plek</span></h2>
+    <p class="sec-lead">De eerste pilot richt zich bewust op drie onderdelen van het dagelijkse roosterproces. In MyShiftpilot zit meer; op de pilotpagina lees je wat er al gebouwd is.</p>
   </div>
   <div class="f-grid">
     <article class="f-card" style="--d:0s">
       <span class="f-num">01</span>
       <div class="f-glyph"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="24" cy="24" r="18"/><path d="M24 14v10l7 4"/><circle cx="24" cy="24" r="1.5" fill="currentColor"/></svg></div>
       <h3 class="f-title">Roosters <em>maken</em></h3>
-      <p class="f-desc">Medewerkers en diensten in één overzicht.</p>
+      <p class="f-desc">Plan medewerkers en diensten samen in één overzicht.</p>
     </article>
     <article class="f-card" style="--d:.1s">
       <span class="f-num">02</span>
       <div class="f-glyph"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="18" cy="17" r="6"/><path d="M6 40c0-6 5-10 12-10s12 4 12 10"/><circle cx="34" cy="14" r="5"/><path d="M28 30c5 0 14 1 14 8"/></svg></div>
       <h3 class="f-title">Roosters <em>wijzigen</em></h3>
-      <p class="f-desc">Diensten bijwerken als de bezetting verandert.</p>
+      <p class="f-desc">Pas diensten aan zodra de bezetting of planning verandert.</p>
     </article>
     <article class="f-card" style="--d:.2s">
       <span class="f-num">03</span>
       <div class="f-glyph"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M24 4a20 20 0 0 1 20 20c0 9-5 16-13 19"/><path d="M24 4a20 20 0 0 0-20 20c0 9 5 16 13 19"/><circle cx="24" cy="24" r="6"/><path d="M24 34v10"/></svg></div>
       <h3 class="f-title">Roosters <em>delen</em></h3>
-      <p class="f-desc">Je team ziet welk rooster geldt.</p>
+      <p class="f-desc">Deel de actuele planning zodat je team weet welk rooster geldt.</p>
     </article>
   </div>
 </section>
@@ -940,17 +984,17 @@ section{position:relative;z-index:1}
 <!-- =============== HOW IT WORKS =============== -->
 <section class="how" id="werkwijze">
   <div class="sec-head reveal">
-    <div class="sec-num">03 / PRODUCTWERKING</div>
-    <h2 class="sec-title">Een rooster dat met je <span class="brand-my">zaak meebeweegt</span></h2>
-    <p class="sec-lead">Van eerste opzet tot laatste wijziging, op één plek.</p>
+    <div class="sec-num">03 / ZO WERKT DE PILOT</div>
+    <h2 class="sec-title">Van aanvraag naar <span class="brand-my">testen in de praktijk</span></h2>
+    <p class="sec-lead">Je weet vooraf hoe het traject eruitziet en wanneer een pilot daadwerkelijk start.</p>
   </div>
   <div class="runway">
     <div class="runway-line"></div>
     <div class="runway-marks"><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span></div>
     <div class="steps">
-      <div class="step" style="--d:0s"><div class="step-num">01</div><div class="step-tag">MAKEN</div><h3 class="step-title">Zet je week neer</h3><p class="step-desc">Medewerkers en diensten in één rooster.</p></div>
-      <div class="step" style="--d:.15s"><div class="step-num">02</div><div class="step-tag">WIJZIGEN</div><h3 class="step-title">Verwerk wijzigingen</h3><p class="step-desc">Werk diensten bij zodra er iets verandert.</p></div>
-      <div class="step" style="--d:.3s"><div class="step-num">03</div><div class="step-tag">DELEN</div><h3 class="step-title">Neem je team mee</h3><p class="step-desc">Iedereen ziet meteen wat actueel is.</p></div>
+      <div class="step" style="--d:0s"><div class="step-num">01</div><div class="step-tag">AANMELDEN</div><h3 class="step-title">Vertel hoe je nu roostert</h3><p class="step-desc">Je vult kort in hoe jullie plannen en waar je in het roosterproces tegenaan loopt.</p></div>
+      <div class="step" style="--d:.15s"><div class="step-num">02</div><div class="step-tag">KENNISMAKEN</div><h3 class="step-title">Bespreek of de pilot past</h3><p class="step-desc">We nemen persoonlijk contact op en bespreken wat je wilt testen en wat je van de pilot kunt verwachten.</p></div>
+      <div class="step" style="--d:.3s"><div class="step-num">03</div><div class="step-tag">TESTEN</div><h3 class="step-title">Gebruik MyShiftpilot in je eigen praktijk</h3><p class="step-desc">Na duidelijke afspraken gebruik je de afgesproken roosterfuncties met je eigen team en planning.</p></div>
     </div>
   </div>
 </section>
@@ -962,32 +1006,30 @@ section{position:relative;z-index:1}
     <div class="df-left">
       <div class="df-item" style="--d:0s">
         <div class="df-item-tag">Pilotdeelname</div>
-        <div class="df-item-title">Als een van de<br>eersten testen</div>
-        <div class="df-item-desc">Je test de eerste roosterfuncties in je eigen zaak.</div>
+        <div class="df-item-title">Test de eerste<br>roosterfuncties</div>
+        <div class="df-item-desc">Gebruik MyShiftpilot als een van de eerste horecabedrijven in de praktijk.</div>
       </div>
       <div class="df-item" style="--d:.15s">
-        <div class="df-item-tag">Praktijktest</div>
-        <div class="df-item-title">Werken met je<br>eigen rooster</div>
-        <div class="df-item-desc">Echt roosterwerk: maken, wijzigen, delen.</div>
+        <div class="df-item-tag">Eigen praktijk</div>
+        <div class="df-item-title">Werk met je<br>eigen rooster</div>
+        <div class="df-item-desc">Test met je eigen medewerkers, diensten en dagelijkse roosterwijzigingen.</div>
       </div>
     </div>
     <div class="df-center">
-      <div class="pilot-victor-wrap"><img class="pilot-victor-avatar" src="assets/victor.png" alt="VICTOR, de gids van MyShiftpilot" width="122" height="122"></div>
-      <div class="pilot-status-mark">Product in ontwikkeling</div>
-      <div class="df-headline">Help mee<br><span>MyShiftpilot te bouwen.</span></div>
-      <p class="df-sub">Jouw praktijk bepaalt hoe de eerste versie eruitziet.</p>
-      <a href="pilot.html" class="df-cta">Bekijk wat deelname inhoudt <span>→</span></a>
+      <div class="df-headline">Test MyShiftpilot<br><span>in jouw horecabedrijf.</span></div>
+      <p class="df-sub">Ontdek hoe de eerste roosterfuncties in jouw praktijk werken en deel rechtstreeks met ons wat beter kan.</p>
+      <a href="pilot.html" class="df-cta">Bekijk precies hoe de pilot werkt <span>→</span></a>
     </div>
     <div class="df-right">
       <div class="df-item" style="--d:.3s">
         <div class="df-item-tag">Direct contact</div>
-        <div class="df-item-title">Korte lijnen met<br>het productteam</div>
-        <div class="df-item-desc">Je spreekt de makers rechtstreeks.</div>
+        <div class="df-item-title">Korte lijnen met<br>de makers</div>
+        <div class="df-item-desc">Tijdens de pilot heb je rechtstreeks contact met het team achter MyShiftpilot.</div>
       </div>
       <div class="df-item" style="--d:.45s">
-        <div class="df-item-tag">Feedback</div>
-        <div class="df-item-title">Feedback op de<br>ontwikkeling</div>
-        <div class="df-item-desc">Jouw ervaring bepaalt wat we verbeteren.</div>
+        <div class="df-item-tag">Jouw feedback</div>
+        <div class="df-item-title">Vertel wat werkt<br>en wat beter moet</div>
+        <div class="df-item-desc">Jouw praktijkervaring helpt bepalen welke onderdelen we als volgende verbeteren.</div>
       </div>
     </div>
   </div>
@@ -997,10 +1039,10 @@ section{position:relative;z-index:1}
 <section class="about-brief" id="over-ons" aria-labelledby="about-brief-title">
   <div class="about-brief-inner">
     <div class="sec-head reveal">
-      <div class="sec-num">04 / GEBOUWD SAMEN MET DE HORECA</div>
-      <h2 class="sec-title" id="about-brief-title">Waarom we <span class="brand-my">MyShiftpilot</span> bouwen</h2>
-      <p class="sec-lead">We bouwen MyShiftpilot samen met horecabedrijven, niet vanaf een bureau.</p>
-      <a href="about.html" class="cta ghost">Ontmoet het team</a>
+      <div class="sec-num">04 / DE MENSEN ACHTER MYSHIFTPILOT</div>
+      <h2 class="sec-title" id="about-brief-title">Direct contact met de mensen achter <span class="brand-my">MyShiftpilot</span></h2>
+      <p class="sec-lead">Tijdens de pilot heb je rechtstreeks contact met Jort en Jarno, de oprichters van MyShiftpilot.</p>
+      <a href="about.html" class="cta ghost">Meer over MyShiftpilot</a>
     </div>
     <div class="about-people reveal" aria-label="De oprichters van MyShiftpilot">
       <div class="about-person"><img src="assets/team-jort-van-heusden.jpg" alt="Jort van Heusden" loading="lazy" decoding="async"><div><strong>Jort van Heusden</strong><span>Co-founder · je aanspreekpunt</span></div></div>
@@ -1013,15 +1055,15 @@ section{position:relative;z-index:1}
 <section class="home-faq section-dark" id="faq" aria-labelledby="faq-title">
   <div class="home-faq-inner">
     <div class="sec-head reveal">
-      <div class="sec-num">05 / VEELGESTELDE VRAGEN</div>
+      <div class="sec-num">05 / VOORDAT JE AANVRAAGT</div>
       <h2 class="sec-title" id="faq-title">Duidelijk over de <span class="brand-my">pilot</span></h2>
-      <p class="sec-lead">Eerst kennismaken, daarna samen bepalen of de pilot past.</p>
+      <p class="sec-lead">Een aanvraag is vrijblijvend. Voor een pilot start, bespreken we samen wat je test en welke afspraken gelden.</p>
     </div>
     <div class="home-faq-list reveal">
-      <details><summary>Is MyShiftpilot al algemeen beschikbaar?</summary><p>Nog niet. Een kleine groep horecabedrijven test nu de eerste versie.</p></details>
-      <details><summary>Wat kan ik tijdens de pilot testen?</summary><p>Personeelsroosters maken, wijzigen en delen.</p></details>
-      <details><summary>Kan ieder horecabedrijf deelnemen?</summary><p>We kiezen een beperkte groep. Na je aanvraag bespreken we of het past.</p></details>
-      <details><summary>Wat gebeurt er na mijn aanvraag?</summary><p>We nemen contact op voor een kennismaking. Toegang volgt niet automatisch.</p></details>
+      <details><summary>Is MyShiftpilot al algemeen beschikbaar?</summary><p>Nog niet. MyShiftpilot wordt nu getest met een beperkte groep horecabedrijven.</p></details>
+      <details><summary>Wat kan ik tijdens de pilot testen?</summary><p>De huidige pilotscope bestaat uit personeelsroosters maken, wijzigen en delen.</p></details>
+      <details><summary>Kan ieder horecabedrijf zich aanmelden?</summary><p>Ja. Na je aanvraag bespreken we persoonlijk of de huidige pilot bij je bedrijf en roosterproces past.</p></details>
+      <details><summary>Wat gebeurt er na mijn aanvraag?</summary><p>We nemen contact op voor een kennismaking. Als de pilot past, doe je gratis mee zonder betaalverplichting of automatische verlenging.</p></details>
     </div>
     <div class="home-faq-actions"><a href="faq.html" class="cta ghost">Bekijk alle pilotvragen</a></div>
   </div>
@@ -1039,7 +1081,7 @@ section{position:relative;z-index:1}
     <div class="ticket-success-overlay" id="pilot-form-success" role="status" aria-live="polite" tabindex="-1" hidden>
       <div class="tso-check">✓</div>
       <div class="tso-title">Pilotaanvraag ontvangen</div>
-      <div class="tso-sub">We bekijken je aanvraag en nemen contact op voor een kennismaking.</div>
+      <div class="tso-sub">We bekijken je aanvraag en nemen persoonlijk contact op om te bespreken of de pilot bij je bedrijf past.</div>
       <div class="tso-flight">FLIGHT MSP · GATE A.01 · BEPERKTE PILOT</div>
     </div>
     <div class="ticket-stub">
@@ -1062,18 +1104,18 @@ section{position:relative;z-index:1}
       <div class="tf-head">
         <div class="tf-head-copy">
           <span class="tf-tag">PILOTAANVRAAG</span>
-          <span class="tf-mini">Zo beoordelen we of je bedrijf bij de pilot past.</span>
+          <span class="tf-mini">Vertel kort over je bedrijf en roosterproces. Daarna bespreken we persoonlijk of de pilot past.</span>
         </div>
         <div class="tf-steps" aria-label="Stappen pilotaanvraag">
           <div class="tf-step-chip active" data-pilot-indicator="contact"><strong>1</strong><span>Gegevens</span></div>
-          <div class="tf-step-chip" data-pilot-indicator="planning"><strong>2</strong><span>Rooster</span></div>
+          <div class="tf-step-chip" data-pilot-indicator="planning"><strong>2</strong><span>Proces</span></div>
         </div>
       </div>
       <div class="pilot-step" data-pilot-step="contact">
         <ul class="pilot-assurances" aria-label="Zekerheden bij je aanvraag">
           <li>Vrijblijvende aanvraag</li>
-          <li>Geen automatische activatie</li>
-          <li>Geen betaling zonder afspraak</li>
+          <li>Geen automatische toegang</li>
+          <li>Volledig gratis pilot</li>
         </ul>
         <div class="tf-grid">
           <label class="field"><span>Bedrijfsnaam</span><input type="text" name="company" autocomplete="organization" minlength="2" maxlength="160" required placeholder="Naam van je horecabedrijf"></label>
@@ -1103,7 +1145,7 @@ section{position:relative;z-index:1}
             </select>
           </label>
         </div>
-        <button type="button" class="cta primary tf-submit" data-pilot-next><span>Verder met je rooster</span><span class="cta-arrow">→</span></button>
+        <button type="button" class="cta primary tf-submit" data-pilot-next><span>Verder met je roosterproces</span><span class="cta-arrow">→</span></button>
       </div>
       <div class="pilot-step" data-pilot-step="planning" hidden>
         <div class="tf-grid">
@@ -1130,7 +1172,7 @@ section{position:relative;z-index:1}
           <button type="button" class="cta ghost" data-pilot-back>Terug</button>
           <button type="button" class="cta primary tf-submit" data-pilot-submit><span>Verstuur pilotaanvraag</span><span class="cta-arrow">→</span></button>
         </div>
-        <p class="tf-fineprint">Beperkte pilot · deelname alleen na afstemming · product in ontwikkeling</p>
+        <p class="tf-fineprint">Beperkte zakelijke pilot · deelname na schriftelijke afspraken · product in ontwikkeling</p>
         <p class="pilot-privacy" id="pilot-privacy-text">We gebruiken je gegevens alleen voor deze aanvraag. Meer in onze <a href="privacy.html">privacyverklaring</a>.</p>
         <p class="pilot-form-fallback">Lukt versturen niet? Mail naar <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>.</p>
       </div>
@@ -1146,7 +1188,7 @@ section{position:relative;z-index:1}
   <div class="ftr-grid">
     <div class="ftr-brand">
       <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="ftr-logo-img">
-      <p class="ftr-tag">Personeelsplanning voor de horeca.<br>Product in ontwikkeling · beperkte pilot.</p>
+      <p class="ftr-tag">Personeelsroosters voor de horeca.<br>Nu in ontwikkeling · beperkte pilot.</p>
       <div class="ftr-socials">
         <a href="https://instagram.com/myshiftpilot" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
         <a href="https://linkedin.com/company/myshiftpilot" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6.5 0h3.83v1.64h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.44c0-1.3-.02-2.97-1.81-2.97-1.81 0-2.09 1.42-2.09 2.88V21h-4V9Z"/></svg></a>
@@ -1165,7 +1207,7 @@ section{position:relative;z-index:1}
     <div class="ftr-col">
       <div class="ftr-h">Juridisch</div>
       <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Voorwaarden</a>
+      <a href="terms.html">Pilotvoorwaarden</a>
     </div>
   </div>
   <div class="ftr-bottom">

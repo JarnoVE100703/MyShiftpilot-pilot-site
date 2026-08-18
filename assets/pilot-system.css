@@ -124,6 +124,17 @@ body::after {
 /* Bodytekst blijft rustig en leesbaar; display is uitsluitend voor koppen en labels. */
 body, input, select, textarea, button { font-family: var(--msp-body); }
 
+/* Alle vaste oranje typografische accenten krijgen dezelfde warme glow.
+   Interactieve states en gewone links blijven hiervan uitgesloten. */
+.accent, .hl-orange, .f-title em, .df-headline span,
+.pg-h1 em, .sec-h2 em, .cb-text h3 em, .pg-sub em, .ah-stat-title em, .mission-head h2 em,
+.brand-my, .f-num, .step-tag, .benefit-num, .process-card strong, .faq-expectations span,
+.ah-stat-lab, .df-item-tag, .df-main-tag, .ph-tag, .card-label, .ss-num, .tl-year, .fd-role,
+.ftr-h, .sec-num, .section-tag, .sec-label, .faq-group-name, .stub-tag, .tf-tag, .tso-flight {
+  color: var(--or);
+  text-shadow: 0 0 10px rgba(230, 122, 46, .55), 0 0 28px rgba(230, 122, 46, .22);
+}
+
 /* ── Contentkolom ───────────────────────────────────────────── */
 .hero, .page-hero, .section, .problem-section, .features, .how, .dark-feature,
 .about-brief, .home-faq, .demo, .page, .ftr { padding-inline: 0; }
