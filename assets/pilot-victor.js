@@ -9,14 +9,14 @@
   const storageKey = `myshiftpilot_victor_pilot_chat_v1:${pageFile}`;
   const PILOT_TOPICS = [
     { id: 'availability', label: 'Is MyShiftpilot al beschikbaar?', answer: 'MyShiftpilot is nog niet algemeen beschikbaar. We testen de eerste versie met een beperkte groep horecabedrijven die de roosterfuncties in hun eigen praktijk gebruiken.', linkUrl: 'faq.html', linkLabel: 'Bekijk de FAQ' },
-    { id: 'apply', label: 'Voor wie is de pilot bedoeld?', answer: 'De pilot is bedoeld voor zakelijke horecabedrijven die medewerkers en diensten inroosteren. Ieder horecabedrijf kan een aanvraag doen; daarna bespreken we persoonlijk of de huidige pilotscope en het moment bij jullie passen.', linkUrl: 'index.html#pilot-aanvraag', linkLabel: 'Meld je bedrijf aan' },
-    { id: 'participation', label: 'Wat gebeurt er direct na mijn aanvraag?', answer: 'We bekijken je aanvraag en nemen persoonlijk contact op voor een kennismaking. We bespreken hoe jullie nu roosteren, waar je tegenaan loopt en wat je met MyShiftpilot zou willen testen.', linkUrl: 'pilot.html', linkLabel: 'Bekijk hoe de pilot werkt' },
-    { id: 'no-automatic-access', label: 'Zit ik na een aanvraag ergens aan vast?', answer: 'Nee. Een aanvraag is geen bestelling. Als je start, is de volledige pilot gratis en is er geen betaalverplichting of automatische verlenging.', linkUrl: 'pilot.html', linkLabel: 'Bekijk hoe de pilot werkt' },
-    { id: 'talk-first', label: 'Waar kan ik terecht als ik eerst wil overleggen?', answer: 'Gebruik het contactformulier of mail ons. Je kunt eerst persoonlijk bespreken of de pilot interessant is voor jouw bedrijf voordat je een aanvraag doet.', linkUrl: 'contact.html', linkLabel: 'Stel een vraag' },
-    { id: 'scope', label: 'Wat kan ik tijdens de pilot precies testen?', answer: 'De huidige pilotscope bestaat uit personeelsroosters maken, wijzigen en delen. In MyShiftpilot zitten daarnaast onderdelen als beschikbaarheid, verlof, ruilen, klokken en agendakoppeling. Die horen niet automatisch bij iedere pilot; welke functionaliteit voor jouw bedrijf wordt geactiveerd, spreken we vooraf af.', linkUrl: 'faq.html', linkLabel: 'Bekijk de FAQ' },
-    { id: 'expectations', label: 'Wat verwachten jullie tijdens een pilot?', answer: 'We vragen je MyShiftpilot daadwerkelijk in je roosterproces te gebruiken en eerlijk te vertellen wat goed werkt, wat onduidelijk is en wat beter kan. De concrete tijdsinvestering en werkwijze bespreken we vooraf.', linkUrl: 'faq.html', linkLabel: 'Lees de afspraken in de FAQ' },
-    { id: 'feedback', label: 'Wat gebeurt er met mijn feedback?', answer: 'Je feedback helpt ons bepalen welke onderdelen van MyShiftpilot we als volgende verbeteren. We kunnen niet iedere wens direct uitvoeren, maar we bespreken duidelijk welke signalen we meenemen.', linkUrl: 'faq.html', linkLabel: 'Lees de FAQ' },
-    { id: 'cost', label: 'Wat kost de pilot en hoe lang duurt die?', answer: 'De volledige pilot is gratis. Voor de start leggen we schriftelijk vast hoe lang je test en welke roosterfuncties je gebruikt. Er zijn geen betaalgegevens, facturen of automatische verlenging.', linkUrl: 'faq.html', linkLabel: 'Lees de afspraken in de FAQ' },
+    { id: 'apply', label: 'Voor wie is de pilot bedoeld?', answer: 'De pilot is bedoeld voor zakelijke horecabedrijven die medewerkers en diensten inroosteren. Ieder horecabedrijf kan een aanvraag doen; daarna bespreken we persoonlijk of de huidige pilotscope en het moment bij u passen.', linkUrl: 'index.html#pilot-aanvraag', linkLabel: 'Meld uw bedrijf aan' },
+    { id: 'participation', label: 'Wat gebeurt er direct na mijn aanvraag?', answer: 'We bekijken uw aanvraag en nemen persoonlijk contact op voor een kennismaking. We bespreken hoe u nu roostert, waar u tegenaan loopt en wat u met MyShiftpilot zou willen testen.', linkUrl: 'pilot.html', linkLabel: 'Bekijk hoe de pilot werkt' },
+    { id: 'no-automatic-access', label: 'Zit ik na een aanvraag ergens aan vast?', answer: 'Nee. Een aanvraag is geen bestelling. Als u start, is de volledige pilot gratis en is er geen betaalverplichting of automatische verlenging.', linkUrl: 'pilot.html', linkLabel: 'Bekijk hoe de pilot werkt' },
+    { id: 'talk-first', label: 'Waar kan ik terecht als ik eerst wil overleggen?', answer: 'Gebruik het contactformulier of mail ons. U kunt eerst persoonlijk bespreken of de pilot interessant is voor uw bedrijf voordat u een aanvraag doet.', linkUrl: 'contact.html', linkLabel: 'Stel een vraag' },
+    { id: 'scope', label: 'Wat kan ik tijdens de pilot precies testen?', answer: 'De huidige pilotscope bestaat uit personeelsroosters maken, wijzigen en delen. In MyShiftpilot zitten daarnaast onderdelen als beschikbaarheid, verlof, ruilen, klokken en agendakoppeling. Die horen niet automatisch bij iedere pilot; welke functionaliteit voor uw bedrijf wordt geactiveerd, spreken we vooraf af.', linkUrl: 'faq.html', linkLabel: 'Bekijk de FAQ' },
+    { id: 'expectations', label: 'Wat verwachten jullie tijdens een pilot?', answer: 'We vragen u MyShiftpilot daadwerkelijk in uw roosterproces te gebruiken en eerlijk te vertellen wat goed werkt, wat onduidelijk is en wat beter kan. De concrete tijdsinvestering en werkwijze bespreken we vooraf.', linkUrl: 'faq.html', linkLabel: 'Lees de afspraken in de FAQ' },
+    { id: 'feedback', label: 'Wat gebeurt er met mijn feedback?', answer: 'Uw feedback helpt ons bepalen welke onderdelen van MyShiftpilot we als volgende verbeteren. We kunnen niet iedere wens direct uitvoeren, maar we bespreken duidelijk welke signalen we meenemen.', linkUrl: 'faq.html', linkLabel: 'Lees de FAQ' },
+    { id: 'cost', label: 'Wat kost de pilot en hoe lang duurt die?', answer: 'De volledige pilot is gratis. Voor de start leggen we schriftelijk vast hoe lang u test en welke roosterfuncties u gebruikt. Er zijn geen betaalgegevens, facturen of automatische verlenging.', linkUrl: 'faq.html', linkLabel: 'Lees de afspraken in de FAQ' },
     { id: 'after-pilot', label: 'Wat gebeurt er na de pilot?', answer: 'Aan het einde bespreken we wat goed werkte, wat beter kan en of een vervolg voor beide kanten logisch is. De gratis pilot gaat niet automatisch over in doorlopend gebruik of een betaald abonnement.', linkUrl: 'pilot.html', linkLabel: 'Bekijk hoe de pilot werkt' },
   ];
   // De FAQ-regressietest gebruikt deze publieke, onveranderlijke weergave om te bewaken
@@ -63,6 +63,10 @@
     '.ah-stat',
     '.tl-row',
     '.scope-steps li',
+    '.vs-asks li',
+    '.contact-subject-option',
+    '.faq-filter button',
+    '.tf-step-chip',
     '.contact-info-card',
     '.pilot-facts li',
     '.pilot-assurances li',
@@ -88,18 +92,38 @@
       typeof event.target.closest !== 'function' || event.target.closest('.pilot-mouse-glow') === element
     );
 
+    // Eén vaste straal werkte alleen op kaartformaat: in een paneel van 1220x540 werd
+    // het een spikkel en in een rij van 70px hoog een veeg van rand tot rand. De plas
+    // volgt daarom de korte zijde, met de lange zijde als bovengrens zodat hij nooit
+    // buiten het element valt, en een ondergrens voor pillen.
+    const glowSize = (bounds) => {
+      const kort = Math.min(bounds.width, bounds.height);
+      const lang = Math.max(bounds.width, bounds.height);
+      // De ondergrens voorkomt een spikkel in een pil; de lange zijde staat daar
+      // achter zodat een smalle chip nooit een plas krijgt die breder is dan hijzelf.
+      return Math.round(Math.min(Math.max(90, Math.min(kort * 1.7, lang * 0.95)), lang, 480));
+    };
+
+    const applyBounds = (bounds) => {
+      element.style.setProperty('--pilot-glow-size', `${glowSize(bounds)}px`);
+    };
+
     const update = (event) => {
       if (!ownsPointer(event)) {
         element.classList.remove('pilot-mouse-glow-active');
         return;
       }
       const bounds = element.getBoundingClientRect();
+      applyBounds(bounds);
       element.style.setProperty('--pilot-mouse-x', `${event.clientX - bounds.left}px`);
       element.style.setProperty('--pilot-mouse-y', `${event.clientY - bounds.top}px`);
       element.classList.add('pilot-mouse-glow-active');
     };
 
-    element.addEventListener('pointerenter', () => element.classList.add('pilot-mouse-glow-active'));
+    element.addEventListener('pointerenter', () => {
+      applyBounds(element.getBoundingClientRect());
+      element.classList.add('pilot-mouse-glow-active');
+    });
     element.addEventListener('pointermove', update);
     element.addEventListener('pointerleave', () => element.classList.remove('pilot-mouse-glow-active'));
   }
@@ -135,11 +159,11 @@
   host.setAttribute('data-public-site', 'true');
   host.setAttribute('data-pilot-site', 'true');
   host.innerHTML = `
-    <button type="button" class="victor-site-widget__launcher" aria-expanded="false" aria-label="Open Victor, MyShiftpilot-gids" title="VICTOR, jouw gids voor MyShiftpilot">
+    <button type="button" class="victor-site-widget__launcher" aria-expanded="false" aria-label="Open Victor, MyShiftpilot-gids" title="VICTOR, uw gids voor MyShiftpilot">
       <span class="victor-site-widget__launcher-avatar"><img src="${escapeHtml(victorImageUrl)}" alt="" aria-hidden="true"></span><span class="victor-site-widget__launcher-online" aria-hidden="true"></span>
     </button>
     <section class="victor-site-widget__panel" aria-label="Victor, MyShiftpilot-gids">
-      <div class="victor-site-widget__header"><span class="victor-site-widget__header-avatar"><img src="${escapeHtml(victorImageUrl)}" alt="" aria-hidden="true"></span><div class="victor-site-widget__header-copy"><div class="victor-site-widget__title">VICTOR</div><div class="victor-site-widget__header-subtitle">Jouw gids voor MyShiftpilot</div></div><button type="button" class="victor-site-widget__icon-button" aria-label="Sluit Victor">×</button></div>
+      <div class="victor-site-widget__header"><span class="victor-site-widget__header-avatar"><img src="${escapeHtml(victorImageUrl)}" alt="" aria-hidden="true"></span><div class="victor-site-widget__header-copy"><div class="victor-site-widget__title">VICTOR</div><div class="victor-site-widget__header-subtitle">Uw gids voor MyShiftpilot</div></div><button type="button" class="victor-site-widget__icon-button" aria-label="Sluit Victor">×</button></div>
       <div class="victor-site-widget__messages" aria-live="polite" aria-atomic="false"></div>
       <div class="victor-site-widget__quick" data-visible="true"><p class="victor-site-widget__quick-label">Kies een vraag over deze pilot</p><div class="victor-site-widget__quick-list"></div></div>
       <div class="victor-site-widget__composer"><div class="victor-site-widget__composer-meta"><button type="button" class="victor-site-widget__reset">Andere vraag</button></div></div>
@@ -178,7 +202,7 @@
     return `<div class="victor-site-widget__message victor-site-widget__message--${isAssistant ? 'assistant' : 'user'}"><div class="victor-site-widget__message-copy">${escapeHtml(message.content)}</div>${actions}${followUpMarkup}</div>`;
   }
   function renderMessages() {
-    const starter = state.messages.length ? '' : '<div class="victor-site-widget__empty"><div class="victor-site-widget__message victor-site-widget__message--assistant"><div class="victor-site-widget__message-copy">Hoi, ik ben VICTOR. MyShiftpilot is nog in ontwikkeling, maar de eerste functies voor roosters maken, wijzigen en delen kun je via deze beperkte pilot al in de praktijk testen. Kies hieronder een onderwerp.</div></div></div>';
+    const starter = state.messages.length ? '' : '<div class="victor-site-widget__empty"><div class="victor-site-widget__message victor-site-widget__message--assistant"><div class="victor-site-widget__message-copy">Hoi, ik ben VICTOR. MyShiftpilot is nog in ontwikkeling, maar de eerste functies voor roosters maken, wijzigen en delen kunt u via deze beperkte pilot al in de praktijk testen. Kies hieronder een onderwerp.</div></div></div>';
     const typing = `<div class="victor-site-widget__typing" data-visible="${asking ? 'true' : 'false'}">Victor zoekt het antwoord op deze site…</div>`;
     messagesNode.innerHTML = `${starter}${state.messages.map(renderMessage).join('')}${typing}`;
     messagesNode.scrollTop = messagesNode.scrollHeight;

@@ -1066,13 +1066,32 @@ body::after {
   z-index: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(280px circle at var(--pilot-mouse-x) var(--pilot-mouse-y), rgba(230, 122, 46, .25), rgba(230, 122, 46, .09) 38%, transparent 72%);
+  background: radial-gradient(var(--pilot-glow-size, 280px) circle at var(--pilot-mouse-x) var(--pilot-mouse-y), rgba(230, 122, 46, .25), rgba(230, 122, 46, .09) 38%, transparent 72%);
   opacity: 0;
   transition: opacity .24s cubic-bezier(.25, .1, .25, 1);
 }
 
 .pilot-mouse-glow.pilot-mouse-glow-active > .pilot-mouse-glow__layer {
   opacity: 1;
+}
+
+/* Randlicht van 1px dat oplicht waar de cursor is. Zonder deze rand zweeft de plas
+   los in het vlak; met de rand zit de gloed vast aan de vorm van het blok, ook bij
+   een pil van 38px en bij een paneel van 1220px breed. */
+@supports ((mask-composite: exclude) or (-webkit-mask-composite: xor)) {
+  .pilot-mouse-glow__layer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: radial-gradient(calc(var(--pilot-glow-size, 280px) * .9) circle at var(--pilot-mouse-x) var(--pilot-mouse-y), rgba(230, 122, 46, .6), rgba(230, 122, 46, .14) 48%, transparent 72%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
 }
 
 .pilot-mouse-glow > :not(.pilot-mouse-glow__layer, .cb-glow) {

@@ -74,9 +74,9 @@
         location: 'Vul de vestigingsplaats in.',
         businessType: 'Kies het type horecabedrijf.',
         teamSize: 'Kies de teamgrootte.',
-        currentPlanningMethod: 'Kies jullie huidige werkwijze.',
-        challenge: 'Beschrijf jullie grootste roosteruitdaging.',
-        pilotInterest: 'Kies of jullie MyShiftpilot in de praktijk willen testen.'
+        currentPlanningMethod: 'Kies uw huidige werkwijze.',
+        challenge: 'Beschrijf uw grootste roosteruitdaging.',
+        pilotInterest: 'Kies of u MyShiftpilot in de praktijk wilt testen.'
       })[name] || 'Vul dit veld in.';
     }
     if (validity.typeMismatch && name === 'email') return 'Vul een geldig e-mailadres in.';
@@ -86,7 +86,7 @@
         name: 'Vul minimaal 2 tekens in voor de naam van de contactpersoon.',
         phone: 'Vul minimaal 6 tekens in of laat het telefoonnummer leeg.',
         location: 'Vul minimaal 2 tekens in voor de vestigingsplaats.',
-        challenge: 'Beschrijf jullie roosteruitdaging in minimaal 10 tekens.'
+        challenge: 'Beschrijf uw roosteruitdaging in minimaal 10 tekens.'
       })[name] || `Vul minimaal ${control.minLength} tekens in.`;
     }
     if (validity.tooLong) return `Gebruik maximaal ${control.maxLength} tekens.`;
@@ -101,9 +101,18 @@
     return !message;
   }
 
+  function isCompactViewport(windowRef) {
+    return Boolean(
+      windowRef &&
+      typeof windowRef.matchMedia === 'function' &&
+      windowRef.matchMedia('(max-width: 768px)').matches
+    );
+  }
+
   function alignPilotForm(windowRef, documentRef, form, options) {
     if (!windowRef || !documentRef || !form || typeof windowRef.scrollTo !== 'function') return;
     const settings = options || {};
+    const compactViewport = isCompactViewport(windowRef);
     const header = documentRef.querySelector('.hdr');
     const headerHeight = header ? header.getBoundingClientRect().height : 0;
     const viewportHeight = windowRef.innerHeight || documentRef.documentElement.clientHeight;
@@ -127,9 +136,20 @@
       }
     }
 
-    windowRef.scrollTo({ top: targetTop, behavior: settings.smooth === false ? 'auto' : 'smooth' });
+    // Op een telefoon kan een lange smooth-scroll tegelijk met de hash-navigatie en de
+    // toetsenbordfocus opnieuw starten. Forceer daar tijdelijk een directe sprong;
+    // desktops behouden de bestaande vloeiende uitlijning.
+    const root = documentRef.documentElement;
+    const originalScrollBehavior = compactViewport && root ? root.style.scrollBehavior : '';
+    if (compactViewport && root) root.style.scrollBehavior = 'auto';
+    windowRef.scrollTo({ top: targetTop, behavior: settings.smooth === false || compactViewport ? 'auto' : 'smooth' });
+    if (compactViewport && root) {
+      windowRef.requestAnimationFrame(() => {
+        root.style.scrollBehavior = originalScrollBehavior;
+      });
+    }
 
-    if (settings.focus) {
+    if (settings.focus && !compactViewport) {
       windowRef.setTimeout(() => {
         const firstField = form.querySelector('input:not([type="hidden"]), select, textarea');
         if (firstField && typeof firstField.focus === 'function') firstField.focus({ preventScroll: true });
@@ -262,7 +282,7 @@
           control.disabled = true;
         });
       } catch (_error) {
-        status.textContent = 'Versturen lukt nu niet. Je aanvraag is niet ontvangen. Probeer het later opnieuw of mail naar info@myshiftpilot.nl.';
+        status.textContent = 'Versturen lukt nu niet. Uw aanvraag is niet ontvangen. Probeer het later opnieuw of mail naar info@myshiftpilot.nl.';
       } finally {
         if (!form.classList.contains('success')) {
           submitButton.disabled = false;

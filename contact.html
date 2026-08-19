@@ -72,7 +72,7 @@
   /* Hover en selectie waren allebei volvlak oranje; nu is te zien welk
      onderwerp gekozen is terwijl je over de andere chips beweegt. */
   .contact-page .contact-subject-option{transition:border-color .22s var(--e),background .22s var(--e),color .22s var(--e),box-shadow .22s var(--e),transform .22s var(--e)}
-  .contact-page .contact-subject-option:hover{border-color:rgba(230,122,46,.55);background:var(--orange-soft);color:var(--orange);transform:translateY(-1px)}
+  .contact-page .contact-subject-option:hover{border-color:rgba(230,122,46,.45);box-shadow:0 0 18px rgba(230,122,46,.18)}
   .contact-page .contact-subject-option.active{border-color:var(--orange);background:var(--orange);color:var(--white);box-shadow:0 8px 20px rgba(230,122,46,.3)}
   .contact-page .contact-subject-option.active:hover{border-color:#d56a1e;background:#d56a1e;color:var(--white)}
 
@@ -96,7 +96,7 @@
     <div class="hdr-inner">
       <button class="menu" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel"><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-txt">Menu</span></button>
       <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home"><img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img"></a>
-      <a href="index.html#pilot-aanvraag" class="login-btn">Meld je bedrijf aan</a>
+      <a href="index.html#pilot-aanvraag" class="login-btn">Meld uw bedrijf aan</a>
     </div>
     <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
       <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
@@ -113,8 +113,8 @@
     <section class="hero page-hero">
       <div class="contact-grid">
         <section class="contact-left">
-          <h1 class="pg-h1">Heb je een vraag?<br><em>Neem contact op</em></h1>
-          <p class="hero-copy">Wil je meer weten over MyShiftpilot of de pilot? Stuur ons een bericht. We beantwoorden je vraag persoonlijk.</p>
+          <h1 class="pg-h1">Heeft u een vraag?<br><em>Neem contact op</em></h1>
+          <p class="hero-copy">Wilt u meer weten over MyShiftpilot of de pilot? Stuur ons een bericht. We beantwoorden uw vraag persoonlijk.</p>
           <aside class="contact-info-stack" aria-label="Contactgegevens">
             <article class="contact-info-card"><span class="contact-info-label">Kantooruren</span><strong class="contact-info-value">MA–VR · 09:00–17:00</strong><p class="contact-info-meta">Tijdzone · Europe/Amsterdam</p></article>
             <article class="contact-info-card"><span class="contact-info-label">E-mail</span><span class="contact-email-line"><span class="contact-email-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><strong class="contact-info-value"><a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a></strong></span></article>
@@ -122,7 +122,7 @@
         </section>
         <section class="contact-form-card" id="contact-form-card" aria-labelledby="contact-form-title">
           <div class="contact-form-head"><span class="card-label" id="contact-form-title">Stuur een bericht</span><span class="card-status">Persoonlijk</span></div>
-          <p class="contact-form-note">Een korte vraag is genoeg. Wil je je bedrijf direct aanmelden voor de pilot, gebruik dan het pilotaanvraagformulier.</p>
+          <p class="contact-form-note">Een korte vraag is genoeg. Wilt u uw bedrijf direct aanmelden voor de pilot, gebruik dan het pilotaanvraagformulier.</p>
           <form class="contact-form" id="contact-form">
             <div class="contact-form-grid">
               <label class="field"><span>Naam</span><input type="text" name="name" autocomplete="name" minlength="2" maxlength="120" required placeholder="Jouw naam"></label>
@@ -134,11 +134,11 @@
             <div class="contact-subject"><span>Onderwerp</span><div class="contact-subject-options" id="contact-subject-options"><button type="button" class="contact-subject-option active">Vraag over de pilot</button><button type="button" class="contact-subject-option">Deelname bespreken</button><button type="button" class="contact-subject-option">Privacy</button><button type="button" class="contact-subject-option">Anders</button></div><input type="hidden" name="subject" value="Vraag over de pilot" id="contact-subject-value"></div>
             <label class="field field-wide"><span>Bericht</span><textarea name="message" rows="5" minlength="8" maxlength="2000" required placeholder="Waar kunnen we je mee helpen?"></textarea></label>
             <button type="submit" class="button button-primary contact-submit"><span>Verstuur bericht</span><span aria-hidden="true">→</span></button>
-            <p class="contact-privacy">We gebruiken je gegevens alleen voor dit bericht. Meer in onze <a href="privacy.html">privacyverklaring</a>.</p>
+            <p class="contact-privacy">We gebruiken uw gegevens alleen voor dit bericht. Meer in onze <a href="privacy.html">privacyverklaring</a>.</p>
             <p class="contact-status" id="contact-status" role="alert" aria-live="polite"></p>
           </form>
-          <div class="contact-success" id="contact-success" role="status" aria-live="polite" tabindex="-1" hidden><span class="success-mark">✓</span><h2>Bericht ontvangen</h2><p>Bedankt voor je bericht. We nemen persoonlijk contact met je op.</p></div>
-          <noscript><p class="contact-status">Zonder JavaScript kun je dit formulier niet versturen. Mail ons via <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>.</p></noscript>
+          <div class="contact-success" id="contact-success" role="status" aria-live="polite" tabindex="-1" hidden><span class="success-mark">✓</span><h2>Bericht ontvangen</h2><p>Bedankt voor uw bericht. We nemen persoonlijk contact met u op.</p></div>
+          <noscript><p class="contact-status">Zonder JavaScript kunt u dit formulier niet versturen. Mail ons via <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>.</p></noscript>
         </section>
       </div>
     </section>

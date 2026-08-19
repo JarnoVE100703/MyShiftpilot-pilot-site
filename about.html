@@ -224,14 +224,6 @@ a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px}
   .timeline .tl-year{text-shadow:none;transition:color .3s var(--e)}
   .timeline .tl-text{font-size:15px;line-height:1.6}
 
-  /* Cursorgloed op maat van de rij: kleine straal, lage dekking, snelle afval. */
-  .timeline .tl-row.pilot-mouse-glow>.pilot-mouse-glow__layer{background:radial-gradient(150px circle at var(--pilot-mouse-x) var(--pilot-mouse-y),rgba(230,122,46,.13),rgba(230,122,46,.04) 42%,transparent 68%);transition:opacity .3s var(--e)}
-  /* Randlicht van 1px dat oplicht waar de cursor is; verankert de gloed aan het
-     blok in plaats van hem los in het vlak te laten zweven. */
-  @supports ((mask-composite:exclude) or (-webkit-mask-composite:xor)){
-    .timeline .tl-row.pilot-mouse-glow>.pilot-mouse-glow__layer::after{content:'';position:absolute;inset:0;padding:1px;border-radius:inherit;background:radial-gradient(130px circle at var(--pilot-mouse-x) var(--pilot-mouse-y),rgba(230,122,46,.5),rgba(230,122,46,.1) 46%,transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none}
-  }
-
   @media(max-width:480px){
     .timeline{padding-left:26px}
     .timeline .tl-row{grid-template-columns:1fr;gap:6px;align-items:start;padding:14px 16px}
@@ -254,7 +246,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px}
     <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home">
       <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img">
     </a>
-    <a href="index.html#pilot-aanvraag" class="login-btn">Meld je bedrijf aan</a>
+    <a href="index.html#pilot-aanvraag" class="login-btn">Meld uw bedrijf aan</a>
   </div>
   <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
     <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
@@ -301,7 +293,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px}
         </div>
         <div class="mission-body reveal" style="--d:.12s">
           <p>Personeelsplanning raakt in de praktijk makkelijk verspreid over <strong>spreadsheets, berichten en mondelinge wijzigingen</strong>. Daardoor kost het extra aandacht om iedereen met dezelfde planning te laten werken.</p>
-          <p><span class="brand-my">My</span>Shiftpilot brengt de basis samen: <strong>een rooster maken, wijzigingen verwerken en de actuele planning delen</strong> met je team.</p>
+          <p><span class="brand-my">My</span>Shiftpilot brengt de basis samen: <strong>een rooster maken, wijzigingen verwerken en de actuele planning delen</strong> met uw team.</p>
         </div>
       </div>
       <div class="mission">
@@ -311,7 +303,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px}
         </div>
         <div class="mission-body reveal" style="--d:.18s">
           <p>We beginnen bewust met een <strong>kleine pilotscope</strong>. Zo kunnen horecabedrijven <strong>de belangrijkste roosterfuncties</strong> echt gebruiken voordat we het product verder uitbreiden.</p>
-          <p>De planner blijft altijd verantwoordelijk voor het rooster. MyShiftpilot ondersteunt met overzicht en een duidelijke workflow; het neemt de kennis van <strong>je zaak en je team</strong> niet over.</p>
+          <p>De planner blijft altijd verantwoordelijk voor het rooster. MyShiftpilot ondersteunt met overzicht en een duidelijke workflow; het neemt de kennis van <strong>uw zaak en uw team</strong> niet over.</p>
         </div>
       </div>
     </div>
@@ -331,7 +323,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px}
   <section class="section" id="team" aria-labelledby="team-title">
     <div class="section-inner founders-wrap">
       <div class="reveal"><div class="sec-label">04 / Team</div><h2 class="sec-h2" id="team-title">De mensen achter <em><span class="brand-my">My</span>Shiftpilot</em></h2></div>
-      <p class="founders-lead reveal" style="--d:.06s">Tijdens de pilot heb je rechtstreeks contact met de mensen die MyShiftpilot bouwen en jouw feedback bespreken.</p>
+      <p class="founders-lead reveal" style="--d:.06s">Tijdens de pilot heeft u rechtstreeks contact met de mensen die MyShiftpilot bouwen en uw feedback bespreken.</p>
       <div class="founders">
         <article class="founder reveal" style="--d:.05s">
           <div class="fd-photo">
@@ -362,11 +354,11 @@ a:focus-visible,button:focus-visible{outline:3px solid #fff;outline-offset:3px}
         <div class="cb-glow"></div>
         <div class="cb-body">
           <div class="cb-text">
-            <h3 id="about-cta-title">Past MyShiftpilot bij jouw roosterpraktijk?</h3>
-            <p>Meld je bedrijf aan en vertel hoe jullie nu roosteren. Daarna bespreken we persoonlijk of de huidige pilot bij jullie past.</p>
+            <h3 id="about-cta-title">Past MyShiftpilot bij uw roosterpraktijk?</h3>
+            <p>Meld uw bedrijf aan en vertel hoe u nu roostert. Daarna bespreken we persoonlijk of de huidige pilot bij u past.</p>
           </div>
           <div class="cb-actions">
-            <a href="index.html#pilot-aanvraag" class="cta primary"><span>Meld je bedrijf aan</span><span class="cta-arrow">→</span></a>
+            <a href="index.html#pilot-aanvraag" class="cta primary"><span>Meld uw bedrijf aan</span><span class="cta-arrow">→</span></a>
             <a href="pilot.html" class="cta ghost"><span>Bekijk hoe de pilot werkt</span></a>
           </div>
         </div>

@@ -128,21 +128,114 @@
   /* Het nummer is de ankerpunt van de rij; bij hover licht het mee op. */
   .pilot-hero .ss-num{text-shadow:none;transition:color .3s var(--e),text-shadow .3s var(--e)}
   .pilot-hero .scope-steps li:hover .ss-num{text-shadow:0 0 16px rgba(230,122,46,.45)}
-
-  /* Cursorgloed op maat: klein en zwak in een stap, wijd en heel licht over de
-     kaart als geheel. */
-  .pilot-hero .scope-steps li.pilot-mouse-glow>.pilot-mouse-glow__layer{background:radial-gradient(170px circle at var(--pilot-mouse-x) var(--pilot-mouse-y),rgba(230,122,46,.13),rgba(230,122,46,.04) 42%,transparent 68%);transition:opacity .3s var(--e)}
-  .pilot-hero .pilot-card.pilot-mouse-glow>.pilot-mouse-glow__layer{background:radial-gradient(420px circle at var(--pilot-mouse-x) var(--pilot-mouse-y),rgba(230,122,46,.1),rgba(230,122,46,.03) 45%,transparent 70%);transition:opacity .3s var(--e)}
-  /* Randlicht van 1px dat oplicht waar de cursor is; verankert de gloed aan het
-     blok in plaats van hem los in het vlak te laten zweven. */
-  @supports ((mask-composite:exclude) or (-webkit-mask-composite:xor)){
-    .pilot-hero .scope-steps li.pilot-mouse-glow>.pilot-mouse-glow__layer::after,
-    .pilot-hero .pilot-card.pilot-mouse-glow>.pilot-mouse-glow__layer::after{content:'';position:absolute;inset:0;padding:1px;border-radius:inherit;background:radial-gradient(var(--pilot-rim-size,150px) circle at var(--pilot-mouse-x) var(--pilot-mouse-y),rgba(230,122,46,.5),rgba(230,122,46,.1) 46%,transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;pointer-events:none}
-    .pilot-hero .pilot-card.pilot-mouse-glow>.pilot-mouse-glow__layer::after{--pilot-rim-size:340px}
-  }
-
   @media(prefers-reduced-motion:reduce){
     .pilot-hero .scope-steps li,.pilot-hero .scope-steps li::after{transition:none}
+  }
+
+  /* ── Blok 02 "Meer dan alleen het rooster" ────────────────────────────────
+     Alleen dit blok, en bewust hier in plaats van in pilot.css: de opmaak
+     hieronder overschrijft .process-card-maten uit pilot-system.css en mag de
+     procesrij van blok 03 op deze pagina niet raken.
+
+     Wat er mis was: zes identieke vlakken suggereerden dat MyShiftpilot uit zes
+     dingen bestaat, terwijl er twaalf onderdelen gebouwd zijn — en VICTOR kwam
+     op de hele pilotsite alleen voor in de voorwaarden en het privacystatement,
+     dus je ontmoette de AI-assistent voor het eerst als juridisch voorbehoud.
+
+     Nu: één portretpaneel dat VICTOR introduceert, met daaronder een compacte
+     specificatielijst. Twaalf regels passen zo binnen één schermhoogte, terwijl
+     zes kaarten van 250px dat al niet deden.
+
+     De lijstregels houden bewust class .process-card: pilot-shell.js en
+     pilot-victor.js binden hun cursorgloed op die selector. Alleen de maatvoering
+     gaat eraf, de interactie blijft gelijk aan de rest van de site. */
+  .pilot-page .prod-section{padding-block:clamp(76px,9.4svh,92px) clamp(28px,4.4svh,60px)}
+  .pilot-page .prod-section .section-head{margin-bottom:clamp(22px,3.1svh,44px)}
+  .pilot-page .prod-stage{display:grid;gap:clamp(10px,1.5svh,20px)}
+
+  /* VICTOR-paneel ─────────────────────────────────────────────────────────
+     De illustratie heeft geen alfakanaal en draagt zijn eigen donkere radar-
+     achtergrond. Die past bij de site, dus hij wordt niet uitgeknipt tot een
+     rondje maar als portretkolom in het paneel gezet; een verloop laat hem in
+     de paneelkleur oplossen zodat de naad niet als plakrand leest. */
+  .pilot-page .victor-spot{position:relative;display:grid;grid-template-columns:minmax(0,clamp(230px,25vw,320px)) minmax(0,1fr);max-width:none;padding:0;overflow:hidden;background:linear-gradient(118deg,var(--navy2) 0%,var(--navy2) 36%,var(--navy3) 100%)}
+  .pilot-page .victor-spot::before{content:'';position:absolute;top:0;left:0;right:0;z-index:3;height:2px;background:linear-gradient(90deg,var(--or),var(--bl));pointer-events:none}
+  .pilot-page .vs-portrait{position:relative;align-self:stretch;overflow:hidden;min-height:clamp(228px,27svh,300px)}
+  /* Een donkere laag over de foto knipte hem hard af: precies over zijn schouder
+     liep een zichtbare verticale naad. De foto vervaagt nu zelf via een masker,
+     zodat hij in de paneelkleur oplost in plaats van erachter te verdwijnen. */
+  .pilot-page .vs-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:46% 14%;-webkit-mask-image:linear-gradient(90deg,#000 0 50%,rgba(0,0,0,.62) 78%,transparent 100%);mask-image:linear-gradient(90deg,#000 0 50%,rgba(0,0,0,.62) 78%,transparent 100%)}
+  /* Alleen nog een voetscrim, zodat de naamplaat leesbaar blijft. */
+  .pilot-page .vs-portrait::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,14,20,.9) 0,rgba(8,14,20,.42) 20%,transparent 52%);pointer-events:none}
+  .pilot-page .vs-plate{position:absolute;right:0;bottom:0;left:0;z-index:2;display:flex;align-items:center;gap:9px;padding:14px 18px}
+  .pilot-page .vs-plate strong{font-family:var(--msp-display);font-size:20px;font-weight:900;letter-spacing:.09em;line-height:1;text-transform:uppercase}
+  .pilot-page .vs-plate-role{color:var(--wd);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+  .pilot-page .vs-online{flex:none;width:8px;height:8px;border-radius:50%;background:var(--gr);box-shadow:0 0 0 3px rgba(16,185,129,.16),0 0 12px rgba(16,185,129,.75);animation:vs-online-pulse 2.6s ease-in-out infinite}
+  @keyframes vs-online-pulse{0%,100%{opacity:1}50%{opacity:.42}}
+  .pilot-page .vs-copy{display:flex;flex-direction:column;justify-content:center;gap:clamp(8px,1svh,13px);padding:clamp(17px,2.4svh,30px) clamp(22px,2.6vw,38px)}
+  .pilot-page .vs-tag{color:var(--or);font-family:var(--msp-display);font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;text-shadow:0 0 10px rgba(230,122,46,.55),0 0 28px rgba(230,122,46,.22)}
+  .pilot-page .vs-copy h3{margin:0;padding:0;font-family:var(--msp-display);font-size:clamp(28px,2.5vw,40px);font-weight:900;line-height:1;letter-spacing:-.015em;text-transform:uppercase}
+  .pilot-page .vs-copy h3 em{font-style:normal;color:var(--or);text-shadow:0 0 10px rgba(230,122,46,.55),0 0 28px rgba(230,122,46,.22)}
+  .pilot-page .vs-copy>p{max-width:86ch;color:var(--wd);font-size:15px;line-height:1.56}
+  /* Voorbeeldvragen als losse pillen: laat in één oogopslag zien dat je VICTOR
+     in gewone taal aanspreekt, zonder er een chatvenster van na te bouwen.
+     Een vlakke pil met alleen een lijntje eromheen viel uit de toon naast de
+     panelen op de rest van de site; ze krijgen daarom hetzelfde materiaal:
+     verloop, lichtrand aan de bovenkant en een oplichtende stip. */
+  /* Handboek §6.9: een oranje stip betekent "waarschuwing" en een gloed hoort bij
+     een statusindicator. Een voorbeeldvraag is geen status, dus die stip is
+     vervangen door een lijnicoon volgens §6.8 (SVG, stroke 1.5, ronde uiteinden,
+     16 tot 20px, kleur --text-secondary).
+     Verder: tekst naar 14px (§10.1 minimum), kleuren via tokens in plaats van
+     losse rgba-waarden (§11.3), en --radius-full voor pills (§5.2). */
+  .pilot-page .vs-asks{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+  .pilot-page .vs-asks li{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border:1px solid var(--ln);border-radius:9999px;background:var(--navy3);color:var(--w);font-size:14px;line-height:1.35}
+  .pilot-page .vs-ask-icon{flex:none;width:18px;height:18px;color:var(--wd);transition:color .28s var(--e)}
+  .pilot-page .vs-ask-icon svg{width:100%;height:100%;display:block}
+  .pilot-page .vs-asks li{transition:border-color .28s var(--e),box-shadow .28s var(--e)}
+  .pilot-page .vs-asks li:hover{border-color:rgba(230,122,46,.45);box-shadow:0 0 18px rgba(230,122,46,.18)}
+  .pilot-page .vs-asks li:hover .vs-ask-icon{color:var(--or)}  .pilot-page .vs-note{padding-top:12px;border-top:1px solid var(--ln);color:var(--wd);font-size:14px;line-height:1.5}
+
+  /* Specificatielijst ─────────────────────────────────────────────────────
+     auto-fit landt op vier kolommen bij 1220px, drie rond 1000px en twee rond
+     700px; met twaalf regels blijft elke rij daardoor gevuld. */
+  .pilot-page .cap-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(9px,1.2svh,15px);margin:0;padding:0;list-style:none}
+  .pilot-page .cap-list .process-card{display:flex;flex-direction:column;min-height:0;padding:clamp(16px,2.2svh,24px) clamp(15px,1.3vw,19px)}
+  /* Accentlijn bovenaan, zoals de uitlegkaarten in blok 01; hij licht mee op met de rand. */
+  .pilot-page .cap-list .process-card::before{content:'';position:absolute;top:0;left:clamp(15px,1.3vw,19px);width:44px;height:2px;background:linear-gradient(90deg,var(--or),rgba(230,122,46,.1));box-shadow:0 0 14px var(--org)}
+  .pilot-page .cap-glyph{display:block;width:clamp(30px,3.6svh,38px);height:clamp(30px,3.6svh,38px);margin-bottom:clamp(10px,1.5svh,16px);color:var(--or)}
+  .pilot-page .cap-glyph svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 10px rgba(230,122,46,.35))}
+  .pilot-page .cap-idx{display:block;margin-bottom:7px;font-family:var(--msp-display);font-size:11px;font-weight:800;line-height:1;letter-spacing:.22em;color:var(--or);text-shadow:0 0 10px rgba(230,122,46,.5)}
+  .pilot-page .cap-list h3{margin:0;padding:0;min-height:2.2em;font-size:clamp(16px,1.35vw,19px);line-height:1.1;letter-spacing:.005em}
+  .pilot-page .cap-list p{margin-top:0;padding-top:clamp(10px,1.4svh,14px);font-size:14px;line-height:1.5}
+  /* Beide gloedlagen zijn op kaarthoogte afgestemd (280px en 260px). Een regel
+     is ~90px hoog; ongewijzigd zag je alleen de middenmoot van die cirkel als
+     een brede veeg — hetzelfde probleem als eerder bij de scope-stappen. */
+  .pilot-page .cap-list .process-card::after{background:radial-gradient(200px circle at var(--pilot-glow-x,50%) var(--pilot-glow-y,0%),rgba(230,122,46,.16),transparent 72%)}
+
+  /* Vijf kolommen worden onder ~1080px te smal voor de titels. Daaronder drie en
+     dan twee; de laatste kaart vult de rij zodat er geen gat naast blijft staan. */
+  @media(max-width:1080px){
+    .pilot-page .cap-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+  }
+  @media(max-width:900px){
+    .pilot-page .victor-spot{grid-template-columns:1fr}
+    /* Op volle breedte is de uitsnede liggend terwijl de foto staand is; met een
+       offset werd de bovenkant van zijn hoofd afgesneden. */
+    .pilot-page .vs-portrait{min-height:clamp(230px,30svh,300px)}
+    .pilot-page .vs-portrait img{object-position:50% 0;-webkit-mask-image:linear-gradient(180deg,#000 0 58%,rgba(0,0,0,.6) 84%,transparent 100%);mask-image:linear-gradient(180deg,#000 0 58%,rgba(0,0,0,.6) 84%,transparent 100%)}
+    .pilot-page .vs-portrait::after{background:linear-gradient(0deg,rgba(8,14,20,.82) 0,rgba(8,14,20,.3) 24%,transparent 58%)}
+  }
+  @media(max-width:700px){
+    .pilot-page .vs-copy{padding:24px 20px}
+    .pilot-page .cap-list{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+    .pilot-page .cap-list .process-card{padding:16px}
+    .pilot-page .cap-list h3{min-height:0}
+    .pilot-page .cap-list p{margin-top:0;padding-top:10px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .pilot-page .vs-online{animation:none}
+    .pilot-page .vs-asks li,.pilot-page .vs-ask-icon{transition:none}
   }
   </style>
 </head>
@@ -153,7 +246,7 @@
     <div class="hdr-inner">
       <button class="menu" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel"><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-txt">Menu</span></button>
       <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home"><img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img"></a>
-      <a href="index.html#pilot-aanvraag" class="login-btn">Meld je bedrijf aan</a>
+      <a href="index.html#pilot-aanvraag" class="login-btn">Meld uw bedrijf aan</a>
     </div>
     <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
       <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
@@ -173,11 +266,11 @@
       <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
       <div class="pilot-hero-inner">
       <div class="pilot-hero-copy">
-        <h1 class="hero-title">Test MyShiftpilot<br><span class="accent">in jouw horecabedrijf</span></h1>
+        <h1 class="hero-title">Test MyShiftpilot<br><span class="accent">in uw horecabedrijf</span></h1>
         <div class="pilot-hero-lede">
-          <p class="hero-copy hero-sub">Tijdens de pilot gebruik je de eerste roosterfuncties in je eigen praktijk. Je krijgt direct contact met de makers, test met je eigen planning en vertelt ons wat goed werkt en wat beter moet.</p>
+          <p class="hero-copy hero-sub">Tijdens de pilot gebruikt u de eerste roosterfuncties in uw eigen praktijk. U krijgt direct contact met de makers, test met uw eigen planning en vertelt ons wat goed werkt en wat beter moet.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="index.html#pilot-aanvraag">Meld je bedrijf aan</a>
+            <a class="button button-primary" href="index.html#pilot-aanvraag">Meld uw bedrijf aan</a>
             <a class="button button-ghost" href="#pilotproces">Zo werkt deelname</a>
           </div>
         </div>
@@ -186,12 +279,12 @@
         <div class="card-scan" aria-hidden="true"></div>
         <span class="card-bracket tl" aria-hidden="true"></span><span class="card-bracket tr" aria-hidden="true"></span>
         <span class="card-bracket bl" aria-hidden="true"></span><span class="card-bracket br" aria-hidden="true"></span>
-        <div class="card-top"><span class="card-label">Wat je test</span><span class="card-status">Beperkte pilot</span></div>
+        <div class="card-top"><span class="card-label">Wat u test</span><span class="card-status">Beperkte pilot</span></div>
         <div class="card-body">
           <ol class="scope-steps">
             <li><span class="ss-num">01</span><div><span class="ss-title">Roosters maken</span><span class="ss-desc">Plan medewerkers en diensten samen in één overzicht.</span></div></li>
-            <li><span class="ss-num">02</span><div><span class="ss-title">Roosters wijzigen</span><span class="ss-desc">Pas diensten aan wanneer je planning of bezetting verandert.</span></div></li>
-            <li><span class="ss-num">03</span><div><span class="ss-title">Roosters delen</span><span class="ss-desc">Zorg dat je team weet welke planning actueel is.</span></div></li>
+            <li><span class="ss-num">02</span><div><span class="ss-title">Roosters wijzigen</span><span class="ss-desc">Pas diensten aan wanneer uw planning of bezetting verandert.</span></div></li>
+            <li><span class="ss-num">03</span><div><span class="ss-title">Roosters delen</span><span class="ss-desc">Zorg dat uw team weet welke planning actueel is.</span></div></li>
           </ol>
         </div>
         <div class="card-foot">Dit is de huidige scope van de eerste pilot.</div>
@@ -201,38 +294,56 @@
 
     <section class="section" aria-labelledby="inhoud-title">
       <div class="section-inner">
-        <div class="section-head"><div><div class="section-tag">01 / Wat deelname inhoudt</div><h2 id="inhoud-title">Praktisch testen, <span class="accent">met duidelijke afspraken</span></h2></div><p class="section-lead">Een aanvraag is vrijblijvend. We bespreken eerst of de pilot past en leggen de afspraken vast voordat je start.</p></div>
+        <div class="section-head"><div><div class="section-tag">01 / Wat deelname inhoudt</div><h2 id="inhoud-title">Praktisch testen, <span class="accent">met duidelijke afspraken</span></h2></div><p class="section-lead">Een aanvraag is vrijblijvend. We bespreken eerst of de pilot past en leggen de afspraken vast voordat u start.</p></div>
         <div class="benefit-grid">
-          <article class="benefit"><div class="benefit-num">01 / Wat je krijgt</div><h3>Toegang tot de afgesproken pilotfuncties</h3><p>Je gebruikt de roosterfuncties die voor jouw pilot zijn geactiveerd in je eigen dagelijkse planning.</p></article>
+          <article class="benefit"><div class="benefit-num">01 / Wat u krijgt</div><h3>Toegang tot de afgesproken pilotfuncties</h3><p>U gebruikt de roosterfuncties die voor uw pilot zijn geactiveerd in uw eigen dagelijkse planning.</p></article>
           <article class="benefit"><div class="benefit-num">02 / Wat we vragen</div><h3>Echt gebruik en eerlijke feedback</h3><p>Gebruik MyShiftpilot in de praktijk en vertel wat goed werkt, wat onduidelijk is en wat beter moet.</p></article>
           <article class="benefit"><div class="benefit-num">03 / Voor wie</div><h3>Voor horecabedrijven die wekelijks roosteren</h3><p>De pilot is bedoeld voor zakelijke horecabedrijven die medewerkers en diensten plannen en de eerste versie serieus willen testen.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="product-title">
+    <section class="section prod-section" aria-labelledby="product-title">
       <div class="section-inner">
-        <div class="section-head"><div><div class="section-tag">02 / Wat er al in het product zit</div><h2 id="product-title">Meer dan <span class="accent">alleen het rooster</span></h2></div><p class="section-lead">MyShiftpilot bestaat uit een app voor medewerkers en een webomgeving voor planners. Deze onderdelen zijn gebouwd en werken; welke daarvan voor jouw pilot worden geactiveerd, spreken we vooraf af.</p></div>
-        <div class="process-grid">
-          <article class="process-card"><strong>Rooster</strong><h3>Maken en publiceren</h3><p>Plan diensten en zet het rooster pas zichtbaar voor je team op het moment dat jij publiceert.</p></article>
-          <article class="process-card"><strong>Team</strong><h3>Diensten bevestigen</h3><p>Medewerkers bevestigen hun dienst, zodat je ziet wie het rooster daadwerkelijk gelezen heeft.</p></article>
-          <article class="process-card"><strong>Planning</strong><h3>Beschikbaarheid doorgeven</h3><p>Medewerkers geven door wanneer ze wel en niet kunnen werken, voordat je het rooster maakt.</p></article>
-          <article class="process-card"><strong>Aanvragen</strong><h3>Verlof, ruilen en vrijgeven</h3><p>Verlofaanvragen, ruilverzoeken en vrijgegeven diensten lopen via één route in plaats van losse berichten.</p></article>
-          <article class="process-card"><strong>Uren</strong><h3>Klokken en toeslagen</h3><p>Medewerkers klokken in en uit op een dienst; pauze, afronding, weekendtoeslag en overuren zitten in de urenberekening.</p></article>
-          <article class="process-card"><strong>Agenda</strong><h3>Koppeling met je agenda</h3><p>Diensten kunnen meelopen in Google Agenda, Outlook of een ICS-abonnement.</p></article>
+        <div class="section-head"><div><div class="section-tag">02 / Wat er al in het product zit</div><h2 id="product-title">Meer dan <span class="accent">alleen het rooster</span></h2></div></div>
+        <div class="prod-stage">
+          <article class="victor-spot pilot-card" aria-labelledby="victor-spot-title">
+            <div class="vs-portrait">
+              <img src="assets/victor.png" alt="VICTOR, de AI-assistent van MyShiftpilot" width="1122" height="1402" loading="lazy" decoding="async">
+              <div class="vs-plate"><span class="vs-online" aria-hidden="true"></span><strong>VICTOR</strong><span class="vs-plate-role">AI-assistent</span></div>
+            </div>
+            <div class="vs-copy">
+              <div class="vs-tag">Ingebouwde AI-assistent</div>
+              <h3 id="victor-spot-title">Vraag het aan <em>VICTOR</em></h3>
+              <p>VICTOR is de AI-assistent in MyShiftpilot en leest mee in uw eigen planning. In plaats van schermen af te zoeken stelt u uw vraag gewoon in het Nederlands. Een manager krijgt antwoord over bezetting en loonkosten, een medewerker alleen over het eigen rooster.</p>
+              <ul class="vs-asks" aria-label="Voorbeelden van vragen aan VICTOR">
+                <li><span class="vs-ask-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a7.5 7.5 0 0 1-7.5 7.5H8.6L4 22.2v-4.6a7.5 7.5 0 0 1 7.5-11.1h1.5a7.5 7.5 0 0 1 7.5 7.5z"/></svg></span><span class="vs-ask-text">Waar zit zaterdag een gat in de bezetting?</span></li>
+                <li><span class="vs-ask-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a7.5 7.5 0 0 1-7.5 7.5H8.6L4 22.2v-4.6a7.5 7.5 0 0 1 7.5-11.1h1.5a7.5 7.5 0 0 1 7.5 7.5z"/></svg></span><span class="vs-ask-text">Welke diensten zijn nog niet bevestigd?</span></li>
+                <li><span class="vs-ask-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5a7.5 7.5 0 0 1-7.5 7.5H8.6L4 22.2v-4.6a7.5 7.5 0 0 1 7.5-11.1h1.5a7.5 7.5 0 0 1 7.5 7.5z"/></svg></span><span class="vs-ask-text">Vat mijn openstaande aanvragen samen.</span></li>
+              </ul>
+              <p class="vs-note">VICTOR geeft informatie, samenvattingen en suggesties. Beslissen en uitvoeren blijft aan u.</p>
+            </div>
+          </article>
+          <ul class="cap-list" aria-label="De vijf onderdelen die MyShiftpilot onderscheiden">
+            <li class="process-card"><span class="cap-glyph" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24s7.5-11.5 20-11.5S44 24 44 24s-7.5 11.5-20 11.5S4 24 4 24z"/><circle cx="24" cy="24" r="6"/></svg></span><span class="cap-idx">01</span><h3>Publiceren op uw moment</h3><p>Uw concept blijft van u alleen. Pas als u publiceert, staat het rooster in de app van uw team.</p></li>
+            <li class="process-card"><span class="cap-glyph" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="19" cy="16" r="7"/><path d="M6 40c0-7.2 5.8-13 13-13 2.6 0 5 .7 7 2"/><path d="M28 33.5l4.5 4.5L41 29"/></svg></span><span class="cap-idx">02</span><h3>Beschikbaarheid komt naar u toe</h3><p>Geen rondje appjes meer voordat u kunt beginnen. Uw team geeft in de app door wanneer ze kunnen werken.</p></li>
+            <li class="process-card"><span class="cap-glyph" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13h7c6.5 0 8.5 11 15 11h13"/><path d="M6 24h22"/><path d="M6 35h7c6.5 0 8.5-11 15-11"/><path d="M35 18l6 6-6 6"/></svg></span><span class="cap-idx">03</span><h3>Eén plek voor alle wijzigingen</h3><p>Verlof, ruilen en vrijgegeven diensten komen binnen bij het rooster. U zoekt ze niet meer terug in de groepsapp.</p></li>
+            <li class="process-card"><span class="cap-glyph" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="26" r="15"/><path d="M24 17v9l6 4"/><path d="M18 7h12"/></svg></span><span class="cap-idx">04</span><h3>Uren die zichzelf bijhouden</h3><p>Uw team klokt in en uit en ziet direct wat een dienst oplevert. Pauze, afronding, weekendtoeslag en overuren rekent MyShiftpilot voor u mee.</p></li>
+            <li class="process-card"><span class="cap-glyph" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h32v28H8z"/><path d="M8 20h32"/><path d="M17 8v8M31 8v8"/><path d="M24 26v9"/><path d="M20 31l4 4 4-4"/></svg></span><span class="cap-idx">05</span><h3>Diensten in ieders agenda</h3><p>Diensten verschijnen vanzelf in Google Agenda, Outlook of een ICS-abonnement. Niemand hoeft nog iets over te typen.</p></li>
+          </ul>
         </div>
       </div>
     </section>
 
     <section class="section section-dark" id="pilotproces" aria-labelledby="proces-title">
       <div class="section-inner">
-        <div class="section-head"><div><div class="section-tag">03 / Pilotproces</div><h2 id="proces-title">Zo verloopt een pilot <span class="accent">van aanvraag tot evaluatie</span></h2></div><p class="section-lead">Geen verrassingen onderweg: we nemen iedere stap samen door voordat je daadwerkelijk start.</p></div>
+        <div class="section-head"><div><div class="section-tag">03 / Pilotproces</div><h2 id="proces-title">Zo verloopt een pilot <span class="accent">van aanvraag tot evaluatie</span></h2></div><p class="section-lead">Geen verrassingen onderweg: we nemen iedere stap samen door voordat u daadwerkelijk start.</p></div>
         <div class="process-grid">
-          <article class="process-card"><strong>Stap 01</strong><h3>Aanmelden</h3><p>Vertel kort over je bedrijf, huidige roosterproces en grootste uitdaging.</p></article>
-          <article class="process-card"><strong>Stap 02</strong><h3>Kennismaken</h3><p>We bespreken persoonlijk hoe jullie nu roosteren en wat je met MyShiftpilot wilt testen.</p></article>
-          <article class="process-card"><strong>Stap 03</strong><h3>Pilotmatch bepalen</h3><p>We bekijken samen of de huidige pilotscope bij jouw bedrijf en situatie past.</p></article>
+          <article class="process-card"><strong>Stap 01</strong><h3>Aanmelden</h3><p>Vertel kort over uw bedrijf, huidige roosterproces en grootste uitdaging.</p></article>
+          <article class="process-card"><strong>Stap 02</strong><h3>Kennismaken</h3><p>We bespreken persoonlijk hoe u nu roostert en wat u met MyShiftpilot wilt testen.</p></article>
+          <article class="process-card"><strong>Stap 03</strong><h3>Pilotmatch bepalen</h3><p>We bekijken samen of de huidige pilotscope bij uw bedrijf en situatie past.</p></article>
           <article class="process-card"><strong>Stap 04</strong><h3>Afspraken vastleggen</h3><p>Voor de start leggen we scope, duur en werkwijze schriftelijk vast. De volledige pilot is gratis.</p></article>
-          <article class="process-card"><strong>Stap 05</strong><h3>Testen in de praktijk</h3><p>Je gebruikt de afgesproken roosterfuncties met je eigen team en planning.</p></article>
+          <article class="process-card"><strong>Stap 05</strong><h3>Testen in de praktijk</h3><p>U gebruikt de afgesproken roosterfuncties met uw eigen team en planning.</p></article>
           <article class="process-card"><strong>Stap 06</strong><h3>Feedback en vervolg bespreken</h3><p>We bespreken wat goed werkte, wat beter kan en of een vervolg voor beide kanten logisch is.</p></article>
         </div>
       </div>
@@ -244,11 +355,11 @@
           <div class="cb-glow"></div>
           <div class="cb-body">
             <div class="cb-text">
-              <h3 id="afspraken-title">Je weet vooraf waar je aan toe bent</h3>
+              <h3 id="afspraken-title">U weet vooraf waar u aan toe bent</h3>
               <p>Een aanvraag activeert geen account of betaling. Deelname aan de volledige pilot is gratis, zonder betaalgegevens of automatische verlenging.</p>
             </div>
             <div class="cb-actions">
-              <a href="index.html#pilot-aanvraag" class="cta primary"><span>Meld je bedrijf aan</span><span class="cta-arrow">→</span></a>
+              <a href="index.html#pilot-aanvraag" class="cta primary"><span>Meld uw bedrijf aan</span><span class="cta-arrow">→</span></a>
               <a href="contact.html" class="cta ghost"><span>Stel een vraag</span></a>
             </div>
           </div>

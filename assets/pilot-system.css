@@ -724,6 +724,12 @@ html { scroll-snap-type: y proximity; }
   padding-block: 84px 64px;
 }
 
+/* Een snap na de ankersprong trekt het formulier op telefoons weer uit beeld.
+   Op grotere schermen blijft het bestaande sectieritme ongewijzigd. */
+@media (max-width: 768px) {
+  html { scroll-snap-type: none; }
+}
+
 /* ── Blokvulling: de inhoud gebruikt de schermhoogte ───────── */
 /* Zonder dit staat er in een schermhoog blok een korte kaartenrij met veel lucht
    eronder. Koppen, kaarthoogtes en rijafstanden schalen daarom mee met de

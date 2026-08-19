@@ -616,9 +616,10 @@ section{position:relative;z-index:1}
 .field::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--or);transition:width .3s var(--eo)}
 .field:focus-within::after{width:100%}
 .tf-steps{display:flex;justify-content:flex-end;align-items:flex-start;gap:8px;flex-wrap:wrap;flex:0 0 auto}
-.tf-step-chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid rgba(148,163,184,.16);border-radius:999px;background:rgba(15,23,42,.24);transition:all .24s var(--e)}
+.tf-step-chip{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border:1px solid var(--ln);border-radius:9999px;background:var(--navy3);color:var(--w);font:inherit;font-size:14px;font-weight:400;line-height:1.35;transition:border-color .28s var(--e),box-shadow .28s var(--e)}
+.tf-step-chip:hover{border-color:rgba(230,122,46,.45);box-shadow:0 0 18px rgba(230,122,46,.18)}
 .tf-step-chip strong{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:999px;background:rgba(148,163,184,.14);font-size:10px;font-weight:800;letter-spacing:0;color:rgba(255,255,255,.9)}
-.tf-step-chip span{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--wf)}
+.tf-step-chip span{font-size:14px;font-weight:400;letter-spacing:0;text-transform:none;color:inherit}
 .tf-step-chip.active{border-color:rgba(59,130,246,.34);background:rgba(59,130,246,.09);box-shadow:none}
 .tf-step-chip.active strong{background:rgba(59,130,246,.9);color:#fff}
 .tf-step-chip.done{border-color:rgba(16,185,129,.24);background:rgba(16,185,129,.08)}
@@ -843,7 +844,7 @@ section{position:relative;z-index:1}
     <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home">
       <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img">
     </a>
-    <a href="#pilot-aanvraag" class="login-btn">Meld je bedrijf aan</a>
+    <a href="#pilot-aanvraag" class="login-btn">Meld uw bedrijf aan</a>
   </div>
   <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
     <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
@@ -883,11 +884,11 @@ section{position:relative;z-index:1}
         <span class="hero-title-line hl-orange">op één plek<span class="cursor"></span></span>
       </h1>
       <p class="hero-sub delay-3">
-        Breng je rooster en wijzigingen samen op één plek. MyShiftpilot is in ontwikkeling en we zoeken een beperkte groep horecabedrijven die de eerste versie in hun eigen praktijk wil testen.
+        Breng uw rooster en wijzigingen samen op één plek. MyShiftpilot is in ontwikkeling en we zoeken een beperkte groep horecabedrijven die de eerste versie in hun eigen praktijk wil testen.
       </p>
       <div class="hero-actions delay-4">
-        <a href="#pilot-aanvraag" class="cta primary"><span>Meld je bedrijf aan</span><span class="cta-arrow">→</span></a>
-        <a href="#mogelijkheden" class="cta ghost"><span>Bekijk wat je kunt testen</span></a>
+        <a href="#pilot-aanvraag" class="cta primary"><span>Meld uw bedrijf aan</span><span class="cta-arrow">→</span></a>
+        <a href="#mogelijkheden" class="cta ghost"><span>Bekijk wat u kunt testen</span></a>
       </div>
       <div class="hero-pilot-note delay-5" aria-label="De pilot is gratis">
         <img src="assets/myshiftpilot-plane-swoosh.png" alt="" aria-hidden="true" class="hero-pilot-note-mark">
@@ -945,13 +946,13 @@ section{position:relative;z-index:1}
     <div class="sec-head reveal">
       <div class="sec-num">01 / HERKENBARE ROOSTERDRUKTE</div>
       <h2 class="sec-title" id="problem-title">Eén duidelijk rooster <span class="brand-my">voor iedereen</span></h2>
-      <p class="sec-lead">Roosters veranderen voortdurend. Juist dan wil je niet hoeven zoeken naar de laatste versie.</p>
+      <p class="sec-lead">Roosters veranderen voortdurend. Juist dan wilt u niet hoeven zoeken naar de laatste versie.</p>
     </div>
     <ul class="problem-list reveal" aria-label="Herkenbare problemen bij personeelsplanning">
       <li>Het kost tijd om het rooster iedere week rond te krijgen.</li>
       <li>Wijzigingen raken verspreid over berichten, telefoontjes en losse afspraken.</li>
       <li>Medewerkers weten niet altijd welk rooster het meest actueel is.</li>
-      <li>Na iedere wijziging wil je snel weer één duidelijke planning hebben.</li>
+      <li>Na iedere wijziging wilt u snel weer één duidelijke planning hebben.</li>
     </ul>
   </div>
 </section>
@@ -959,9 +960,9 @@ section{position:relative;z-index:1}
 <!-- =============== FEATURES =============== -->
 <section class="features section-dark" id="mogelijkheden">
   <div class="sec-head reveal">
-    <div class="sec-num">02 / DIT KUN JE TESTEN</div>
-    <h2 class="sec-title">De basis van je rooster <span class="brand-my">op één plek</span></h2>
-    <p class="sec-lead">De eerste pilot richt zich bewust op drie onderdelen van het dagelijkse roosterproces. In MyShiftpilot zit meer; op de pilotpagina lees je wat er al gebouwd is.</p>
+    <div class="sec-num">02 / DIT KUNT U TESTEN</div>
+    <h2 class="sec-title">De basis van uw rooster <span class="brand-my">op één plek</span></h2>
+    <p class="sec-lead">De eerste pilot richt zich bewust op drie onderdelen van het dagelijkse roosterproces. In MyShiftpilot zit meer; op de pilotpagina leest u wat er al gebouwd is.</p>
   </div>
   <div class="f-grid">
     <article class="f-card" style="--d:0s">
@@ -980,7 +981,7 @@ section{position:relative;z-index:1}
       <span class="f-num">03</span>
       <div class="f-glyph"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M24 4a20 20 0 0 1 20 20c0 9-5 16-13 19"/><path d="M24 4a20 20 0 0 0-20 20c0 9 5 16 13 19"/><circle cx="24" cy="24" r="6"/><path d="M24 34v10"/></svg></div>
       <h3 class="f-title">Roosters <em>delen</em></h3>
-      <p class="f-desc">Deel de actuele planning zodat je team weet welk rooster geldt.</p>
+      <p class="f-desc">Deel de actuele planning zodat uw team weet welk rooster geldt.</p>
     </article>
   </div>
 </section>
@@ -990,15 +991,15 @@ section{position:relative;z-index:1}
   <div class="sec-head reveal">
     <div class="sec-num">03 / ZO WERKT DE PILOT</div>
     <h2 class="sec-title">Van aanvraag naar <span class="brand-my">testen in de praktijk</span></h2>
-    <p class="sec-lead">Je weet vooraf hoe het traject eruitziet en wanneer een pilot daadwerkelijk start.</p>
+    <p class="sec-lead">U weet vooraf hoe het traject eruitziet en wanneer een pilot daadwerkelijk start.</p>
   </div>
   <div class="runway">
     <div class="runway-line"></div>
     <div class="runway-marks"><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span><span class="mark"></span></div>
     <div class="steps">
-      <div class="step" style="--d:0s"><div class="step-num">01</div><div class="step-tag">AANMELDEN</div><h3 class="step-title">Vertel hoe je nu roostert</h3><p class="step-desc">Je vult kort in hoe jullie plannen en waar je in het roosterproces tegenaan loopt.</p></div>
-      <div class="step" style="--d:.15s"><div class="step-num">02</div><div class="step-tag">KENNISMAKEN</div><h3 class="step-title">Bespreek of de pilot past</h3><p class="step-desc">We nemen persoonlijk contact op en bespreken wat je wilt testen en wat je van de pilot kunt verwachten.</p></div>
-      <div class="step" style="--d:.3s"><div class="step-num">03</div><div class="step-tag">TESTEN</div><h3 class="step-title">Gebruik MyShiftpilot in je eigen praktijk</h3><p class="step-desc">Na duidelijke afspraken gebruik je de afgesproken roosterfuncties met je eigen team en planning.</p></div>
+      <div class="step" style="--d:0s"><div class="step-num">01</div><div class="step-tag">AANMELDEN</div><h3 class="step-title">Vertel hoe u nu roostert</h3><p class="step-desc">U vult kort in hoe u plant en waar u in het roosterproces tegenaan loopt.</p></div>
+      <div class="step" style="--d:.15s"><div class="step-num">02</div><div class="step-tag">KENNISMAKEN</div><h3 class="step-title">Bespreek of de pilot past</h3><p class="step-desc">We nemen persoonlijk contact op en bespreken wat u wilt testen en wat u van de pilot kunt verwachten.</p></div>
+      <div class="step" style="--d:.3s"><div class="step-num">03</div><div class="step-tag">TESTEN</div><h3 class="step-title">Gebruik MyShiftpilot in uw eigen praktijk</h3><p class="step-desc">Na duidelijke afspraken gebruikt u de afgesproken roosterfuncties met uw eigen team en planning.</p></div>
     </div>
   </div>
 </section>
@@ -1015,25 +1016,25 @@ section{position:relative;z-index:1}
       </div>
       <div class="df-item" style="--d:.15s">
         <div class="df-item-tag">Eigen praktijk</div>
-        <div class="df-item-title">Werk met je<br>eigen rooster</div>
-        <div class="df-item-desc">Test met je eigen medewerkers, diensten en dagelijkse roosterwijzigingen.</div>
+        <div class="df-item-title">Werk met uw<br>eigen rooster</div>
+        <div class="df-item-desc">Test met uw eigen medewerkers, diensten en dagelijkse roosterwijzigingen.</div>
       </div>
     </div>
     <div class="df-center">
-      <div class="df-headline">Test MyShiftpilot<br><span>in jouw horecabedrijf.</span></div>
-      <p class="df-sub">Ontdek hoe de eerste roosterfuncties in jouw praktijk werken en deel rechtstreeks met ons wat beter kan.</p>
+      <div class="df-headline">Test MyShiftpilot<br><span>in uw horecabedrijf.</span></div>
+      <p class="df-sub">Ontdek hoe de eerste roosterfuncties in uw praktijk werken en deel rechtstreeks met ons wat beter kan.</p>
       <a href="pilot.html" class="df-cta">Bekijk precies hoe de pilot werkt <span>→</span></a>
     </div>
     <div class="df-right">
       <div class="df-item" style="--d:.3s">
         <div class="df-item-tag">Direct contact</div>
         <div class="df-item-title">Korte lijnen met<br>de makers</div>
-        <div class="df-item-desc">Tijdens de pilot heb je rechtstreeks contact met het team achter MyShiftpilot.</div>
+        <div class="df-item-desc">Tijdens de pilot heeft u rechtstreeks contact met het team achter MyShiftpilot.</div>
       </div>
       <div class="df-item" style="--d:.45s">
-        <div class="df-item-tag">Jouw feedback</div>
+        <div class="df-item-tag">Uw feedback</div>
         <div class="df-item-title">Vertel wat werkt<br>en wat beter moet</div>
-        <div class="df-item-desc">Jouw praktijkervaring helpt bepalen welke onderdelen we als volgende verbeteren.</div>
+        <div class="df-item-desc">Uw praktijkervaring helpt bepalen welke onderdelen we als volgende verbeteren.</div>
       </div>
     </div>
   </div>
@@ -1045,12 +1046,12 @@ section{position:relative;z-index:1}
     <div class="sec-head reveal">
       <div class="sec-num">04 / DE MENSEN ACHTER MYSHIFTPILOT</div>
       <h2 class="sec-title" id="about-brief-title">Direct contact met de mensen achter <span class="brand-my">MyShiftpilot</span></h2>
-      <p class="sec-lead">Tijdens de pilot heb je rechtstreeks contact met Jort en Jarno, de oprichters van MyShiftpilot.</p>
+      <p class="sec-lead">Tijdens de pilot heeft u rechtstreeks contact met Jort en Jarno, de oprichters van MyShiftpilot.</p>
       <a href="about.html" class="cta ghost">Meer over MyShiftpilot</a>
     </div>
     <div class="about-people reveal" aria-label="De oprichters van MyShiftpilot">
-      <div class="about-person"><img src="assets/team-jort-van-heusden.jpg" alt="Jort van Heusden" loading="lazy" decoding="async"><div><strong>Jort van Heusden</strong><span>Co-founder · je aanspreekpunt</span></div></div>
-      <div class="about-person"><img src="assets/team-jarno-van-eeuwijk.jpg" alt="Jarno van Eeuwijk" loading="lazy" decoding="async"><div><strong>Jarno van Eeuwijk</strong><span>Co-founder · je aanspreekpunt</span></div></div>
+      <div class="about-person"><img src="assets/team-jort-van-heusden.jpg" alt="Jort van Heusden" loading="lazy" decoding="async"><div><strong>Jort van Heusden</strong><span>Co-founder · uw aanspreekpunt</span></div></div>
+      <div class="about-person"><img src="assets/team-jarno-van-eeuwijk.jpg" alt="Jarno van Eeuwijk" loading="lazy" decoding="async"><div><strong>Jarno van Eeuwijk</strong><span>Co-founder · uw aanspreekpunt</span></div></div>
     </div>
   </div>
 </section>
@@ -1059,15 +1060,15 @@ section{position:relative;z-index:1}
 <section class="home-faq section-dark" id="faq" aria-labelledby="faq-title">
   <div class="home-faq-inner">
     <div class="sec-head reveal">
-      <div class="sec-num">05 / VOORDAT JE AANVRAAGT</div>
+      <div class="sec-num">05 / VOORDAT U AANVRAAGT</div>
       <h2 class="sec-title" id="faq-title">Duidelijk over de <span class="brand-my">pilot</span></h2>
-      <p class="sec-lead">Een aanvraag is vrijblijvend. Voor een pilot start, bespreken we samen wat je test en welke afspraken gelden.</p>
+      <p class="sec-lead">Een aanvraag is vrijblijvend. Voor een pilot start, bespreken we samen wat u test en welke afspraken gelden.</p>
     </div>
     <div class="home-faq-list reveal">
       <details><summary>Is MyShiftpilot al algemeen beschikbaar?</summary><p>Nog niet. MyShiftpilot wordt nu getest met een beperkte groep horecabedrijven.</p></details>
       <details><summary>Wat kan ik tijdens de pilot testen?</summary><p>De huidige pilotscope bestaat uit personeelsroosters maken, wijzigen en delen.</p></details>
-      <details><summary>Kan ieder horecabedrijf zich aanmelden?</summary><p>Ja. Na je aanvraag bespreken we persoonlijk of de huidige pilot bij je bedrijf en roosterproces past.</p></details>
-      <details><summary>Wat gebeurt er na mijn aanvraag?</summary><p>We nemen contact op voor een kennismaking. Als de pilot past, doe je gratis mee zonder betaalverplichting of automatische verlenging.</p></details>
+      <details><summary>Kan ieder horecabedrijf zich aanmelden?</summary><p>Ja. Na uw aanvraag bespreken we persoonlijk of de huidige pilot bij uw bedrijf en roosterproces past.</p></details>
+      <details><summary>Wat gebeurt er na mijn aanvraag?</summary><p>We nemen contact op voor een kennismaking. Als de pilot past, doet u gratis mee zonder betaalverplichting of automatische verlenging.</p></details>
     </div>
     <div class="home-faq-actions"><a href="faq.html" class="cta ghost">Bekijk alle pilotvragen</a></div>
   </div>
@@ -1077,7 +1078,7 @@ section{position:relative;z-index:1}
 <section class="demo" id="pilot-aanvraag" aria-labelledby="pilot-form-title">
   <div class="sec-head">
     <div class="sec-num">06 / PILOTAANVRAAG</div>
-    <h2 class="sec-title" id="pilot-form-title">Meld je bedrijf aan voor de pilot</h2>
+    <h2 class="sec-title" id="pilot-form-title">Meld uw bedrijf aan voor de pilot</h2>
   </div>
   <form class="ticket" id="pilot-form" aria-describedby="pilot-privacy-text">
     <div class="ticket-after-top"></div>
@@ -1085,13 +1086,13 @@ section{position:relative;z-index:1}
     <div class="ticket-success-overlay" id="pilot-form-success" role="status" aria-live="polite" tabindex="-1" hidden>
       <div class="tso-check">✓</div>
       <div class="tso-title">Pilotaanvraag ontvangen</div>
-      <div class="tso-sub">We bekijken je aanvraag en nemen persoonlijk contact op om te bespreken of de pilot bij je bedrijf past.</div>
+      <div class="tso-sub">We bekijken uw aanvraag en nemen persoonlijk contact op om te bespreken of de pilot bij uw bedrijf past.</div>
       <div class="tso-flight">FLIGHT MSP · GATE A.01 · BEPERKTE PILOT</div>
     </div>
     <div class="ticket-stub">
       <div class="stub-top"><div class="stub-tag">BOARDING PASS</div><div class="stub-seq">SEQ-001</div></div>
       <div class="stub-route">
-        <div class="rt-from"><span class="rt-lab">FROM</span><span class="rt-code">NU</span><span class="rt-name">Je huidige planning</span></div>
+        <div class="rt-from"><span class="rt-lab">FROM</span><span class="rt-code">NU</span><span class="rt-name">Uw huidige planning</span></div>
         <div class="rt-line"><svg viewBox="0 0 100 24" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 L92 12" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/><path d="M88 6 L96 12 L88 18 Z" fill="currentColor"/></svg></div>
         <div class="rt-to"><span class="rt-lab">TO</span><span class="rt-code">MSP</span><span class="rt-name">Beperkte pilot</span></div>
       </div>
@@ -1108,7 +1109,7 @@ section{position:relative;z-index:1}
       <div class="tf-head">
         <div class="tf-head-copy">
           <span class="tf-tag">PILOTAANVRAAG</span>
-          <span class="tf-mini">Vertel kort over je bedrijf en roosterproces. Daarna bespreken we persoonlijk of de pilot past.</span>
+          <span class="tf-mini">Vertel kort over uw bedrijf en roosterproces. Daarna bespreken we persoonlijk of de pilot past.</span>
         </div>
         <div class="tf-steps" aria-label="Stappen pilotaanvraag">
           <div class="tf-step-chip active" data-pilot-indicator="contact"><strong>1</strong><span>Gegevens</span></div>
@@ -1149,11 +1150,11 @@ section{position:relative;z-index:1}
             </select>
           </label>
         </div>
-        <button type="button" class="cta primary tf-submit" data-pilot-next><span>Verder met je roosterproces</span><span class="cta-arrow">→</span></button>
+        <button type="button" class="cta primary tf-submit" data-pilot-next><span>Verder met uw roosterproces</span><span class="cta-arrow">→</span></button>
       </div>
       <div class="pilot-step" data-pilot-step="planning" hidden>
         <div class="tf-grid">
-          <label class="field span-2"><span>Hoe maken jullie nu het rooster?</span>
+          <label class="field span-2"><span>Hoe maakt u nu het rooster?</span>
             <select name="currentPlanningMethod" required>
               <option value="" disabled selected>Kies huidige werkwijze</option>
               <option value="spreadsheets">Excel of spreadsheets</option>
@@ -1163,10 +1164,10 @@ section{position:relative;z-index:1}
               <option value="other">Anders</option>
             </select>
           </label>
-          <label class="field span-2"><span>Wat is jullie grootste roosteruitdaging?</span><textarea name="challenge" rows="4" minlength="10" maxlength="300" required placeholder="Waar kost het roosteren de meeste tijd?"></textarea></label>
-          <label class="field span-2"><span>Willen jullie MyShiftpilot in de praktijk testen?</span>
+          <label class="field span-2"><span>Wat is uw grootste roosteruitdaging?</span><textarea name="challenge" rows="4" minlength="10" maxlength="300" required placeholder="Waar kost het roosteren de meeste tijd?"></textarea></label>
+          <label class="field span-2"><span>Wilt u MyShiftpilot in de praktijk testen?</span>
             <select name="pilotInterest" required>
-              <option value="" disabled selected>Kies wat bij jullie past</option>
+              <option value="" disabled selected>Kies wat bij u past</option>
               <option value="yes">Ja, we willen de roosterfuncties in de praktijk testen</option>
               <option value="exploring">We willen eerst bespreken wat deelname inhoudt</option>
             </select>
@@ -1177,11 +1178,11 @@ section{position:relative;z-index:1}
           <button type="button" class="cta primary tf-submit" data-pilot-submit><span>Verstuur pilotaanvraag</span><span class="cta-arrow">→</span></button>
         </div>
         <p class="tf-fineprint">Beperkte zakelijke pilot · deelname na schriftelijke afspraken · product in ontwikkeling</p>
-        <p class="pilot-privacy" id="pilot-privacy-text">We gebruiken je gegevens alleen voor deze aanvraag. Meer in onze <a href="privacy.html">privacyverklaring</a>.</p>
+        <p class="pilot-privacy" id="pilot-privacy-text">We gebruiken uw gegevens alleen voor deze aanvraag. Meer in onze <a href="privacy.html">privacyverklaring</a>.</p>
         <p class="pilot-form-fallback">Lukt versturen niet? Mail naar <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>.</p>
       </div>
       <p class="pilot-form-status" id="pilot-form-status" role="alert" aria-live="polite"></p>
-      <noscript><p class="pilot-form-status">Zonder JavaScript kun je dit formulier niet versturen. Mail naar <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>.</p></noscript>
+      <noscript><p class="pilot-form-status">Zonder JavaScript kunt u dit formulier niet versturen. Mail naar <a href="mailto:info@myshiftpilot.nl">info@myshiftpilot.nl</a>.</p></noscript>
     </div>
   </form>
 </section>
