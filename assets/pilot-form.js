@@ -109,6 +109,37 @@
     );
   }
 
+  let compactScrollFrame = null;
+
+  function scrollCompactViewport(windowRef, targetTop, onSettled) {
+    if (compactScrollFrame !== null) windowRef.cancelAnimationFrame(compactScrollFrame);
+
+    const startTop = windowRef.scrollY;
+    const distance = targetTop - startTop;
+    const reduceMotion = windowRef.matchMedia && windowRef.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (Math.abs(distance) < 2 || reduceMotion) {
+      windowRef.scrollTo(0, targetTop);
+      compactScrollFrame = null;
+      if (onSettled) onSettled();
+      return;
+    }
+
+    const startedAt = windowRef.performance.now();
+    const duration = 300;
+    const step = (now) => {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = progress * progress * (3 - 2 * progress);
+      windowRef.scrollTo(0, startTop + distance * eased);
+      if (progress < 1) {
+        compactScrollFrame = windowRef.requestAnimationFrame(step);
+      } else {
+        compactScrollFrame = null;
+        if (onSettled) onSettled();
+      }
+    };
+    compactScrollFrame = windowRef.requestAnimationFrame(step);
+  }
+
   function alignPilotForm(windowRef, documentRef, form, options) {
     if (!windowRef || !documentRef || !form || typeof windowRef.scrollTo !== 'function') return;
     const settings = options || {};
@@ -136,17 +167,20 @@
       }
     }
 
-    // Op een telefoon kan een lange smooth-scroll tegelijk met de hash-navigatie en de
-    // toetsenbordfocus opnieuw starten. Forceer daar tijdelijk een directe sprong;
+    // Op een telefoon kan een lange browser-scroll tegelijk met de hash-navigatie en
+    // toetsenbordfocus opnieuw starten. Gebruik daar één korte, eigen overgang;
     // desktops behouden de bestaande vloeiende uitlijning.
     const root = documentRef.documentElement;
     const originalScrollBehavior = compactViewport && root ? root.style.scrollBehavior : '';
     if (compactViewport && root) root.style.scrollBehavior = 'auto';
-    windowRef.scrollTo({ top: targetTop, behavior: settings.smooth === false || compactViewport ? 'auto' : 'smooth' });
-    if (compactViewport && root) {
-      windowRef.requestAnimationFrame(() => {
-        root.style.scrollBehavior = originalScrollBehavior;
-      });
+    const restoreScrollBehavior = () => {
+      if (compactViewport && root) root.style.scrollBehavior = originalScrollBehavior;
+    };
+    if (compactViewport && settings.smooth !== false) {
+      scrollCompactViewport(windowRef, targetTop, restoreScrollBehavior);
+    } else {
+      windowRef.scrollTo({ top: targetTop, behavior: settings.smooth === false || compactViewport ? 'auto' : 'smooth' });
+      if (compactViewport && root) windowRef.requestAnimationFrame(restoreScrollBehavior);
     }
 
     if (settings.focus && !compactViewport) {
