@@ -5,35 +5,35 @@
 
 @font-face {
   font-family: 'Barlow Condensed';
-  src: url('fonts/BarlowCondensed-ExtraBold.woff2') format('woff2');
+  src: url('../fonts/BarlowCondensed-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Barlow Condensed';
-  src: url('fonts/BarlowCondensed-Black.woff2') format('woff2');
+  src: url('../fonts/BarlowCondensed-Black.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('fonts/SourceSansPro-Regular.woff2') format('woff2');
+  src: url('../fonts/SourceSansPro-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('fonts/SourceSansPro-SemiBold.woff2') format('woff2');
+  src: url('../fonts/SourceSansPro-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: 'Source Sans Pro';
-  src: url('fonts/SourceSansPro-Bold.woff2') format('woff2');
+  src: url('../fonts/SourceSansPro-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

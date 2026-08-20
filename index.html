@@ -2,26 +2,34 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-8dCUVip9WNWYv1AmAYcErTei0MZnoc/52XGE5ax0/io=' 'sha256-vQK4TBlIiwWmI4G4rD84yVUTGEj2ado/eQeEAlhP55A='; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-6WDxuoc/Rn368YuGNhCPDZMvDyRJpQ9/712LKuHMDK4=' 'sha256-9G4q+EmCUOIXl98CjyH/F7Au8CFqm/bioWS20IsUgFc='; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
     <meta name="myshiftpilot-api-base" content="https://api.myshiftpilot.nl">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080E14">
-<title>MyShiftpilot — Personeelsroosters voor de horeca</title>
-<meta name="description" content="MyShiftpilot helpt horecabedrijven om personeelsroosters te maken, wijzigen en delen. Het product is in ontwikkeling. We zoeken een beperkt aantal horecabedrijven voor de pilot.">
+<title>Personeelsroosters voor de horeca maken en delen | MyShiftpilot</title>
+<meta name="description" content="MyShiftpilot is roostersoftware voor de horeca: personeelsroosters maken, wijzigen en delen. Het product is in ontwikkeling; meld uw bedrijf aan voor de pilot.">
   <link rel="canonical" href="https://myshiftpilot.nl/">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="MyShiftpilot">
   <meta property="og:locale" content="nl_NL">
   <meta property="og:url" content="https://myshiftpilot.nl/">
-  <meta property="og:title" content="MyShiftpilot — Personeelsroosters voor de horeca">
-  <meta property="og:description" content="MyShiftpilot helpt horecabedrijven om personeelsroosters te maken, wijzigen en delen. Het product is in ontwikkeling. We zoeken een beperkt aantal horecabedrijven voor de pilot.">
-  <meta property="og:image" content="https://myshiftpilot.nl/assets/logoMyShiftpilot_v5.png">
-  <meta property="og:image:alt" content="MyShiftpilot">
+  <meta property="og:title" content="Personeelsroosters voor de horeca maken en delen | MyShiftpilot">
+  <meta property="og:description" content="MyShiftpilot is roostersoftware voor de horeca: personeelsroosters maken, wijzigen en delen. Het product is in ontwikkeling; meld uw bedrijf aan voor de pilot.">
+  <meta property="og:image" content="https://myshiftpilot.nl/assets/img/og-myshiftpilot.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MyShiftpilot — personeelsroosters voor de horeca">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MyShiftpilot — Personeelsroosters voor de horeca">
-  <meta name="twitter:description" content="MyShiftpilot helpt horecabedrijven om personeelsroosters te maken, wijzigen en delen. Het product is in ontwikkeling. We zoeken een beperkt aantal horecabedrijven voor de pilot.">
-  <meta name="twitter:image" content="https://myshiftpilot.nl/assets/logoMyShiftpilot_v5.png">
+  <meta name="twitter:title" content="Personeelsroosters voor de horeca maken en delen | MyShiftpilot">
+  <meta name="twitter:description" content="MyShiftpilot is roostersoftware voor de horeca: personeelsroosters maken, wijzigen en delen. Het product is in ontwikkeling; meld uw bedrijf aan voor de pilot.">
+  <meta name="twitter:image" content="https://myshiftpilot.nl/assets/img/og-myshiftpilot.png">
+  <meta name="twitter:image:alt" content="MyShiftpilot — personeelsroosters voor de horeca">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/icons/favicon-96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -30,22 +38,83 @@
       "@type": "Organization",
       "@id": "https://myshiftpilot.nl/#organisatie",
       "name": "MyShiftpilot",
-      "alternateName": ["My Shiftpilot", "Shiftpilot", "Shift Pilot"],
+      "alternateName": [
+        "My Shiftpilot",
+        "Shiftpilot",
+        "Shift Pilot",
+        "MyShiftPilot"
+      ],
       "url": "https://myshiftpilot.nl/",
-      "logo": "https://myshiftpilot.nl/assets/logoMyShiftpilot_v5.png",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://myshiftpilot.nl/#logo",
+        "url": "https://myshiftpilot.nl/assets/img/logo-myshiftpilot-rond.png",
+        "contentUrl": "https://myshiftpilot.nl/assets/img/logo-myshiftpilot-rond.png",
+        "width": 512,
+        "height": 512,
+        "caption": "MyShiftpilot"
+      },
+      "image": {
+        "@id": "https://myshiftpilot.nl/#logo"
+      },
       "email": "info@myshiftpilot.nl",
-      "description": "MyShiftpilot is software waarmee horecabedrijven personeelsroosters maken, wijzigen en delen. Het product is in ontwikkeling en wordt getest in een beperkte pilot.",
+      "slogan": "Personeelsroosters maken, wijzigen en delen op één plek",
+      "description": "MyShiftpilot is roostersoftware waarmee horecabedrijven personeelsroosters maken, wijzigen en delen. Het product is in ontwikkeling en wordt getest in een beperkte pilot.",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Nederland"
+      },
+      "knowsAbout": [
+        "personeelsplanning",
+        "personeelsrooster",
+        "roosterplanning",
+        "roostersoftware",
+        "roosterprogramma",
+        "werkrooster",
+        "dienstrooster",
+        "weekrooster",
+        "horecarooster",
+        "personeelsplanning horeca",
+        "roosteren horeca",
+        "online roosteren",
+        "rooster maken",
+        "rooster wijzigen",
+        "rooster delen",
+        "rooster publiceren",
+        "beschikbaarheid medewerkers",
+        "verlofaanvragen",
+        "diensten ruilen",
+        "urenregistratie",
+        "gewerkte uren bijhouden",
+        "agendakoppeling",
+        "medewerkersplanning",
+        "shiftplanning",
+        "planning restaurant",
+        "planning café",
+        "planning hotel",
+        "planning cateringbedrijf"
+      ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Jozef Israëlslaan 2",
         "postalCode": "3735 LN",
         "addressLocality": "Bosch en Duin",
+        "addressRegion": "Utrecht",
         "addressCountry": "NL"
       },
       "identifier": {
         "@type": "PropertyValue",
         "name": "KVK",
         "value": "99920360"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "info@myshiftpilot.nl",
+        "areaServed": "NL",
+        "availableLanguage": [
+          "nl"
+        ]
       },
       "sameAs": [
         "https://www.linkedin.com/company/myshiftpilot",
@@ -56,10 +125,68 @@
       "@type": "WebSite",
       "@id": "https://myshiftpilot.nl/#website",
       "name": "MyShiftpilot",
-      "alternateName": ["My Shiftpilot", "Shiftpilot"],
+      "alternateName": [
+        "My Shiftpilot",
+        "Shiftpilot"
+      ],
       "url": "https://myshiftpilot.nl/",
       "inLanguage": "nl-NL",
-      "publisher": { "@id": "https://myshiftpilot.nl/#organisatie" }
+      "publisher": {
+        "@id": "https://myshiftpilot.nl/#organisatie"
+      }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://myshiftpilot.nl/#ogimage",
+      "url": "https://myshiftpilot.nl/assets/img/og-myshiftpilot.png",
+      "contentUrl": "https://myshiftpilot.nl/assets/img/og-myshiftpilot.png",
+      "width": 1200,
+      "height": 630,
+      "caption": "MyShiftpilot — personeelsroosters voor de horeca"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://myshiftpilot.nl/#webpage",
+      "url": "https://myshiftpilot.nl/",
+      "name": "Personeelsroosters voor de horeca maken en delen | MyShiftpilot",
+      "description": "MyShiftpilot is roostersoftware voor de horeca: personeelsroosters maken, wijzigen en delen. Het product is in ontwikkeling; meld uw bedrijf aan voor de pilot.",
+      "inLanguage": "nl-NL",
+      "isPartOf": {
+        "@id": "https://myshiftpilot.nl/#website"
+      },
+      "about": {
+        "@id": "https://myshiftpilot.nl/#organisatie"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://myshiftpilot.nl/#ogimage"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://myshiftpilot.nl/#software",
+      "name": "MyShiftpilot",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "Roostersoftware en personeelsplanning",
+      "operatingSystem": "Web, iOS, Android",
+      "url": "https://myshiftpilot.nl/",
+      "inLanguage": "nl-NL",
+      "softwareVersion": "pilot",
+      "description": "Roostersoftware voor horecabedrijven: personeelsroosters maken, wijzigen, publiceren en delen met het team.",
+      "publisher": {
+        "@id": "https://myshiftpilot.nl/#organisatie"
+      },
+      "image": {
+        "@id": "https://myshiftpilot.nl/#logo"
+      },
+      "featureList": [
+        "Personeelsrooster maken",
+        "Roosterwijzigingen doorvoeren",
+        "Rooster publiceren en delen met het team",
+        "Beschikbaarheid van medewerkers",
+        "Verlof- en ruilverzoeken",
+        "Urenregistratie",
+        "Agendakoppeling"
+      ]
     }
   ]
 }
@@ -828,8 +955,8 @@ section{position:relative;z-index:1}
   .ticker-track{transform:none!important}
 }
 </style>
-  <link rel="stylesheet" href="assets/pilot-victor.css?v=20260817r">
-  <link rel="stylesheet" href="assets/pilot-system.css?v=20260817j">
+  <link rel="stylesheet" href="assets/css/pilot-victor.css?v=20260817r">
+  <link rel="stylesheet" href="assets/css/pilot-system.css?v=20260817j">
 </head>
 <body>
 
@@ -842,7 +969,7 @@ section{position:relative;z-index:1}
       <span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-txt">Menu</span>
     </button>
     <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home">
-      <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img">
+      <img src="assets/img/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img">
     </a>
     <a href="#pilot-aanvraag" class="login-btn">Meld uw bedrijf aan</a>
   </div>
@@ -891,7 +1018,7 @@ section{position:relative;z-index:1}
         <a href="#mogelijkheden" class="cta ghost"><span>Bekijk wat u kunt testen</span></a>
       </div>
       <div class="hero-pilot-note delay-5" aria-label="De pilot is gratis">
-        <img src="assets/myshiftpilot-plane-swoosh.png" alt="" aria-hidden="true" class="hero-pilot-note-mark">
+        <img src="assets/img/myshiftpilot-plane-swoosh.png" alt="" aria-hidden="true" class="hero-pilot-note-mark">
         <div><strong>De pilot is volledig gratis</strong><span>Geen kosten, geen betaalgegevens en geen automatische verlenging.</span></div>
       </div>
     </div>
@@ -1050,8 +1177,8 @@ section{position:relative;z-index:1}
       <a href="about.html" class="cta ghost">Meer over MyShiftpilot</a>
     </div>
     <div class="about-people reveal" aria-label="De oprichters van MyShiftpilot">
-      <div class="about-person"><img src="assets/team-jort-van-heusden.jpg" alt="Jort van Heusden" loading="lazy" decoding="async"><div><strong>Jort van Heusden</strong><span>Co-founder · uw aanspreekpunt</span></div></div>
-      <div class="about-person"><img src="assets/team-jarno-van-eeuwijk.jpg" alt="Jarno van Eeuwijk" loading="lazy" decoding="async"><div><strong>Jarno van Eeuwijk</strong><span>Co-founder · uw aanspreekpunt</span></div></div>
+      <div class="about-person"><img src="assets/img/team-jort-van-heusden.jpg" alt="Jort van Heusden" loading="lazy" decoding="async"><div><strong>Jort van Heusden</strong><span>Co-founder · uw aanspreekpunt</span></div></div>
+      <div class="about-person"><img src="assets/img/team-jarno-van-eeuwijk.jpg" alt="Jarno van Eeuwijk" loading="lazy" decoding="async"><div><strong>Jarno van Eeuwijk</strong><span>Co-founder · uw aanspreekpunt</span></div></div>
     </div>
   </div>
 </section>
@@ -1117,15 +1244,15 @@ section{position:relative;z-index:1}
         </div>
       </div>
       <div class="pilot-step" data-pilot-step="contact">
-        <ul class="pilot-assurances" aria-label="Zekerheden bij je aanvraag">
+        <ul class="pilot-assurances" aria-label="Zekerheden bij uw aanvraag">
           <li>Vrijblijvende aanvraag</li>
           <li>Eerst persoonlijk contact</li>
           <li>Volledig gratis pilot</li>
         </ul>
         <div class="tf-grid">
-          <label class="field"><span>Bedrijfsnaam</span><input type="text" name="company" autocomplete="organization" minlength="2" maxlength="160" required placeholder="Naam van je horecabedrijf"></label>
+          <label class="field"><span>Bedrijfsnaam</span><input type="text" name="company" autocomplete="organization" minlength="2" maxlength="160" required placeholder="Naam van uw horecabedrijf"></label>
           <label class="field"><span>Naam contactpersoon</span><input type="text" name="name" autocomplete="name" minlength="2" maxlength="120" required placeholder="Voor- en achternaam"></label>
-          <label class="field"><span>Zakelijk e-mailadres</span><input type="email" name="email" autocomplete="email" maxlength="160" required placeholder="jij@bedrijf.nl"></label>
+          <label class="field"><span>Zakelijk e-mailadres</span><input type="email" name="email" autocomplete="email" maxlength="160" required placeholder="u@bedrijf.nl"></label>
           <label class="field"><span>Telefoonnummer <small>(optioneel)</small></span><input type="tel" name="phone" autocomplete="tel" minlength="6" maxlength="40" placeholder="06 12345678"></label>
           <label class="field"><span>Vestigingsplaats</span><input type="text" name="location" autocomplete="address-level2" minlength="2" maxlength="120" required placeholder="Bijvoorbeeld Utrecht"></label>
           <label class="field"><span>Type horecabedrijf</span>
@@ -1192,7 +1319,7 @@ section{position:relative;z-index:1}
 <footer class="ftr">
   <div class="ftr-grid">
     <div class="ftr-brand">
-      <img src="assets/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="ftr-logo-img">
+      <img src="assets/img/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="ftr-logo-img">
       <p class="ftr-tag">Personeelsroosters voor de horeca.<br>Nu in ontwikkeling · beperkte pilot.</p>
       <div class="ftr-socials">
         <a href="https://instagram.com/myshiftpilot" target="_blank" rel="noopener" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
@@ -1278,7 +1405,7 @@ if(runway){
 }
 
 // ── TICKET FOLD-IN ────────────────────────
-// De pilotformulierflow wordt afgehandeld door assets/pilot-form.js.
+// De pilotformulierflow wordt afgehandeld door assets/js/pilot-form.js.
 
 // ── COUNTER ANIMATION ─────────────────────
 function animateCount(el, target){
@@ -1345,7 +1472,7 @@ document.querySelectorAll('.sec-head').forEach(el=>{
 
 </script>
 
-  <script src="assets/pilot-form.js?v=20260817g"></script>
-  <script src="assets/pilot-victor.js?v=20260817h"></script>
+  <script src="assets/js/pilot-form.js?v=20260817g"></script>
+  <script src="assets/js/pilot-victor.js?v=20260817h"></script>
 </body>
 </html>

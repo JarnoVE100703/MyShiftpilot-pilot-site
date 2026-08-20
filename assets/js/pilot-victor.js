@@ -3,8 +3,8 @@
 
   const scriptUrl = document.currentScript && document.currentScript.src;
   const victorImageUrl = scriptUrl
-    ? new URL('victor.png', scriptUrl).href
-    : 'assets/victor.png';
+    ? new URL('../img/victor.png', scriptUrl).href
+    : 'assets/img/victor.png';
   const pageFile = (window.location.pathname || '').split('/').pop() || 'index.html';
   const storageKey = `myshiftpilot_victor_pilot_chat_v1:${pageFile}`;
   const PILOT_TOPICS = [

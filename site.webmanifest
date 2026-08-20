@@ -1,0 +1,31 @@
+{
+  "name": "MyShiftpilot — personeelsroosters voor de horeca",
+  "short_name": "MyShiftpilot",
+  "description": "Roostersoftware voor horecabedrijven: personeelsroosters maken, wijzigen en delen op één plek.",
+  "lang": "nl-NL",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#080E14",
+  "theme_color": "#080E14",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
