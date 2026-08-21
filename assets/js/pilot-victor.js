@@ -3,13 +3,13 @@
 
   const scriptUrl = document.currentScript && document.currentScript.src;
   const victorImageUrl = scriptUrl
-    ? new URL('../img/victor.png', scriptUrl).href
-    : 'assets/img/victor.png';
+    ? new URL('../img/victor-widget-160.webp', scriptUrl).href
+    : 'assets/img/victor-widget-160.webp';
   const pageFile = (window.location.pathname || '').split('/').pop() || 'index.html';
   const storageKey = `myshiftpilot_victor_pilot_chat_v1:${pageFile}`;
   const PILOT_TOPICS = [
     { id: 'availability', label: 'Is MyShiftpilot al beschikbaar?', answer: 'MyShiftpilot is nog niet algemeen beschikbaar. We testen de eerste versie met een beperkte groep horecabedrijven die de roosterfuncties in hun eigen praktijk gebruiken.', linkUrl: 'faq.html', linkLabel: 'Bekijk de FAQ' },
-    { id: 'apply', label: 'Voor wie is de pilot bedoeld?', answer: 'De pilot is bedoeld voor zakelijke horecabedrijven die medewerkers en diensten inroosteren. Ieder horecabedrijf kan een aanvraag doen; daarna bespreken we persoonlijk of de huidige pilotscope en het moment bij u passen.', linkUrl: 'index.html#pilot-aanvraag', linkLabel: 'Meld uw bedrijf aan' },
+    { id: 'apply', label: 'Voor wie is de pilot bedoeld?', answer: 'De pilot is bedoeld voor zakelijke horecabedrijven die medewerkers en diensten inroosteren. Ieder horecabedrijf kan een aanvraag doen; daarna bespreken we persoonlijk of de huidige pilotscope en het moment bij u passen.', linkUrl: '/#pilot-aanvraag', linkLabel: 'Meld uw bedrijf aan' },
     { id: 'participation', label: 'Wat gebeurt er direct na mijn aanvraag?', answer: 'We bekijken uw aanvraag en nemen persoonlijk contact op voor een kennismaking. We bespreken hoe u nu roostert, waar u tegenaan loopt en wat u met MyShiftpilot zou willen testen.', linkUrl: 'pilot.html', linkLabel: 'Bekijk hoe de pilot werkt' },
     { id: 'no-automatic-access', label: 'Zit ik na een aanvraag ergens aan vast?', answer: 'Nee. Een aanvraag is geen bestelling. Als u start, is de volledige pilot gratis en is er geen betaalverplichting of automatische verlenging.', linkUrl: 'pilot.html', linkLabel: 'Bekijk hoe de pilot werkt' },
     { id: 'talk-first', label: 'Waar kan ik terecht als ik eerst wil overleggen?', answer: 'Gebruik het contactformulier of mail ons. U kunt eerst persoonlijk bespreken of de pilot interessant is voor uw bedrijf voordat u een aanvraag doet.', linkUrl: 'contact.html', linkLabel: 'Stel een vraag' },
@@ -179,9 +179,10 @@
   let state = readState();
   let asking = false;
 
-  function setOpen(isOpen) {
+  function setOpen(isOpen, restoreFocus) {
     host.setAttribute('data-open', isOpen ? 'true' : 'false');
     openButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (!isOpen && restoreFocus) openButton.focus();
   }
   function renderQuickActions() {
     const hasConversation = state.messages.length > 0;
@@ -222,7 +223,7 @@
     }, 280);
   }
   openButton.addEventListener('click', () => setOpen(host.getAttribute('data-open') !== 'true'));
-  closeButton.addEventListener('click', () => setOpen(false));
+  closeButton.addEventListener('click', () => setOpen(false, true));
   resetButton.addEventListener('click', () => {
     if (asking) return;
     state = { messages: [] };
@@ -237,7 +238,7 @@
     const button = event.target.closest('[data-pilot-topic]');
     askTopic(PILOT_TOPICS.find((item) => item.id === button?.getAttribute('data-pilot-topic')));
   });
-  document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && host.getAttribute('data-open') === 'true') setOpen(false); });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && host.getAttribute('data-open') === 'true') setOpen(false, true); });
   document.addEventListener('pointerdown', (event) => { if (host.getAttribute('data-open') === 'true' && !host.contains(event.target)) setOpen(false); });
   bindMouseGlows();
   renderMessages();

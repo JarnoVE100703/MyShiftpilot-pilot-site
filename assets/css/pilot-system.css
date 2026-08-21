@@ -831,6 +831,25 @@ html { scroll-snap-type: y proximity; }
   body > main, body > footer { animation: none; }
 }
 
+/* Progressive enhancement: zonder scripting blijft alle kerncontent zichtbaar.
+   De pagina-eigen CSS mag animatiestarts definiëren, maar niet de leesbaarheid van
+   HTML afhankelijk maken van een succesvolle JavaScript-load. */
+@media (scripting: none) {
+  .reveal,
+  .f-card,
+  .step,
+  .df-item,
+  .df-center,
+  .sec-head,
+  .stat,
+  .sec-title .word {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  body > main,
+  body > footer { animation: none; }
+}
+
 /* De homepage heeft een breder hero-canvas dan de informatieve subpagina's.
    Daardoor blijven de titel en het roosterpaneel op ruime desktops uit elkaars zone. */
 @media (min-width: 1241px) {

@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-4ot6tgGVaFggzy6R1xiCyriFG2hC+oCAVy806ybrD44=' 'sha256-oFcRpJP529DTHGRg8MmY/4qPS+/E1slHERNQzLbRLLc='; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'sha256-4ot6tgGVaFggzy6R1xiCyriFG2hC+oCAVy806ybrD44=' 'sha256-72wBIapySih+0ZVlQFdwossFdZnpZLkavfp4aERXt2E='; script-src-attr 'unsafe-hashes'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.myshiftpilot.nl https://api.pdok.nl; form-action 'self'">
     <meta name="myshiftpilot-api-base" content="https://api.myshiftpilot.nl">
 <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#080e14">
@@ -148,11 +148,11 @@
   <header class="hdr">
     <div class="hdr-inner">
       <button class="menu" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel"><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-dot"></span><span class="menu-txt">Menu</span></button>
-      <a href="index.html" class="brand-logo" aria-label="MyShiftpilot home"><img src="assets/img/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img"></a>
-      <a href="index.html#pilot-aanvraag" class="login-btn">Meld uw bedrijf aan</a>
+      <a href="/" class="brand-logo" aria-label="MyShiftpilot home"><img src="assets/img/logoMyShiftpilot_v5.png" alt="MyShiftpilot" class="logo-img"></a>
+      <a href="/#pilot-aanvraag" class="login-btn">Meld uw bedrijf aan</a>
     </div>
     <nav class="nav-panel" id="nav-panel" aria-label="Hoofdmenu" aria-hidden="true">
-      <a href="index.html" class="np-link"><span class="np-num">01</span><span>Home</span></a>
+      <a href="/" class="np-link"><span class="np-num">01</span><span>Home</span></a>
       <a href="pilot.html" class="np-link"><span class="np-num">02</span><span>Pilot</span></a>
       <a href="faq.html" class="np-link"><span class="np-num">03</span><span>FAQ</span></a>
       <a href="about.html" class="np-link"><span class="np-num">04</span><span>Over ons</span></a>
@@ -176,17 +176,17 @@
         <section class="contact-form-card" id="contact-form-card" aria-labelledby="contact-form-title">
           <div class="contact-form-head"><span class="card-label" id="contact-form-title">Stuur een bericht</span><span class="card-status">Persoonlijk</span></div>
           <p class="contact-form-note">Een korte vraag is genoeg. Wilt u uw bedrijf direct aanmelden voor de pilot, gebruik dan het pilotaanvraagformulier.</p>
-          <form class="contact-form" id="contact-form">
+          <form class="contact-form" id="contact-form" method="post">
             <div class="contact-form-grid">
               <label class="field"><span>Naam</span><input type="text" name="name" autocomplete="name" minlength="2" maxlength="120" required placeholder="Uw naam"></label>
               <label class="field"><span>E-mail</span><input type="email" name="email" autocomplete="email" maxlength="190" required placeholder="u@bedrijf.nl"></label>
-              <label class="field"><span>Bedrijfsnaam</span><input type="text" name="company" autocomplete="organization" minlength="2" maxlength="160" required placeholder="Naam van uw horecabedrijf"></label>
-              <label class="field"><span>Plaats</span><input type="text" name="location" autocomplete="address-level2" minlength="2" maxlength="120" required placeholder="Bijvoorbeeld Utrecht"></label>
+              <label class="field"><span>Bedrijfsnaam <small data-contact-context-optional hidden>(optioneel)</small></span><input type="text" name="company" autocomplete="organization" minlength="2" maxlength="160" required placeholder="Naam van uw horecabedrijf"></label>
+              <label class="field"><span>Plaats <small data-contact-context-optional hidden>(optioneel)</small></span><input type="text" name="location" autocomplete="address-level2" minlength="2" maxlength="120" required placeholder="Bijvoorbeeld Utrecht"></label>
               <label class="field field-wide"><span>Telefoon <small>(optioneel)</small></span><input type="tel" name="phone" autocomplete="tel" minlength="6" maxlength="40" placeholder="06 12345678"></label>
             </div>
-            <div class="contact-subject"><span>Onderwerp</span><div class="contact-subject-options" id="contact-subject-options"><button type="button" class="contact-subject-option active">Vraag over de pilot</button><button type="button" class="contact-subject-option">Deelname bespreken</button><button type="button" class="contact-subject-option">Privacy</button><button type="button" class="contact-subject-option">Anders</button></div><input type="hidden" name="subject" value="Vraag over de pilot" id="contact-subject-value"></div>
+            <div class="contact-subject"><span id="contact-subject-label">Onderwerp</span><div class="contact-subject-options" id="contact-subject-options" role="radiogroup" aria-labelledby="contact-subject-label"><button type="button" role="radio" aria-checked="true" tabindex="0" class="contact-subject-option active">Vraag over de pilot</button><button type="button" role="radio" aria-checked="false" tabindex="-1" class="contact-subject-option">Deelname bespreken</button><button type="button" role="radio" aria-checked="false" tabindex="-1" class="contact-subject-option">Privacy</button><button type="button" role="radio" aria-checked="false" tabindex="-1" class="contact-subject-option">Anders</button></div><input type="hidden" name="subject" value="Vraag over de pilot" id="contact-subject-value"></div>
             <label class="field field-wide"><span>Bericht</span><textarea name="message" rows="5" minlength="8" maxlength="2000" required placeholder="Waar kunnen we u mee helpen?"></textarea></label>
-            <button type="submit" class="button button-primary contact-submit"><span>Verstuur bericht</span><span aria-hidden="true">→</span></button>
+            <button type="button" class="button button-primary contact-submit"><span>Verstuur bericht</span><span aria-hidden="true">→</span></button>
             <p class="contact-privacy">We gebruiken uw gegevens alleen voor dit bericht. Meer in onze <a href="privacy.html">privacyverklaring</a>.</p>
             <p class="contact-status" id="contact-status" role="alert" aria-live="polite"></p>
           </form>
@@ -221,6 +221,53 @@
       const apiBase = String(document.querySelector('meta[name="myshiftpilot-api-base"]')?.getAttribute('content') || '').replace(/\/$/, '');
       const submitButton = form.querySelector('.contact-submit');
       const submitLabel = submitButton.querySelector('span');
+      const formControls = Array.from(form.querySelectorAll('input:not([type="hidden"]), textarea'));
+      const contextControls = ['company', 'location'].map((name) => form.elements.namedItem(name));
+      const contextOptionalLabels = Array.from(form.querySelectorAll('[data-contact-context-optional]'));
+
+      const validationMessageFor = (control) => {
+        const value = String(control.value || '').trim();
+        if (control.required && !value) {
+          return ({
+            name: 'Vul uw naam in.',
+            email: 'Vul uw e-mailadres in.',
+            company: 'Vul uw bedrijfsnaam in.',
+            location: 'Vul uw plaats in.',
+            message: 'Vul uw bericht in.',
+          })[control.name] || 'Vul dit veld in.';
+        }
+        if (value && control.minLength > 0 && value.length < control.minLength) return `Vul minimaal ${control.minLength} tekens in.`;
+        if (control.validity.typeMismatch && control.name === 'email') return 'Vul een geldig e-mailadres in.';
+        return '';
+      };
+
+      const validateControl = (control) => {
+        control.setCustomValidity('');
+        control.setCustomValidity(validationMessageFor(control));
+        return control.checkValidity();
+      };
+
+      const normalizeAndValidate = () => {
+        formControls.forEach((control) => { control.value = String(control.value || '').trim(); });
+        formControls.forEach(validateControl);
+        const invalidControl = formControls.find((control) => !control.checkValidity());
+        if (!invalidControl) return true;
+        invalidControl.reportValidity();
+        invalidControl.focus();
+        return false;
+      };
+
+      formControls.forEach((control) => {
+        control.addEventListener('input', () => control.setCustomValidity(''));
+        control.addEventListener('change', () => {
+          control.value = String(control.value || '').trim();
+          validateControl(control);
+        });
+        control.addEventListener('invalid', () => {
+          control.value = String(control.value || '').trim();
+          validateControl(control);
+        });
+      });
 
       const honeypot = document.createElement('input');
       honeypot.name = 'website';
@@ -231,34 +278,75 @@
       honeypot.className = 'form-honeypot';
       form.appendChild(honeypot);
 
+      const subjectButtons = Array.from(subjectOptions.querySelectorAll('.contact-subject-option'));
+      const updateContextRequirements = (subject) => {
+        const required = subject !== 'Privacy' && subject !== 'Anders';
+        contextControls.forEach((control) => {
+          control.required = required;
+          if (!required) control.setCustomValidity('');
+        });
+        contextOptionalLabels.forEach((label) => { label.hidden = required; });
+      };
+      const selectSubject = (option, focus) => {
+        subjectButtons.forEach((button) => {
+          const selected = button === option;
+          button.classList.toggle('active', selected);
+          button.setAttribute('aria-checked', String(selected));
+          button.tabIndex = selected ? 0 : -1;
+        });
+        subjectValue.value = option.textContent.trim();
+        updateContextRequirements(subjectValue.value);
+        if (focus) option.focus();
+      };
+
       subjectOptions.addEventListener('click', (event) => {
         const option = event.target.closest('.contact-subject-option');
-        if (!option) return;
-        subjectOptions.querySelectorAll('.contact-subject-option').forEach((button) => button.classList.toggle('active', button === option));
-        subjectValue.value = option.textContent.trim();
+        if (option) selectSubject(option, false);
       });
+      subjectOptions.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const currentIndex = Math.max(0, subjectButtons.indexOf(event.target.closest('.contact-subject-option')));
+        const nextIndex = event.key === 'Home'
+          ? 0
+          : event.key === 'End'
+            ? subjectButtons.length - 1
+            : (currentIndex + (event.key === 'ArrowLeft' || event.key === 'ArrowUp' ? -1 : 1) + subjectButtons.length) % subjectButtons.length;
+        selectSubject(subjectButtons[nextIndex], true);
+      });
+
+      submitButton.type = 'submit';
 
       form.addEventListener('submit', async (event) => {
         event.preventDefault();
-        if (!form.reportValidity()) return;
+        if (!normalizeAndValidate()) return;
         status.textContent = '';
         submitButton.disabled = true;
         submitLabel.textContent = 'Versturen…';
         const data = new FormData(form);
+        const company = String(data.get('company') || '').trim();
+        const location = String(data.get('location') || '').trim();
         const payload = {
           name: String(data.get('name') || '').trim(),
           email: String(data.get('email') || '').trim(),
           phone: String(data.get('phone') || '').trim() || undefined,
-          company: String(data.get('company') || '').trim(),
-          location: String(data.get('location') || '').trim(),
           subject: String(data.get('subject') || '').trim(),
           message: String(data.get('message') || '').trim(),
           website: String(data.get('website') || '').trim(),
-          source: 'pilot_contact_form',
         };
+        if (company) payload.company = company;
+        if (location) payload.location = location;
         try {
           const response = await fetch(`${apiBase}/api/public/contact`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-          if (!response.ok) throw new Error('contact_submission_failed');
+          let body = null;
+          try {
+            body = await response.json();
+          } catch (_error) {
+            throw new Error('contact_invalid_response');
+          }
+          if (!response.ok || body.success !== true || body.storageMode !== 'database' || typeof body.id !== 'string' || !body.id.trim()) {
+            throw new Error(body && body.error ? body.error : 'contact_submission_not_confirmed');
+          }
           form.hidden = true;
           success.hidden = false;
           card.classList.add('success');

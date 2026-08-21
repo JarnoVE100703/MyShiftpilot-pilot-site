@@ -63,10 +63,11 @@
 
   function validationMessageFor(control) {
     const validity = control && control.validity;
-    if (!validity || validity.valid) return '';
+    if (!validity) return '';
 
     const name = control.name;
-    if (validity.valueMissing) {
+    const value = String(control.value || '').trim();
+    if ((control.required && !value) || validity.valueMissing) {
       return ({
         company: 'Vul de bedrijfsnaam in.',
         name: 'Vul de naam van de contactpersoon in.',
@@ -80,7 +81,7 @@
       })[name] || 'Vul dit veld in.';
     }
     if (validity.typeMismatch && name === 'email') return 'Vul een geldig e-mailadres in.';
-    if (validity.tooShort) {
+    if ((value && control.minLength > 0 && value.length < control.minLength) || validity.tooShort) {
       return ({
         company: 'Vul minimaal 2 tekens in voor de bedrijfsnaam.',
         name: 'Vul minimaal 2 tekens in voor de naam van de contactpersoon.',
@@ -90,6 +91,7 @@
       })[name] || `Vul minimaal ${control.minLength} tekens in.`;
     }
     if (validity.tooLong) return `Gebruik maximaal ${control.maxLength} tekens.`;
+    if (validity.valid) return '';
     return 'Controleer dit veld.';
   }
 
@@ -99,6 +101,11 @@
     const message = validationMessageFor(control);
     control.setCustomValidity(message);
     return !message;
+  }
+
+  function normalizeControl(control) {
+    if (!control || typeof control.value !== 'string' || control.tagName === 'SELECT') return;
+    control.value = control.value.trim();
   }
 
   function isCompactViewport(windowRef) {
@@ -228,6 +235,7 @@
     };
 
     const validateContactStep = () => {
+      formControls.forEach(normalizeControl);
       formControls.forEach(validateControl);
       const fields = Array.from(contactStep.querySelectorAll('input, select, textarea'));
       for (const field of fields) {
@@ -266,7 +274,7 @@
     bindPilotFormLinks(windowRef, documentRef, form);
     if (windowRef && windowRef.location && windowRef.location.hash === '#pilot-aanvraag') {
       windowRef.requestAnimationFrame(() => {
-        alignPilotForm(windowRef, documentRef, form, { smooth: false, focus: false });
+        alignPilotForm(windowRef, documentRef, form, { smooth: false, focus: true });
         // Hash direct opruimen: anders springt iedere reload of terugkeer opnieuw naar het formulier.
         if (windowRef.history && typeof windowRef.history.replaceState === 'function') {
           windowRef.history.replaceState(null, '', windowRef.location.pathname + windowRef.location.search);
@@ -302,6 +310,7 @@
         pilotSteps.goToPlanning();
         return;
       }
+      formControls.forEach(normalizeControl);
       formControls.forEach(validateControl);
       if (!form.reportValidity()) return;
 

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; form-action 'none'">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080e14">
+  <meta name="robots" content="noindex,follow">
+  <title>Pagina niet gevonden | MyShiftpilot</title>
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="stylesheet" href="/assets/css/pilot.css?v=20260821a">
+  <link rel="stylesheet" href="/assets/css/pilot-system.css?v=20260821a">
+  <style>
+    .not-found{min-height:100svh;display:grid;place-items:center;padding:96px 24px 48px;text-align:center}
+    .not-found-inner{width:min(720px,100%);padding:clamp(32px,7vw,72px);border:1px solid var(--msp-border);border-radius:20px;background:var(--msp-panel);box-shadow:var(--msp-shadow-2)}
+    .not-found-code{display:block;margin-bottom:12px;color:var(--msp-orange);font-family:var(--msp-display);font-size:clamp(72px,18vw,144px);font-weight:900;line-height:.8}
+    .not-found h1{margin-bottom:16px;font-family:var(--msp-display);font-size:clamp(36px,7vw,64px);line-height:1;text-transform:uppercase}
+    .not-found p{max-width:560px;margin:0 auto 28px;color:var(--msp-muted);font-size:18px;line-height:1.6}
+    .not-found-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .not-found-logo{position:absolute;top:24px;left:50%;width:auto;height:34px;transform:translateX(-50%)}
+  </style>
+</head>
+<body>
+  <main id="main-content" class="not-found">
+    <a href="/" aria-label="MyShiftpilot home"><img class="not-found-logo" src="/assets/img/logo-myshiftpilot-612.webp" width="612" height="136" alt="MyShiftpilot"></a>
+    <section class="not-found-inner" aria-labelledby="not-found-title">
+      <span class="not-found-code" aria-hidden="true">404</span>
+      <h1 id="not-found-title">Deze pagina bestaat niet</h1>
+      <p>De link is mogelijk verouderd of verkeerd gespeld. Ga terug naar de homepage of stel ons uw vraag.</p>
+      <div class="not-found-actions">
+        <a class="button button-primary" href="/">Terug naar home</a>
+        <a class="button button-ghost" href="/contact.html">Contact opnemen</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
